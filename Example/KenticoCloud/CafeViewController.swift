@@ -8,6 +8,7 @@
 
 import UIKit
 import KenticoCloud
+import AlamofireImage
 
 class CafeViewController: UIViewController, UITableViewDataSource {
 
@@ -43,6 +44,13 @@ class CafeViewController: UIViewController, UITableViewDataSource {
         cell.firstRowAddress.text = cafe.street
         cell.secondRowAddress.text = cafe.state
         cell.phone.text = cafe.phone
+        
+        if let imageUrl = cafe.imageUrl {
+            let url = URL(string: imageUrl)
+            cell.photo.af_setImage(withURL: url!)
+        }
+
+
         
         return cell
     }
