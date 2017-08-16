@@ -8,8 +8,13 @@
 
 import UIKit
 
-class CafeCellTableViewCell: UITableViewCell {
-
+class CafeTableViewCell: UITableViewCell {
+    @IBOutlet weak var city: UILabel!
+    @IBOutlet weak var firstRowAddress: UILabel!
+    @IBOutlet weak var secondRowAddress: UILabel!
+    @IBOutlet weak var phone: UILabel!
+    @IBOutlet weak var photo: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

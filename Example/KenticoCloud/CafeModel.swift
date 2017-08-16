@@ -6,34 +6,31 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
+import Foundation
 import ObjectMapper
 
-class CafesResponse: Mappable {
-    var cafes: [Cafe]?
+public class Cafe: Mappable {
+    public var city: String?
+    public var street: String?
+    public var country: String?
+    public var state: String?
+    public var zip: String?
+    public var phone: String?
+    public var email: String?
+    public var imageUrl: String?
     
-    required init?(map: Map){
+    public required init?(map: Map){
         
     }
     
-    func mapping(map: Map) {
-        cafes <- map["items"]
-    }
-}
-
-class Cafe: Mappable {
-    var street: String?
-    var city: String?
-    
-    required init?(map: Map){
-        
-    }
-    
-    func mapping(map: Map) {
-        street <- map["elements.street.value"]
+    public func mapping(map: Map) {
         city <- map["elements.city.value"]
+        street <- map["elements.street.value"]
+        country <- map["elements.country.value"]
+        state <- map["elements.state.value"]
+        zip <- map["elements.zip_code.value"]
+        phone <- map["elements.phone.value"]
+        email <- map["elements.email.value"]
+        imageUrl <- map["elements.photo.value.0.url"]
     }
-}
-
-class Ahoj {
-    var tmp: string?
 }

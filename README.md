@@ -22,7 +22,7 @@ pod "KenticoCloud"
 
 ## Author
 
-martinmakarsky@gmail.com, martinm@kentico.com
+martinm@kentico.com
 
 ## License
 
