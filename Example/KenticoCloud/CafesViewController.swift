@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CafesViewController.swift
 //  KenticoCloud
 //
 //  Created by martinmakarsky@gmail.com on 08/16/2017.
@@ -10,7 +10,7 @@ import UIKit
 import KenticoCloud
 import AlamofireImage
 
-class CafeViewController: UIViewController, UITableViewDataSource {
+class CafesViewController: UIViewController, UITableViewDataSource {
 
     private let projectId = "adcae48f-b42b-4a53-a8fc-b3b4501561b9"
     private let type = "cafe"
@@ -50,9 +50,22 @@ class CafeViewController: UIViewController, UITableViewDataSource {
             cell.photo.af_setImage(withURL: url!)
         }
 
-
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "cafeDetailSegue" {
+            
+            let cafeDetailViewController = segue.destination
+                as! CafeDetailViewController
+            
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            cafeDetailViewController.cafe = cafes[indexPath.row]
+            
+            let cell = self.tableView.cellForRow(at: indexPath) as! CafeTableViewCell
+            cafeDetailViewController.image = cell.photo.image
+        }
     }
     
     private func getCafes() {
@@ -69,7 +82,6 @@ class CafeViewController: UIViewController, UITableViewDataSource {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
