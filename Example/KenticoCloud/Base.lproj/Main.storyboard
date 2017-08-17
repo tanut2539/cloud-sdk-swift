@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PBV-HB-QFv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NYI-N3-X4t">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Cafes-->
         <scene sceneID="KAm-Et-Lst">
             <objects>
-                <tableViewController id="wMJ-k7-9dR" customClass="CafesViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CafesViewController" id="wMJ-k7-9dR" customClass="CafesViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="131" sectionHeaderHeight="28" sectionFooterHeight="28" id="m9X-3f-x8Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,7 +90,13 @@
                             <outlet property="delegate" destination="wMJ-k7-9dR" id="PCe-2S-Lrb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cafes" id="uPn-wp-bqz"/>
+                    <navigationItem key="navigationItem" title="Cafes" id="uPn-wp-bqz">
+                        <barButtonItem key="leftBarButtonItem" image="menuHamburger" id="i9q-cr-jc7">
+                            <connections>
+                                <action selector="showMenu:" destination="wMJ-k7-9dR" id="Yxc-QE-gcM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="m9X-3f-x8Z" id="MxZ-zZ-wYJ"/>
                     </connections>
@@ -183,10 +189,103 @@
             </objects>
             <point key="canvasLocation" x="1223.2" y="-261.31934032983509"/>
         </scene>
+        <!--Panel Controller-->
+        <scene sceneID="XL5-iZ-FgW">
+            <objects>
+                <viewController id="NYI-N3-X4t" customClass="FAPanelController" customModule="FAPanels" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a2U-u0-dBs"/>
+                        <viewControllerLayoutGuide type="bottom" id="y84-t3-nmn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cvi-1X-jZ9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hHj-4F-hmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2615" y="78"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="Bi8-R7-5YD">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="JpF-cI-XSL" customClass="MenuViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YHc-L6-fhk"/>
+                        <viewControllerLayoutGuide type="bottom" id="tww-mf-6KQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vri-SG-s6C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fIJ-zF-EXs">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" rowHeight="61" id="vA4-1N-gXC" userLabel="MenuCell" customClass="MenuTableViewCell" customModule="KenticoCloud_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vA4-1N-gXC" id="Dff-2U-6qB" customClass="MenuCell" customModule="KenticoCloud_Example" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_1" translatesAutoresizingMaskIntoConstraints="NO" id="ehK-6r-VYu">
+                                                    <rect key="frame" x="20" y="21" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Articles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eyk-gH-k0V">
+                                                    <rect key="frame" x="48" y="20" width="311" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.69803921568627447" green="0.25490196078431371" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="menuImage" destination="ehK-6r-VYu" id="f5x-DA-0Ya"/>
+                                            <outlet property="menuOption" destination="Eyk-gH-k0V" id="OCV-hM-ZZd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dancing Goat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tU-6U-bNb">
+                                <rect key="frame" x="16" y="8" width="117" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="MLE-1V-eso"/>
+                                    <constraint firstAttribute="width" constant="117" id="Ohh-c0-mqd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.69803921570000005" green="0.25490196079999999" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="fIJ-zF-EXs" firstAttribute="top" secondItem="2tU-6U-bNb" secondAttribute="bottom" constant="8" id="Cxj-8l-xvt"/>
+                            <constraint firstItem="2tU-6U-bNb" firstAttribute="centerX" secondItem="fIJ-zF-EXs" secondAttribute="centerX" constant="-113" id="JPR-Wz-mRV"/>
+                            <constraint firstItem="fIJ-zF-EXs" firstAttribute="leading" secondItem="vri-SG-s6C" secondAttribute="leading" id="OQM-le-CnP"/>
+                            <constraint firstAttribute="trailing" secondItem="fIJ-zF-EXs" secondAttribute="trailing" id="Pj1-IN-71D"/>
+                            <constraint firstItem="fIJ-zF-EXs" firstAttribute="bottom" secondItem="tww-mf-6KQ" secondAttribute="top" id="W7o-2R-IOF"/>
+                            <constraint firstItem="2tU-6U-bNb" firstAttribute="top" secondItem="YHc-L6-fhk" secondAttribute="bottom" constant="-12" id="zzL-MM-yCb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="fIJ-zF-EXs" id="1gS-N2-r7z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Op-xk-bcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1690.4000000000001" y="77.811094452773617"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZUC-lP-yOL">
             <objects>
-                <navigationController id="PBV-HB-QFv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CafesNavigationController" id="PBV-HB-QFv" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="udQ-Ck-tvl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -202,7 +301,7 @@
         <!--Articles-->
         <scene sceneID="gh6-ck-ZWx">
             <objects>
-                <tableViewController id="S20-Zv-d5o" customClass="ArticlesViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ArticlesViewController" id="S20-Zv-d5o" customClass="ArticlesViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="214" sectionHeaderHeight="28" sectionFooterHeight="28" id="0bp-7g-7ol">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +357,13 @@
                             <outlet property="delegate" destination="S20-Zv-d5o" id="ZwC-3e-gN1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Articles" id="o85-ne-a9G"/>
+                    <navigationItem key="navigationItem" title="Articles" id="o85-ne-a9G">
+                        <barButtonItem key="leftBarButtonItem" image="menuHamburger" id="E03-tB-23f">
+                            <connections>
+                                <action selector="showMenu:" destination="S20-Zv-d5o" id="65E-tY-lTC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="0bp-7g-7ol" id="1xo-rB-Ej9"/>
                     </connections>
@@ -270,7 +375,7 @@
         <!--Navigation Controller-->
         <scene sceneID="sAu-9c-8uE">
             <objects>
-                <navigationController id="plt-Dx-hUM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ArticlesNavigationController" id="plt-Dx-hUM" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NIK-do-dlg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -284,4 +389,8 @@
             <point key="canvasLocation" x="-526" y="435"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menuHamburger" width="27" height="27"/>
+        <image name="menu_1" width="55" height="55"/>
+    </resources>
 </document>

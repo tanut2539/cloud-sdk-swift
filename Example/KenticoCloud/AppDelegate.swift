@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FAPanels
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        configureNavigation()
         return true
     }
 
@@ -39,6 +41,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    private func configureNavigation() {
+        //  Load the Controllers
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let menu: MenuViewController = mainStoryboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        
+        let center: ArticlesViewController = mainStoryboard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
+        let centerNavigationViewController = UINavigationController(rootViewController: center)
+        
+        //  Set the Panel controllers
+        let rootController: FAPanelController = window?.rootViewController as! FAPanelController
+        _ = rootController.center(centerNavigationViewController).left(menu)
     }
 
 

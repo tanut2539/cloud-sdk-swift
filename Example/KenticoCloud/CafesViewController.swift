@@ -68,6 +68,10 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    @IBAction func showMenu(_ sender: Any) {
+        panel?.openLeft(animated: true)
+    }
+    
     private func getCafes() {
         let cloudClient = Client.init(projectId: projectId)
         cloudClient.fetchItems(contentType: type, modelType: Cafe.self) { (isSuccess, items) in

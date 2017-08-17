@@ -51,6 +51,10 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
+    
+    @IBAction func showMenu(_ sender: Any) {
+        panel?.openLeft(animated: true)
+    }
 
     private func getArticles() {
         let cloudClient = Client.init(projectId: projectId)

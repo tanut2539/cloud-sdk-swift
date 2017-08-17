@@ -19,6 +19,8 @@
 		8F7465D31F458B6700908DF5 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D21F458B6700908DF5 /* Article.swift */; };
 		8F7465D51F458C3800908DF5 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */; };
 		8F7465D71F458CBF00908DF5 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D61F458CBF00908DF5 /* ArticleTableViewCell.swift */; };
+		8F7465D91F45985000908DF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D81F45985000908DF5 /* MenuViewController.swift */; };
+		8F7465DC1F45991A00908DF5 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465DA1F45991A00908DF5 /* MenuTableViewCell.swift */; };
 		8FAE5F1C1F4436F800DA46C4 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE5F1B1F4436F800DA46C4 /* Cafe.swift */; };
 		8FAE5F281F447D2B00DA46C4 /* CafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE5F271F447D2B00DA46C4 /* CafeTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,8 @@
 		8F7465D21F458B6700908DF5 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		8F7465D61F458CBF00908DF5 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		8F7465D81F45985000908DF5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		8F7465DA1F45991A00908DF5 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		8FAE5F1B1F4436F800DA46C4 /* Cafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		8FAE5F271F447D2B00DA46C4 /* CafeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeTableViewCell.swift; sourceTree = "<group>"; };
 		99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KenticoCloud_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +177,14 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		8F7465DE1F45992400908DF5 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				8F7465DA1F45991A00908DF5 /* MenuTableViewCell.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		8FAE5F221F44703B00DA46C4 /* CloudModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +200,7 @@
 				607FACD71AFB9204008FA782 /* CafesViewController.swift */,
 				8F7465D01F45791400908DF5 /* CafeDetailViewController.swift */,
 				8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */,
+				8F7465D81F45985000908DF5 /* MenuViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -195,6 +208,7 @@
 		8FAE5F241F447CC600DA46C4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8F7465DE1F45992400908DF5 /* Menu */,
 				8FAE5F271F447D2B00DA46C4 /* CafeTableViewCell.swift */,
 				8F7465D61F458CBF00908DF5 /* ArticleTableViewCell.swift */,
 			);
@@ -397,6 +411,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/FAPanels/FAPanels.framework",
 				"${BUILT_PRODUCTS_DIR}/KenticoCloud/KenticoCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
@@ -405,6 +420,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FAPanels.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KenticoCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
@@ -425,7 +441,9 @@
 				8F7465D31F458B6700908DF5 /* Article.swift in Sources */,
 				8F7465D51F458C3800908DF5 /* ArticlesViewController.swift in Sources */,
 				8F7465D71F458CBF00908DF5 /* ArticleTableViewCell.swift in Sources */,
+				8F7465D91F45985000908DF5 /* MenuViewController.swift in Sources */,
 				8FAE5F1C1F4436F800DA46C4 /* Cafe.swift in Sources */,
+				8F7465DC1F45991A00908DF5 /* MenuTableViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				8F7465D11F45791400908DF5 /* CafeDetailViewController.swift in Sources */,
 			);
@@ -562,6 +580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KenticoCloud/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -576,6 +595,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KenticoCloud/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
