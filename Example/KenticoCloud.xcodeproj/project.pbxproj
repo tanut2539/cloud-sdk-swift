@@ -21,6 +21,7 @@
 		8F7465D71F458CBF00908DF5 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D61F458CBF00908DF5 /* ArticleTableViewCell.swift */; };
 		8F7465D91F45985000908DF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D81F45985000908DF5 /* MenuViewController.swift */; };
 		8F7465DC1F45991A00908DF5 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465DA1F45991A00908DF5 /* MenuTableViewCell.swift */; };
+		8F7465E11F45D36300908DF5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7465E01F45D36300908DF5 /* UserNotifications.framework */; };
 		8FAE5F1C1F4436F800DA46C4 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE5F1B1F4436F800DA46C4 /* Cafe.swift */; };
 		8FAE5F281F447D2B00DA46C4 /* CafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE5F271F447D2B00DA46C4 /* CafeTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,8 @@
 		8F7465D61F458CBF00908DF5 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		8F7465D81F45985000908DF5 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8F7465DA1F45991A00908DF5 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		8F7465DF1F45D2EC00908DF5 /* KenticoCloud_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KenticoCloud_Example.entitlements; sourceTree = "<group>"; };
+		8F7465E01F45D36300908DF5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8FAE5F1B1F4436F800DA46C4 /* Cafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		8FAE5F271F447D2B00DA46C4 /* CafeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeTableViewCell.swift; sourceTree = "<group>"; };
 		99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KenticoCloud_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F7465E11F45D36300908DF5 /* UserNotifications.framework in Frameworks */,
 				8155DF3642ECFF3A496A97AB /* Pods_KenticoCloud_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +92,7 @@
 		45CB9A48B682AE7BCEBFBEBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F7465E01F45D36300908DF5 /* UserNotifications.framework */,
 				3AB3626203000465A33AC941 /* Pods_KenticoCloud_Example.framework */,
 				99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */,
 			);
@@ -108,6 +113,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				8F7465DF1F45D2EC00908DF5 /* KenticoCloud_Example.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for KenticoCloud */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -271,7 +277,14 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = TJNU4H74H5;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -579,12 +592,18 @@
 			baseConfigurationReference = A4910C3C291811E12E837C8C /* Pods-KenticoCloud_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KenticoCloud_Example.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriela Jakabova (96F9L4467C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gabriela Jakabova (96F9L4467C)";
+				DEVELOPMENT_TEAM = TJNU4H74H5;
 				INFOPLIST_FILE = KenticoCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "656aeed4-0191-45d4-9039-07713c5072ae";
+				PROVISIONING_PROFILE_SPECIFIER = "MartinM Provisioning profile";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -594,12 +613,16 @@
 			baseConfigurationReference = 71A9A2D375E7C6DFB5BE427B /* Pods-KenticoCloud_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KenticoCloud_Example.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gabriela Jakabova (96F9L4467C)";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KenticoCloud/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
