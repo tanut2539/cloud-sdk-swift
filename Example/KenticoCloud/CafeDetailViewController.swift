@@ -23,9 +23,7 @@ class CafeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 178.0/255, green: 65.0/255, blue: 67.0/255, alpha: 1.0)
-        
+
         if let cafe = cafe {
             setTitles(cafe: cafe)
             setMap(cafe: cafe)

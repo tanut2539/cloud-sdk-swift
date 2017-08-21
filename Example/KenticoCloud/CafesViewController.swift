@@ -16,17 +16,21 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     private let type = "cafe"
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var refreshControl: UIRefreshControl!
+    
     private var cafes: [Cafe] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // navigationController?.navigationBar.backgroundColor = UIColor(red: 178.0/255, green: 65.0/255, blue: 67.0/255, alpha: 1.0)
-        
+        self.tableView.insertSubview(refreshControl!, at: 0)
         tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated: true)
+        }
         getCafes()
     }
     
@@ -74,6 +78,10 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     @IBAction func showMenu(_ sender: Any) {
         panel?.openLeft(animated: true)
     }
+
+    @IBAction func refreshTable(_ sender: Any) {
+        getCafes()
+    }
     
     private func getCafes() {
         let cloudClient = Client.init(projectId: projectId)
@@ -83,6 +91,9 @@ class CafesViewController: UIViewController, UITableViewDataSource {
                     self.cafes = cafes
                     self.tableView.reloadData()
                 }
+            }
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
             }
         }
     }
