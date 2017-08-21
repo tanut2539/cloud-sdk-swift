@@ -20,6 +20,9 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // navigationController?.navigationBar.backgroundColor = UIColor(red: 178.0/255, green: 65.0/255, blue: 67.0/255, alpha: 1.0)
+        
         tableView.dataSource = self
     }
     
@@ -74,7 +77,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     
     private func getCafes() {
         let cloudClient = Client.init(projectId: projectId)
-        cloudClient.fetchItems(contentType: type, modelType: Cafe.self) { (isSuccess, items) in
+        cloudClient.getItems(contentType: type, modelType: Cafe.self) { (isSuccess, items) in
             if isSuccess {
                 if let cafes = items {
                     self.cafes = cafes

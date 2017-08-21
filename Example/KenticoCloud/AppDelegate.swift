@@ -23,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
         application.registerForRemoteNotifications()
         
+        // Configure appearance of navigation barß
+        UINavigationBar.appearance().barTintColor = UIColor(red: 178.0/255, green: 65.0/255, blue: 67.0/255, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        
         configureNavigation()
         return true
     }

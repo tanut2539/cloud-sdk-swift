@@ -42,6 +42,8 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
         let article = articles[indexPath.row]
         cell.title.text = article.title
         cell.summary.text = article.summary
+        let postdate = article.postDate
+        cell.date.text = postdate?.substring(to:(postdate?.index((postdate?.startIndex)!, offsetBy: 10))!)
         
         if let imageUrl = article.imageUrl {
             let url = URL(string: imageUrl)
@@ -58,7 +60,7 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
 
     private func getArticles() {
         let cloudClient = Client.init(projectId: projectId)
-        cloudClient.fetchItems(contentType: type, modelType: Article.self) { (isSuccess, items) in
+        cloudClient.getItems(contentType: type, modelType: Article.self) { (isSuccess, items) in
             if isSuccess {
                 if let articles = items {
                     self.articles = articles
