@@ -54,6 +54,20 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "articleDetailSegue" {
+            
+            let articleDetailViewController = segue.destination
+                as! ArticleDetailViewController
+            
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            articleDetailViewController.article = articles[indexPath.row]
+            
+            let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
+            articleDetailViewController.image = cell.photo.image!
+        }
+    }
+    
     @IBAction func showMenu(_ sender: Any) {
         panel?.openLeft(animated: true)
     }

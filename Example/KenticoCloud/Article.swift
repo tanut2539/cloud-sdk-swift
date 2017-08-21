@@ -13,6 +13,7 @@ public class Article: Mappable {
     public var title: String?
     public var summary: String?
     public var postDate: String?
+    public var body: String?
     public var imageUrl: String?
     
     public required init?(map: Map){
@@ -23,6 +24,7 @@ public class Article: Mappable {
         title <- map["elements.title.value"]
         summary <- map["elements.summary.value"]
         postDate <- map["elements.post_date.value"]
+        body <- map["elements.body_copy.value"]
         imageUrl <- map["elements.teaser_image.value.0.url"]
     }
 }

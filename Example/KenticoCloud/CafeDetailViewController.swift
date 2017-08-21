@@ -23,7 +23,9 @@ class CafeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let cafe = cafe {
             setTitles(cafe: cafe)
             setMap(cafe: cafe)
