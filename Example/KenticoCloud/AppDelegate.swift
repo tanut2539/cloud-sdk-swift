@@ -23,12 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
         application.registerForRemoteNotifications()
         
-        // Configure appearance of navigation barß
-        UINavigationBar.appearance().barTintColor = UIColor(red: 178.0/255, green: 65.0/255, blue: 67.0/255, alpha: 1.0)
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        configureNavigationBarAppearance()
         
-        configureNavigation()
+        //  Load the Controllers
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let menu: MenuViewController = mainStoryboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        
+        let center: CafesViewController = mainStoryboard.instantiateViewController(withIdentifier: "CafesViewController") as! CafesViewController
+        let centerNavigationViewController = UINavigationController(rootViewController: center)
+        
+        //  Set the Panel controllers
+        let rootController: FAPanelController = window?.rootViewController as! FAPanelController
+        _ = rootController.center(centerNavigationViewController).left(menu)
+        
         return true
     }
 
@@ -54,18 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    private func configureNavigation() {
-        //  Load the Controllers
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let menu: MenuViewController = mainStoryboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        
-        let center: ArticlesViewController = mainStoryboard.instantiateViewController(withIdentifier: "ArticlesViewController") as! ArticlesViewController
-        let centerNavigationViewController = UINavigationController(rootViewController: center)
-        
-        //  Set the Panel controllers
-        let rootController: FAPanelController = window?.rootViewController as! FAPanelController
-        _ = rootController.center(centerNavigationViewController).left(menu)
+    private func configureNavigationBarAppearance() {
+        UINavigationBar.appearance().barTintColor = UIColor(red: 178.0/255, green: 65.0/255, blue: 67.0/255, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
     }
 
     // Called when APNs has assigned the device a unique token
@@ -87,8 +87,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Push notification received
     func application(_ application: UIApplication, didReceiveRemoteNotification data: [AnyHashable : Any]) {
-        // Print notification payload data
-        print("Push notification received: \(data)")
+        let itemName = (data["itemName"] ?? "unknown") as! String
+        let contentType = (data["contentType"] ?? "unknown") as! String
+        
+        if (contentType == "cafe") && (itemName != "unknown") {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let notificationCafeViewController = mainStoryboard.instantiateViewController(withIdentifier: "NotificationCafeViewController") as! NotificationCafeViewController
+            notificationCafeViewController.cafeName = itemName
+            self.window?.rootViewController?.present(notificationCafeViewController, animated: true, completion: nil)
+        }
     }
 
 }

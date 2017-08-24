@@ -43,11 +43,10 @@ public class Client {
         }
     }
     
-    public func getItem<T>(codeName: String, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) where T: Mappable {
+    public func getItem<T>(codeName: String, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) where T: Mappable {
         
         let url = buildGetItemQuery(codeName: codeName)
-        
-        Alamofire.request(url).responseArray(keyPath: "item") { (response: DataResponse<[T]>) in
+        Alamofire.request(url).responseObject(keyPath: "item") { (response: DataResponse<T>) in
             
             switch response.result {
             case .success:

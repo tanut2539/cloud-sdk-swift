@@ -16,6 +16,7 @@
 		68F055B16CE74B013F4050FC /* Pods_KenticoCloud_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */; };
 		8155DF3642ECFF3A496A97AB /* Pods_KenticoCloud_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB3626203000465A33AC941 /* Pods_KenticoCloud_Example.framework */; };
 		8F535CAE1F4B106600732B04 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */; };
+		8F6046981F4DBA8500F088AE /* NotificationCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6046971F4DBA8500F088AE /* NotificationCafeViewController.swift */; };
 		8F7465D11F45791400908DF5 /* CafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D01F45791400908DF5 /* CafeDetailViewController.swift */; };
 		8F7465D31F458B6700908DF5 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D21F458B6700908DF5 /* Article.swift */; };
 		8F7465D51F458C3800908DF5 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */; };
@@ -53,6 +54,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		71A9A2D375E7C6DFB5BE427B /* Pods-KenticoCloud_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example/Pods-KenticoCloud_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
+		8F6046971F4DBA8500F088AE /* NotificationCafeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCafeViewController.swift; sourceTree = "<group>"; };
 		8F7465D01F45791400908DF5 /* CafeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailViewController.swift; sourceTree = "<group>"; };
 		8F7465D21F458B6700908DF5 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */,
 				8F7465D81F45985000908DF5 /* MenuViewController.swift */,
 				8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */,
+				8F6046971F4DBA8500F088AE /* NotificationCafeViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				607FACD81AFB9204008FA782 /* CafesViewController.swift in Sources */,
 				8F7465D31F458B6700908DF5 /* Article.swift in Sources */,
 				8F7465D51F458C3800908DF5 /* ArticlesViewController.swift in Sources */,
+				8F6046981F4DBA8500F088AE /* NotificationCafeViewController.swift in Sources */,
 				8F7465D71F458CBF00908DF5 /* ArticleTableViewCell.swift in Sources */,
 				8F7465D91F45985000908DF5 /* MenuViewController.swift in Sources */,
 				8FAE5F1C1F4436F800DA46C4 /* Cafe.swift in Sources */,

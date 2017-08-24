@@ -1,19 +1,24 @@
 //
-//  CafeDetailViewController.swift
+//  NotificationCafeViewController.swift
 //  KenticoCloud
 //
-//  Created by Martin Makarsky on 17/08/2017.
+//  Created by Martin Makarsky on 23/08/2017.
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
 import UIKit
+import KenticoCloud
+import AlamofireImage
 import MapKit
 
-class CafeDetailViewController: UIViewController {
+class NotificationCafeViewController: UIViewController {
 
+    private let projectId = "adcae48f-b42b-4a53-a8fc-b3b4501561b9"
+
+    var cafeName: String?
     var cafe: Cafe?
-    var image: UIImage?
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var firstRowAddress: UILabel!
     @IBOutlet weak var secondRowAddress: UILabel!
@@ -23,15 +28,13 @@ class CafeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if let cafe = cafe {
-            setTitles(cafe: cafe)
-            setMap(cafe: cafe)
+
+        if let cafeName = cafeName {
+            getCafe(name: cafeName)
         }
-        
-        setImages()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
     }
     
     private func setTitles(cafe: Cafe) {
@@ -59,21 +62,39 @@ class CafeDetailViewController: UIViewController {
             pinPoint.coordinate = location.coordinate
             print(location.coordinate)
             self.map?.addAnnotation(pinPoint)
-
+            
             let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
             self.map?.setRegion(region, animated: true)
         }
     }
     
-    private func setImages() {
+    private func setImages(url: String) {
         if (photo) != nil {
-            self.photo.image = image
+            self.photo.af_setImage(withURL: URL(string: url)!)
         }
     }
+    
+    private func getCafe(name: String) {
+        let cloudClient = Client.init(projectId: projectId)
+        cloudClient.getItem(codeName: name, modelType: Cafe.self) { (isSuccess, item) in
+            if isSuccess {
+                if let cafe = item {
+                    self.cafe = cafe
+                    self.setTitles(cafe: cafe)
+                    self.setMap(cafe: cafe)
+                    self.setImages(url: cafe.imageUrl!)
+                }
+            }
+        }
+    }
+    
+    @IBAction func closeModal(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
