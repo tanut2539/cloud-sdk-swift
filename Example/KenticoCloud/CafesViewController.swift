@@ -12,8 +12,7 @@ import AlamofireImage
 
 class CafesViewController: UIViewController, UITableViewDataSource {
 
-    private let projectId = "adcae48f-b42b-4a53-a8fc-b3b4501561b9"
-    private let type = "cafe"
+    private let contentType = "cafe"
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var refreshControl: UIRefreshControl!
@@ -84,8 +83,8 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getCafes() {
-        let cloudClient = Client.init(projectId: projectId)
-        cloudClient.getItems(contentType: type, modelType: Cafe.self) { (isSuccess, items) in
+        let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
+        cloudClient.getItems(contentType: contentType, modelType: Cafe.self, isPreview: AppConstants.isPreview) { (isSuccess, items) in
             if isSuccess {
                 if let cafes = items {
                     self.cafes = cafes

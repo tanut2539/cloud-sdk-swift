@@ -143,7 +143,6 @@
         <!--Cafe Detail View Controller-->
         <scene sceneID="0FU-TK-2uC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="raY-9x-Xnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="WDo-pJ-meY" customClass="CafeDetailViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yys-u8-EiF"/>
@@ -230,6 +229,7 @@
                         <outlet property="secondRowAddress" destination="vtV-A2-4O5" id="xVF-I4-EpG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="raY-9x-Xnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1172" y="-256"/>
         </scene>
@@ -417,6 +417,51 @@
             </objects>
             <point key="canvasLocation" x="428" y="434.93253373313348"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="zlf-0Q-E1T">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QPe-tR-6Rt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController storyboardIdentifier="CoffeesViewController" id="gaz-pX-9If" customClass="CoffeesViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GgK-rx-gTF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="coffeeCell" id="IdB-MR-Nij">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IdB-MR-Nij" id="7Ob-w8-th1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gaz-pX-9If" id="ILn-Pq-Cga"/>
+                            <outlet property="delegate" destination="gaz-pX-9If" id="uAf-yj-mpe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="LGh-c2-bpU"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="444" y="1325"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ayl-QN-mdn">
+            <objects>
+                <navigationController storyboardIdentifier="CoffeesNavigationController" id="8C9-Wc-q77" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0jr-Q2-DOe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gaz-pX-9If" kind="relationship" relationship="rootViewController" id="XwW-Jf-XB8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7CK-c8-pNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-516" y="1325"/>
+        </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="auE-Bg-TjD">
             <objects>
@@ -491,7 +536,6 @@
         <!--Notification Cafe View Controller-->
         <scene sceneID="A5U-80-B7K">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gdv-Iz-tbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="NotificationCafeViewController" id="FAd-Qt-mxy" customClass="NotificationCafeViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yzh-7N-zix"/>
@@ -592,6 +636,7 @@
                         <outlet property="secondRowAddress" destination="MYY-jL-vX4" id="Xw7-tg-Af3"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gdv-Iz-tbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1965.5999999999999" y="-257.72113943028489"/>
         </scene>

@@ -13,7 +13,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet var tableView: UITableView!
     
-    fileprivate let menuOptions = ["Articles", "Cafes"]
+    fileprivate let menuOptions = ["Articles", "Cafes", "Coffees"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +58,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             identifier = "ArticlesViewController"
         case 1:
             identifier = "CafesViewController"
+        case 2:
+            identifier = "CoffeesViewController"
         default:
             print("Add controller ID for row: \(indexPath.row)")
         }

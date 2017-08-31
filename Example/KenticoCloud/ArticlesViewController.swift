@@ -12,7 +12,6 @@ import AlamofireImage
 
 class ArticlesViewController: UIViewController, UITableViewDataSource {
     
-    private let projectId = "adcae48f-b42b-4a53-a8fc-b3b4501561b9"
     private let type = "article"
     
     @IBOutlet var tableView: UITableView!
@@ -73,8 +72,8 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getArticles() {
-        let cloudClient = Client.init(projectId: projectId)
-        cloudClient.getItems(contentType: type, modelType: Article.self) { (isSuccess, items) in
+        let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
+        cloudClient.getItems(contentType: type, modelType: Article.self, isPreview: AppConstants.isPreview) { (isSuccess, items) in
             if isSuccess {
                 if let articles = items {
                     self.articles = articles

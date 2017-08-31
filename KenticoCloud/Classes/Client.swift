@@ -13,21 +13,26 @@ import ObjectMapper
 
 public class Client {
     
-    private let baseUrl = "https://deliver.kenticocloud.com"
+    private let deliverEndpoint = "https://deliver.kenticocloud.com"
+    private let previewDeliverEndpoint = "https://preview-deliver.kenticocloud.com"
+    
     private let itemsQuery = "items?system.type="
     private let itemQuery = "items"
     
     private var projectId: String
+    private var apiKey: String?
     
-    public init(projectId: String) {
+    public init(projectId: String, apiKey: String) {
         self.projectId = projectId
+        self.apiKey = apiKey
     }
     
-    public func getItems<T>(contentType: String, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) where T: Mappable {
+    public func getItems<T>(contentType: String, modelType: T.Type, isPreview: Bool = false, completionHandler: @escaping (Bool, [T]?) -> ()) where T: Mappable {
         
-        let url = buildGetItemsQuery(type: contentType)
+        let url = getItemsQuery(contentType: contentType, isPreview: isPreview)
+        let headers = getHeaders(isPreview: isPreview, apiKey: apiKey)
         
-        Alamofire.request(url).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
+        Alamofire.request(url, headers: headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
             
             switch response.result {
             case .success:
@@ -37,15 +42,16 @@ public class Client {
                     completionHandler(true, items)
                 }
             case .failure(let error):
+                print(response)
                 print(error)
             }
         
         }
     }
     
-    public func getItem<T>(codeName: String, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) where T: Mappable {
+    public func getItem<T>(codeName: String, modelType: T.Type, isPreview: Bool = false, completionHandler: @escaping (Bool, T?) -> ()) where T: Mappable {
         
-        let url = buildGetItemQuery(codeName: codeName)
+        let url = getItemQuery(codeName: codeName, isPreview: isPreview)
         Alamofire.request(url).responseObject(keyPath: "item") { (response: DataResponse<T>) in
             
             switch response.result {
@@ -60,17 +66,35 @@ public class Client {
         }
     }
     
-    private func buildGetItemsQuery(type: String) -> String {
-        let cloudEndpoint = getEndpoint(baseUrl: baseUrl, projectId: projectId)
-        return "\(cloudEndpoint)/\(itemsQuery)\(type)"
+    private func getItemsQuery(contentType: String, isPreview: Bool) -> String {
+        let endpoint = getEndpoint(isPreview: isPreview)
+        return "\(endpoint)/\(projectId)/\(itemsQuery)\(contentType)"
     }
     
-    private func buildGetItemQuery(codeName: String) -> String {
-        let cloudEndpoint = getEndpoint(baseUrl: baseUrl, projectId: projectId)
-        return "\(cloudEndpoint)/\(itemQuery)/\(codeName)"
+    private func getItemQuery(codeName: String, isPreview: Bool) -> String {
+        let endpoint = getEndpoint(isPreview: isPreview)
+        return "\(endpoint)/\(itemQuery)/\(codeName)"
     }
     
-    private func getEndpoint(baseUrl: String, projectId: String) -> String {
-        return "\(baseUrl)/\(projectId)"
+    private func getEndpoint(isPreview: Bool) -> String {
+        if isPreview {
+            return previewDeliverEndpoint
+        }
+        
+        return deliverEndpoint
+    }
+    
+    private func getHeaders(isPreview: Bool, apiKey: String?) -> HTTPHeaders {
+        var headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        if isPreview {
+            if let apiKey = apiKey {
+                headers["authorization"] = "Bearer " + apiKey
+            }
+        }
+        
+        return headers
     }
 }

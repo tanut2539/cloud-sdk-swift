@@ -12,9 +12,7 @@ import AlamofireImage
 import MapKit
 
 class NotificationCafeViewController: UIViewController {
-
-    private let projectId = "adcae48f-b42b-4a53-a8fc-b3b4501561b9"
-
+    
     var cafeName: String?
     var cafe: Cafe?
     
@@ -75,8 +73,8 @@ class NotificationCafeViewController: UIViewController {
     }
     
     private func getCafe(name: String) {
-        let cloudClient = Client.init(projectId: projectId)
-        cloudClient.getItem(codeName: name, modelType: Cafe.self) { (isSuccess, item) in
+        let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
+        cloudClient.getItem(codeName: name, modelType: Cafe.self, isPreview: AppConstants.isPreview) { (isSuccess, item) in
             if isSuccess {
                 if let cafe = item {
                     self.cafe = cafe
