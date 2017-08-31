@@ -15,6 +15,8 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		68F055B16CE74B013F4050FC /* Pods_KenticoCloud_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */; };
 		8155DF3642ECFF3A496A97AB /* Pods_KenticoCloud_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB3626203000465A33AC941 /* Pods_KenticoCloud_Example.framework */; };
+		8F22F6EF1F584942008D1340 /* CoffeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F22F6EE1F584942008D1340 /* CoffeeTableViewCell.swift */; };
+		8F22F6F51F584FB4008D1340 /* CoffeeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F22F6F41F584FB4008D1340 /* CoffeeDetailViewController.swift */; };
 		8F41B7FB1F58294D0022EF7A /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41B7FA1F58294D0022EF7A /* Coffee.swift */; };
 		8F41B7FD1F582B4B0022EF7A /* CoffeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41B7FC1F582B4B0022EF7A /* CoffeesViewController.swift */; };
 		8F535CAE1F4B106600732B04 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */; };
@@ -56,6 +58,8 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		71A9A2D375E7C6DFB5BE427B /* Pods-KenticoCloud_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example/Pods-KenticoCloud_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8F22F6EE1F584942008D1340 /* CoffeeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeTableViewCell.swift; sourceTree = "<group>"; };
+		8F22F6F41F584FB4008D1340 /* CoffeeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeDetailViewController.swift; sourceTree = "<group>"; };
 		8F41B7FA1F58294D0022EF7A /* Coffee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 		8F41B7FC1F582B4B0022EF7A /* CoffeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeesViewController.swift; sourceTree = "<group>"; };
 		8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
@@ -149,11 +153,11 @@
 				8FAE5F231F44704F00DA46C4 /* ViewControllers */,
 				8FAE5F221F44703B00DA46C4 /* CloudModels */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				8FF9211C1F5818BB001A95D9 /* AppConstants.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				8FF9211C1F5818BB001A95D9 /* AppConstants.swift */,
 			);
 			name = "Example for KenticoCloud";
 			path = KenticoCloud;
@@ -194,6 +198,42 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		8F22F6F01F584F0C008D1340 /* Cafe */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* CafesViewController.swift */,
+				8F7465D01F45791400908DF5 /* CafeDetailViewController.swift */,
+				8F6046971F4DBA8500F088AE /* NotificationCafeViewController.swift */,
+			);
+			name = Cafe;
+			sourceTree = "<group>";
+		};
+		8F22F6F11F584F1B008D1340 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */,
+				8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */,
+			);
+			name = Article;
+			sourceTree = "<group>";
+		};
+		8F22F6F21F584F32008D1340 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				8F7465D81F45985000908DF5 /* MenuViewController.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		8F22F6F31F584F73008D1340 /* Coffee */ = {
+			isa = PBXGroup;
+			children = (
+				8F41B7FC1F582B4B0022EF7A /* CoffeesViewController.swift */,
+				8F22F6F41F584FB4008D1340 /* CoffeeDetailViewController.swift */,
+			);
+			name = Coffee;
+			sourceTree = "<group>";
+		};
 		8F7465DE1F45992400908DF5 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,13 +255,10 @@
 		8FAE5F231F44704F00DA46C4 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD71AFB9204008FA782 /* CafesViewController.swift */,
-				8F7465D01F45791400908DF5 /* CafeDetailViewController.swift */,
-				8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */,
-				8F7465D81F45985000908DF5 /* MenuViewController.swift */,
-				8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */,
-				8F6046971F4DBA8500F088AE /* NotificationCafeViewController.swift */,
-				8F41B7FC1F582B4B0022EF7A /* CoffeesViewController.swift */,
+				8F22F6F21F584F32008D1340 /* Menu */,
+				8F22F6F11F584F1B008D1340 /* Article */,
+				8F22F6F01F584F0C008D1340 /* Cafe */,
+				8F22F6F31F584F73008D1340 /* Coffee */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -232,6 +269,7 @@
 				8F7465DE1F45992400908DF5 /* Menu */,
 				8FAE5F271F447D2B00DA46C4 /* CafeTableViewCell.swift */,
 				8F7465D61F458CBF00908DF5 /* ArticleTableViewCell.swift */,
+				8F22F6EE1F584942008D1340 /* CoffeeTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -466,6 +504,7 @@
 			files = (
 				8FAE5F281F447D2B00DA46C4 /* CafeTableViewCell.swift in Sources */,
 				607FACD81AFB9204008FA782 /* CafesViewController.swift in Sources */,
+				8F22F6F51F584FB4008D1340 /* CoffeeDetailViewController.swift in Sources */,
 				8F7465D31F458B6700908DF5 /* Article.swift in Sources */,
 				8F7465D51F458C3800908DF5 /* ArticlesViewController.swift in Sources */,
 				8F6046981F4DBA8500F088AE /* NotificationCafeViewController.swift in Sources */,
@@ -479,6 +518,7 @@
 				8F7465D11F45791400908DF5 /* CafeDetailViewController.swift in Sources */,
 				8F535CAE1F4B106600732B04 /* ArticleDetailViewController.swift in Sources */,
 				8F41B7FB1F58294D0022EF7A /* Coffee.swift in Sources */,
+				8F22F6EF1F584942008D1340 /* CoffeeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
