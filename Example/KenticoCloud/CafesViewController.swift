@@ -85,7 +85,8 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     
     private func getCafes() {
         let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
-        cloudClient.getItems(contentType: contentType, modelType: Cafe.self, isPreview: AppConstants.isPreview) { (isSuccess, items) in
+        let cafesQuery = ItemsQuery.init(endpoint: AppConstants.endpoint, contentType: contentType)
+        cloudClient.getItems(query: cafesQuery, modelType: Cafe.self) { (isSuccess, items) in
             if isSuccess {
                 if let cafes = items {
                     self.cafes = cafes

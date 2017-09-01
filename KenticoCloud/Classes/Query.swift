@@ -8,29 +8,28 @@
 
 import Foundation
 
+public enum Endpoint {
+    case preview
+    case live
+}
+
 public class Query {
     
-    private static let deliverEndpoint = "https://deliver.kenticocloud.com"
-    private static let previewDeliverEndpoint = "https://preview-deliver.kenticocloud.com"
+    private let deliverLiveEndpoint = "https://deliver.kenticocloud.com"
+    private let previewDeliverEndpoint = "https://preview-deliver.kenticocloud.com"
     
-    private static let itemsQuery = "items?system.type="
-    private static let itemQuery = "items"
+    var endpoint: Endpoint
     
-    static func getItemsQuery(contentType: String, projectId: String, isPreview: Bool) -> String {
-        let endpoint = getEndpoint(isPreview: isPreview)
-        return "\(endpoint)/\(projectId)/\(itemsQuery)\(contentType)"
+    internal init(endpoint: Endpoint) {
+        self.endpoint = endpoint
     }
     
-    static func getItemQuery(codeName: String, projectId: String, isPreview: Bool) -> String {
-        let endpoint = getEndpoint(isPreview: isPreview)
-        return "\(endpoint)/\(projectId)/\(itemQuery)/\(codeName)"
-    }
-    
-    private static func getEndpoint(isPreview: Bool) -> String {
-        if isPreview {
+    func getEndpoint() -> String {
+        switch self.endpoint {
+        case .preview:
             return previewDeliverEndpoint
+        case .live:
+            return deliverLiveEndpoint
         }
-        
-        return deliverEndpoint
     }
 }

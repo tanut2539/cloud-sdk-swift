@@ -12,7 +12,7 @@ import AlamofireImage
 
 class ArticlesViewController: UIViewController, UITableViewDataSource {
     
-    private let type = "article"
+    private let contentType = "article"
     
     @IBOutlet var tableView: UITableView!
     private var articles: [Article] = []
@@ -73,7 +73,8 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
     
     private func getArticles() {
         let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
-        cloudClient.getItems(contentType: type, modelType: Article.self, isPreview: AppConstants.isPreview) { (isSuccess, items) in
+        let articlesQuery = ItemsQuery.init(endpoint: AppConstants.endpoint, contentType: contentType)
+        cloudClient.getItems(query: articlesQuery, modelType: Article.self) { (isSuccess, items) in
             if isSuccess {
                 if let articles = items {
                     self.articles = articles

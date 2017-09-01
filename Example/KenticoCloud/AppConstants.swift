@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import KenticoCloud
 
 struct AppConstants {
     static let projectId = ""
     static let kenticoCloudApiKey = ""
-    static let isPreview = true
+    static let endpoint = Endpoint.live
 }

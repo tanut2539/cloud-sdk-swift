@@ -9,14 +9,14 @@
 import Foundation
 import Alamofire
 
-public class HeadersHelper {
+class HeadersHelper {
 
-    static func getHeaders(isPreview: Bool, apiKey: String?) -> HTTPHeaders {
+    static func getHeaders(endpoint: Endpoint, apiKey: String?) -> HTTPHeaders {
         var headers: HTTPHeaders = [
             "Accept": "application/json"
         ]
         
-        if isPreview {
+        if endpoint == Endpoint.preview {
             if let apiKey = apiKey {
                 headers["authorization"] = "Bearer " + apiKey
             }
