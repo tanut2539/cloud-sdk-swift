@@ -19,9 +19,11 @@ public class Query {
     private let previewDeliverEndpoint = "https://preview-deliver.kenticocloud.com"
     
     var endpoint: Endpoint
+    var language: String?
     
-    internal init(endpoint: Endpoint) {
+    internal init(endpoint: Endpoint, language: String?) {
         self.endpoint = endpoint
+        self.language = language
     }
     
     func getEndpoint() -> String {
@@ -31,5 +33,13 @@ public class Query {
         case .live:
             return deliverLiveEndpoint
         }
+    }
+    
+    func getLanguageParameter() -> String{
+        if language != nil {
+            return "&language=\(language ?? "")"
+        }
+        
+        return ""
     }
 }

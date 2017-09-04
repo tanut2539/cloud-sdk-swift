@@ -13,13 +13,14 @@ public class SingleItemQuery: Query {
     
     private var itemCodeName: String
     
-    public init(endpoint: Endpoint, itemCodeName: String) {
+    public init(endpoint: Endpoint, itemCodeName: String, language: String? = nil) {
         self.itemCodeName = itemCodeName
-        super.init(endpoint: endpoint)
+        super.init(endpoint: endpoint, language: language)
     }
     
     func getItemQuery(projectId: String) -> String {
         let endpoint = getEndpoint()
-        return "\(endpoint)/\(projectId)/\(itemQuery)/\(itemCodeName)"
+        let languageParameter = getLanguageParameter()
+        return "\(endpoint)/\(projectId)/\(itemQuery)/\(itemCodeName)\(languageParameter)"
     }
 }

@@ -15,14 +15,16 @@ public class ItemsQuery: Query {
     
     private var contentType: String
     
-    public init(endpoint: Endpoint, contentType: String) {
+    public init(endpoint: Endpoint, contentType: String, language: String? = nil) {
         self.contentType = contentType
-        super.init(endpoint: endpoint)
+        super.init(endpoint: endpoint, language: language)
     }
     
     func getItemsQuery(projectId: String) -> String {
         let endpoint = getEndpoint()
         let contentTypeParameter = "\(contentTypeKey)\(contentType)"
-        return "\(endpoint)/\(projectId)/\(itemsQuery)\(contentTypeParameter)"
+        let languageParameter = getLanguageParameter()
+        
+        return "\(endpoint)/\(projectId)/\(itemsQuery)\(contentTypeParameter)\(languageParameter)"
     }
 }
