@@ -15,6 +15,9 @@ public class Coffee: Mappable {
     var photo: AssetElement?
     var category: TaxonomyElement?
     var promotion: MultipleChoiceElement?
+//    var shortDescription: String?
+//    var longDescription: String?
+    var callToActions: ModularContentElement?
 
     public required init?(map: Map){
         let mapper = MapElement.init(map: map)
@@ -22,6 +25,7 @@ public class Coffee: Mappable {
         photo = mapper.map(elementName: "photo", elementType: AssetElement.self)
         category = mapper.map(elementName: "coffee_category", elementType: TaxonomyElement.self)
         promotion = mapper.map(elementName: "promotion", elementType: MultipleChoiceElement.self)
+        callToActions = mapper.map(elementName: "call_to_actions", elementType: ModularContentElement.self)
     }
     
     public func mapping(map: Map) {
