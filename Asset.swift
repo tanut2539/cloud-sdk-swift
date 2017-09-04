@@ -9,11 +9,11 @@
 import ObjectMapper
 
 public class Asset: Mappable {
-    public var name: String?
-    public var type: String?
-    public var size: Int?
-    public var description: String?
-    public var url: String?
+    public private(set) var name: String?
+    public private(set) var type: String?
+    public private(set) var size: Int?
+    public private(set) var description: String?
+    public private(set) var url: String?
     
     required public init?(map: Map){
         

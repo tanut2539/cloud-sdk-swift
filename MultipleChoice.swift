@@ -1,5 +1,5 @@
 //
-//  Taxonomy.swift
+//  MultipleChoice.swift
 //  Pods
 //
 //  Created by Martin Makarsky on 04/09/2017.
@@ -8,10 +8,10 @@
 
 import ObjectMapper
 
-public class Taxonomy: Mappable {
+public class MultipleChoice: Mappable {
     public private(set) var name: String?
     public private(set) var codename: String?
-
+    
     required public init?(map: Map){
         
     }

@@ -12,7 +12,7 @@ public class TaxonomyElement: Mappable {
     public private(set) var type: String?
     public private(set) var name: String?
     public private(set) var taxonomyGroup: String?
-    public var value: [Taxonomy]?
+    public private(set) var value: [Taxonomy]?
     
     public required init?(map: Map){
     }

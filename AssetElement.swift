@@ -9,9 +9,9 @@
 import ObjectMapper
 
 public class AssetElement: Mappable {
-    public var type: String?
-    public var name: String?
-    public var value: [Asset]?
+    public private(set) var type: String?
+    public private(set) var name: String?
+    public private(set) var value: [Asset]?
     
     public required init?(map: Map){
     }
