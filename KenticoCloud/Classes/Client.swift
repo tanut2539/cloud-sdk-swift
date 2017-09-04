@@ -16,7 +16,7 @@ public class Client {
     private var projectId: String
     private var apiKey: String?
     
-    public init(projectId: String, apiKey: String) {
+    public init(projectId: String, apiKey: String? = nil) {
         self.projectId = projectId
         self.apiKey = apiKey
     }
