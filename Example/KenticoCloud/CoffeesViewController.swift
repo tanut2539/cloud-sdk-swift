@@ -50,7 +50,7 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeCell") as! CoffeeTableViewCell
         
         let coffee = coffees[indexPath.row]
-        cell.title.text = coffee.title
+        cell.title.text = coffee.name
         
         return cell
     }
@@ -77,8 +77,8 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getCoffees() {
-        let cloudClient = Client.init(projectId: AppConstants.projectId2, apiKey: AppConstants.kenticoCloudApiKey2)
-        let coffeesQuery = ItemsQuery.init(endpoint: AppConstants.endpoint2, contentType: contentType)
+        let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
+        let coffeesQuery = ItemsQuery.init(endpoint: AppConstants.endpoint, contentType: contentType)
         cloudClient.getItems(query: coffeesQuery, modelType: Coffee.self) { (isSuccess, items) in
             if isSuccess {
                 if let cofees = items {
