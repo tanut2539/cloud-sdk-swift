@@ -50,7 +50,7 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeCell") as! CoffeeTableViewCell
         
         let coffee = coffees[indexPath.row]
-        cell.title.text = coffee.name
+        cell.title.text = coffee.name?.value
         
         return cell
     }
