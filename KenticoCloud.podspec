@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'KenticoCloud'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of KenticoCloud.'
+  s.summary          = 'Swift SDK for Kentico Cloud Delivery service'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Swift SDK for Kentico Cloud Delivery service [Draft].
                        DESC
 
   s.homepage         = 'https://github.com/kentico/cloud-sample-app-swift'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'martinmakarsky@gmail.com' => 'martinm@kentico.com' }
-  s.source           = { :git => 'https://github.com/kentico/cloud-sample-app-swift', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/kentico/cloud-sample-app-swift.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/kenticocloud'
 
   s.ios.deployment_target = '8.0'
