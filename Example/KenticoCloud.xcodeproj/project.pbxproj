@@ -12,7 +12,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* ItemsQuerySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* ItemsQuerySpec.swift */; };
 		68F055B16CE74B013F4050FC /* Pods_KenticoCloud_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */; };
 		8155DF3642ECFF3A496A97AB /* Pods_KenticoCloud_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB3626203000465A33AC941 /* Pods_KenticoCloud_Example.framework */; };
 		8F22F6EF1F584942008D1340 /* CoffeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F22F6EE1F584942008D1340 /* CoffeeTableViewCell.swift */; };
@@ -21,6 +21,7 @@
 		8F41B7FD1F582B4B0022EF7A /* CoffeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F41B7FC1F582B4B0022EF7A /* CoffeesViewController.swift */; };
 		8F535CAE1F4B106600732B04 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */; };
 		8F6046981F4DBA8500F088AE /* NotificationCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6046971F4DBA8500F088AE /* NotificationCafeViewController.swift */; };
+		8F6DDD211F5D42D700097930 /* CafeTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6DDD1F1F5D42AF00097930 /* CafeTestModel.swift */; };
 		8F7465D11F45791400908DF5 /* CafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D01F45791400908DF5 /* CafeDetailViewController.swift */; };
 		8F7465D31F458B6700908DF5 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D21F458B6700908DF5 /* Article.swift */; };
 		8F7465D51F458C3800908DF5 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */; };
@@ -31,6 +32,7 @@
 		8FAE5F1C1F4436F800DA46C4 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE5F1B1F4436F800DA46C4 /* Cafe.swift */; };
 		8FAE5F281F447D2B00DA46C4 /* CafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE5F271F447D2B00DA46C4 /* CafeTableViewCell.swift */; };
 		8FF9211D1F5818BB001A95D9 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF9211C1F5818BB001A95D9 /* AppConstants.swift */; };
+		E8F656009DE299D55163A745 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72FCB95A095327A5FE4B4C3 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +58,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* KenticoCloud_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KenticoCloud_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* ItemsQuerySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsQuerySpec.swift; sourceTree = "<group>"; };
 		71A9A2D375E7C6DFB5BE427B /* Pods-KenticoCloud_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example/Pods-KenticoCloud_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8F22F6EE1F584942008D1340 /* CoffeeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeTableViewCell.swift; sourceTree = "<group>"; };
 		8F22F6F41F584FB4008D1340 /* CoffeeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeDetailViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		8F41B7FC1F582B4B0022EF7A /* CoffeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeesViewController.swift; sourceTree = "<group>"; };
 		8F535CAD1F4B106600732B04 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		8F6046971F4DBA8500F088AE /* NotificationCafeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCafeViewController.swift; sourceTree = "<group>"; };
+		8F6DDD1F1F5D42AF00097930 /* CafeTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeTestModel.swift; sourceTree = "<group>"; };
 		8F7465D01F45791400908DF5 /* CafeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailViewController.swift; sourceTree = "<group>"; };
 		8F7465D21F458B6700908DF5 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		8F7465D41F458C3800908DF5 /* ArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +82,10 @@
 		A4910C3C291811E12E837C8C /* Pods-KenticoCloud_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example/Pods-KenticoCloud_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C78DC34FAE1569A34A2D3DBA /* Pods-KenticoCloud_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Tests/Pods-KenticoCloud_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3FB2A8517015F7223E6D1A6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		E72FCB95A095327A5FE4B4C3 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KenticoCloud_Example_KenticoCloud_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F609F4C08C64B8A9359099B0 /* Pods-KenticoCloud_Example-KenticoCloud_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example-KenticoCloud_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example-KenticoCloud_Tests/Pods-KenticoCloud_Example-KenticoCloud_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FA6AAF9FF5C8441CB45B2274 /* Pods-KenticoCloud_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Tests/Pods-KenticoCloud_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FC1F697FD694BA2747B0BF8C /* Pods-KenticoCloud_Example-KenticoCloud_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example-KenticoCloud_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example-KenticoCloud_Tests/Pods-KenticoCloud_Example-KenticoCloud_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68F055B16CE74B013F4050FC /* Pods_KenticoCloud_Tests.framework in Frameworks */,
+				E8F656009DE299D55163A745 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +116,7 @@
 				8F7465E01F45D36300908DF5 /* UserNotifications.framework */,
 				3AB3626203000465A33AC941 /* Pods_KenticoCloud_Example.framework */,
 				99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */,
+				E72FCB95A095327A5FE4B4C3 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,6 +128,8 @@
 				71A9A2D375E7C6DFB5BE427B /* Pods-KenticoCloud_Example.release.xcconfig */,
 				C78DC34FAE1569A34A2D3DBA /* Pods-KenticoCloud_Tests.debug.xcconfig */,
 				FA6AAF9FF5C8441CB45B2274 /* Pods-KenticoCloud_Tests.release.xcconfig */,
+				FC1F697FD694BA2747B0BF8C /* Pods-KenticoCloud_Example-KenticoCloud_Tests.debug.xcconfig */,
+				F609F4C08C64B8A9359099B0 /* Pods-KenticoCloud_Example-KenticoCloud_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -174,7 +184,8 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* ItemsQuerySpec.swift */,
+				8F6DDD1F1F5D42AF00097930 /* CafeTestModel.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -392,9 +403,22 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KenticoCloud_Tests/Pods-KenticoCloud_Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/KenticoCloud/KenticoCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KenticoCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -526,7 +550,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				8F6DDD211F5D42D700097930 /* CafeTestModel.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* ItemsQuerySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
