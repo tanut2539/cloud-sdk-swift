@@ -13,4 +13,8 @@ struct AppConstants {
     static let projectId = ""
     static let kenticoCloudApiKey = ""
     static let endpoint = Endpoint.live
+    
+    static let projectId2 = ""
+    static let kenticoCloudApiKey2 = ""
+    static let endpoint2 = Endpoint.preview
 }

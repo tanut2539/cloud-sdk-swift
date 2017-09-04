@@ -18,6 +18,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var refreshControl: UIRefreshControl!
     
     private var cafes: [Cafe] = []
+    private var loader: UIAlertController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
             self.tableView.deselectRow(at: index, animated: true)
         }
         
+        showLoader()
         getCafes()
     }
     
@@ -85,7 +87,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     
     private func getCafes() {
         let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
-        let cafesQuery = ItemsQuery.init(endpoint: AppConstants.endpoint, contentType: contentType)
+        let cafesQuery = ItemsQuery.init(endpoint: AppConstants.endpoint, contentType: contentType, language: "es-ES")
         cloudClient.getItems(query: cafesQuery, modelType: Cafe.self) { (isSuccess, items) in
             if isSuccess {
                 if let cafes = items {
@@ -96,11 +98,25 @@ class CafesViewController: UIViewController, UITableViewDataSource {
             if self.refreshControl.isRefreshing {
                 self.refreshControl.endRefreshing()
             }
+            
+            self.loader.dismiss(animated: false, completion: nil)
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func showLoader() {
+        loader = UIAlertController(title: nil, message: "Loading cafes...", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        
+        loader.view.addSubview(loadingIndicator)
+        present(loader, animated: true, completion: nil)
     }
 
 
