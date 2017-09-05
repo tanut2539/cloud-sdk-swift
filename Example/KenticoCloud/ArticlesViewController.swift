@@ -72,8 +72,8 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getArticles() {
-        let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
-        let articlesQuery = ItemsQuery.init(endpoint: AppConstants.endpoint, contentType: contentType)
+        let cloudClient = Client.init(projectId: "adcae48f-b42b-4a53-a8fc-b3b4501561b9")
+        let articlesQuery = ItemsQuery.init(endpoint: Endpoint.live, contentType: contentType)
         cloudClient.getItems(query: articlesQuery, modelType: Article.self) { (isSuccess, items) in
             if isSuccess {
                 if let articles = items {
