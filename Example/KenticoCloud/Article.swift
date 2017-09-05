@@ -8,19 +8,23 @@
 
 import Foundation
 import ObjectMapper
+import KenticoCloud
 
-public class Article: Mappable {
-    public var title: String?
-    public var summary: String?
-    public var postDate: String?
-    public var body: String?
-    public var imageUrl: String?
+class Article: Mappable {
+    var title: String?
+    var summary: String?
+    var postDate: String?
+    var body: String?
+    var strongBody: RichTextElement?
+    var imageUrl: String?
     
-    public required init?(map: Map){
+    required init?(map: Map){
+        let mapper = MapElement.init(map: map)
         
+        strongBody = mapper.map(elementName: "body_copy", elementType: RichTextElement.self)
     }
     
-    public func mapping(map: Map) {
+    func mapping(map: Map) {
         title <- map["elements.title.value"]
         summary <- map["elements.summary.value"]
         postDate <- map["elements.post_date.value"]
