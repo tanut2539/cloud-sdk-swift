@@ -12,7 +12,7 @@ import ObjectMapper
 
 public class RichTextElement: Mappable {
     private var elementName: String = ""
-    private var supportedBlocks = "//p | //h1 | //h2 | //h3 | //h4 | //strong | //em | //ol | //ul | //a | //object[@type='application/kenticocloud'][@data-type='item'] | //figure"
+    private var supportedBlocksXpath = "//p | //h1 | //h2 | //h3 | //h4 | //strong | //em | //ol | //ul | //a | //object[@type='application/kenticocloud'][@data-type='item'] | //figure"
 
     public private(set) var type: String?
     public private(set) var name: String?
@@ -33,24 +33,24 @@ public class RichTextElement: Mappable {
         if let value = value {
             let doc = HTML(html: value, encoding: .utf8)
             
-            if let blocks = doc?.xpath(supportedBlocks) {
-                for block in blocks {
+            if let supportedBlocks = doc?.xpath(supportedBlocksXpath) {
+                for block in supportedBlocks {
                     if let tag = block.tagName {
                         switch tag {
                         case "p", "h1", "h2", "h3", "h4", "ol", "ul", "strong", "em", "a":
                             if let block = HtmlContentBlock.init(html: block.toHTML) {
-                                blocks.append(block)
+                                self.blocks.append(block)
                                 htmlContent.append(block)
                                 
                             }
                         case "object":
                             if let block = ModularContentBlock.init(html: block.toHTML) {
-                                blocks.append(block)
+                                self.blocks.append(block)
                                 modularContent.append(block)
                             }
                         case "figure":
                             if let block = InlineImageBlock.init(html: block.toHTML) {
-                                blocks.append(block)
+                                self.blocks.append(block)
                                 inlineImages.append(block)
                             }
                         default:
