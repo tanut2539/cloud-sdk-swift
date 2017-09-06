@@ -15,8 +15,8 @@ public class Coffee: Mappable {
     var photo: AssetElement?
     var category: TaxonomyElement?
     var promotion: MultipleChoiceElement?
-//    var shortDescription: String?
-//    var longDescription: String?
+    var shortDescription: RichTextElement?
+    var longDescription: RichTextElement?
     var callToActions: ModularContentElement?
     var farm: TextElement?
     var country: TextElement?
@@ -32,6 +32,8 @@ public class Coffee: Mappable {
         photo = mapper.map(elementName: "photo", elementType: AssetElement.self)
         category = mapper.map(elementName: "coffee_category", elementType: TaxonomyElement.self)
         promotion = mapper.map(elementName: "promotion", elementType: MultipleChoiceElement.self)
+        shortDescription = mapper.map(elementName: "short_description", elementType: RichTextElement.self)
+        longDescription = mapper.map(elementName: "long_description", elementType: RichTextElement.self)
         callToActions = mapper.map(elementName: "call_to_actions", elementType: ModularContentElement.self)
         farm = mapper.map(elementName: "farm", elementType: TextElement.self)
         country = mapper.map(elementName: "country", elementType: TextElement.self)

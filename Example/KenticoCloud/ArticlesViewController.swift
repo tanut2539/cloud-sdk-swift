@@ -13,9 +13,9 @@ import AlamofireImage
 class ArticlesViewController: UIViewController, UITableViewDataSource {
     
     private let contentType = "article"
+    private var articles: [Article] = []
     
     @IBOutlet var tableView: UITableView!
-    private var articles: [Article] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,13 +15,10 @@ class Article: Mappable {
     var summary: String?
     var postDate: String?
     var body: String?
-    var strongBody: RichTextElement?
     var imageUrl: String?
     
     required init?(map: Map){
-        let mapper = MapElement.init(map: map)
-        
-        strongBody = mapper.map(elementName: "body_copy", elementType: RichTextElement.self)
+
     }
     
     func mapping(map: Map) {
