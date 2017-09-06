@@ -19,7 +19,7 @@ public class TaxonomyElement: Mappable {
     
     public func mapping(map: Map) {
         var elementName = ""
-        if let context = map.context as? Context {
+        if let context = map.context as? ElementContext {
             elementName = context.elementName
         }
         

@@ -6,7 +6,6 @@
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
-import Foundation
 import ObjectMapper
 import KenticoCloud
 
@@ -16,9 +15,13 @@ class Article: Mappable {
     var postDate: String?
     var body: String?
     var imageUrl: String?
+    var relatedArticles: ModularContentElement?
+    var urlSlug: UrlSlugElement
     
     required init?(map: Map){
-
+        let mapper = MapElement.init(map: map)
+        relatedArticles = mapper.map(elementName: "related_articles", elementType: ModularContentElement.self)
+        urlSlug = mapper.map(elementName: "url_pattern", elementType: UrlSlugElement.self)
     }
     
     func mapping(map: Map) {

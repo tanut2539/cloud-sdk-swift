@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct Context: MapContext {
+struct ElementContext: MapContext {
     var elementName: String!
     
     init(elementName: String) {

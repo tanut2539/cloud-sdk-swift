@@ -23,7 +23,7 @@ public class RichTextElement: Mappable {
     public private(set) var modularContent: [ModularContentBlock?] = []
     
     public required init?(map: Map){
-        if let context = map.context as? Context {
+        if let context = map.context as? ElementContext {
             elementName = context.elementName
         }
         

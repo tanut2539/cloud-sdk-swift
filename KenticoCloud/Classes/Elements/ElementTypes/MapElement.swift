@@ -18,7 +18,7 @@ public class MapElement {
     }
     
     public func map<T>(elementName: String, elementType: T.Type) -> T where T: Mappable {
-        let context = Context(elementName: elementName)
+        let context = ElementContext(elementName: elementName)
         return Mapper<T>(context: context).map(JSON: self.map!.JSON)!
     }
     
