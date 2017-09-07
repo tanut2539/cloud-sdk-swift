@@ -39,12 +39,19 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell") as! ArticleTableViewCell
         
         let article = articles[indexPath.row]
-        cell.title.text = article.title
-        cell.summary.text = article.summary
-        let postdate = article.postDate
-        cell.date.text = postdate?.substring(to:(postdate?.index((postdate?.startIndex)!, offsetBy: 10))!)
+        cell.title.text = article.title?.value
+        cell.summary.text = article.summary?.value
         
-        if let imageUrl = article.imageUrl {
+        var dateString = ""
+        if let date = article.postDate?.value {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateString = dateFormatter.string(from: date)
+        }
+        
+        cell.date.text = dateString
+        
+        if let imageUrl = article.asset?.value?[0].url {
             let url = URL(string: imageUrl)
             cell.photo.af_setImage(withURL: url!)
         }

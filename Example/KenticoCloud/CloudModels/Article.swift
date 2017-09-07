@@ -10,25 +10,24 @@ import ObjectMapper
 import KenticoCloud
 
 class Article: Mappable {
-    var title: String?
-    var summary: String?
-    var postDate: String?
-    var body: String?
-    var imageUrl: String?
-    var relatedArticles: ModularContentElement?
-    var urlSlug: UrlSlugElement
+    var title: TextElement?
+    var asset: AssetElement?
+    var postDate: DateTimeElement?
+    var summary: TextElement?
+    var bodyCopy: RichTextElement?
+    var relatedContent: ModularContentElement?
     
     required init?(map: Map){
         let mapper = MapElement.init(map: map)
-        relatedArticles = mapper.map(elementName: "related_articles", elementType: ModularContentElement.self)
-        urlSlug = mapper.map(elementName: "url_pattern", elementType: UrlSlugElement.self)
+        title = mapper.map(elementName: "title", elementType: TextElement.self)
+        asset = mapper.map(elementName: "teaser_image", elementType: AssetElement.self)
+        postDate = mapper.map(elementName: "post_date", elementType: DateTimeElement.self)
+        summary = mapper.map(elementName: "summary", elementType: TextElement.self)
+        bodyCopy = mapper.map(elementName: "body_copy", elementType: RichTextElement.self)
+        relatedContent = mapper.map(elementName: "related_articles", elementType: ModularContentElement.self)
     }
     
     func mapping(map: Map) {
-        title <- map["elements.title.value"]
-        summary <- map["elements.summary.value"]
-        postDate <- map["elements.post_date.value"]
-        body <- map["elements.body_copy.value"]
-        imageUrl <- map["elements.teaser_image.value.0.url"]
+
     }
 }

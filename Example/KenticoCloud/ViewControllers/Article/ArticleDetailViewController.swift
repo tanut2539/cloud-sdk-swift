@@ -24,9 +24,8 @@ class ArticleDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let body = article?.body {
-            articleTitle.text = article?.title
-            webView.loadHTMLString(body, baseURL: nil)
+        if let body = article?.bodyCopy?.htmlContentString {
+            webView.loadHTMLString(body , baseURL: nil)
         }
         
         if let image = image {

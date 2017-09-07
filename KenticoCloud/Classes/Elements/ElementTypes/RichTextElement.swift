@@ -21,6 +21,7 @@ public class RichTextElement: Mappable {
     public private(set) var inlineImages: [InlineImageBlock?] = []
     public private(set) var htmlContent: [HtmlContentBlock?] = []
     public private(set) var modularContent: [ModularContentBlock?] = []
+    public private(set) var htmlContentString: String = ""
     
     public required init?(map: Map){
         if let context = map.context as? ElementContext {
@@ -38,10 +39,13 @@ public class RichTextElement: Mappable {
                     if let tag = block.tagName {
                         switch tag {
                         case "p", "h1", "h2", "h3", "h4", "ol", "ul", "strong", "em", "a":
-                            if let block = HtmlContentBlock.init(html: block.toHTML) {
-                                self.blocks.append(block)
-                                htmlContent.append(block)
-                                
+                            if let htmlContentblock = HtmlContentBlock.init(html: block.toHTML) {
+                                self.blocks.append(htmlContentblock)
+                                htmlContent.append(htmlContentblock)
+                            }
+                        
+                            if let contentString = block.toHTML {
+                               htmlContentString.append(contentString)
                             }
                         case "object":
                             if let block = ModularContentBlock.init(html: block.toHTML) {

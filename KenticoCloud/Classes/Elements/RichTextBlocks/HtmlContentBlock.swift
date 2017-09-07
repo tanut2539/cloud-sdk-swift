@@ -12,12 +12,7 @@ public class HtmlContentBlock: Block {
     init?(html: String?) {
         
         if let tag = html {
-            let emptyParagraph = "<p><br></p>"
-            if tag != emptyParagraph {
-                self.content = tag
-            } else {
-                return nil
-            }
+            self.content = tag
         } else {
             return nil
         }
