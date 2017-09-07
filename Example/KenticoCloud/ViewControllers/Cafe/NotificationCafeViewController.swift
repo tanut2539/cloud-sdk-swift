@@ -74,8 +74,7 @@ class NotificationCafeViewController: UIViewController {
     
     private func getCafe(name: String) {
         let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
-        let cafeQuery = SingleItemQuery(endpoint: AppConstants.endpoint, itemCodeName: name)
-        cloudClient.getItem(query: cafeQuery, modelType: Cafe.self) { (isSuccess, item) in
+        cloudClient.getItem(endpoint: Endpoint.live, itemName: name, modelType: Cafe.self) { (isSuccess, item) in
             if isSuccess {
                 if let cafe = item {
                     self.cafe = cafe

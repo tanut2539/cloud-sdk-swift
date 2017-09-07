@@ -21,9 +21,9 @@ public class Client {
         self.apiKey = apiKey
     }
     
-    public func getItems<T>(query: ItemsQuery, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) where T: Mappable {
+    public func getItems<T>(query: Query, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) where T: Mappable {
         
-        let url = query.getItemsQuery(projectId: self.projectId)
+        let url = query.getRequestUrl(projectId: projectId)
         let headers = HeadersHelper.getHeaders(endpoint: query.endpoint, apiKey: apiKey)
         
         Alamofire.request(url, headers: headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
@@ -43,9 +43,16 @@ public class Client {
         }
     }
     
-    public func getItem<T>(query: SingleItemQuery, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) where T: Mappable {
+    public func getItem<T>(endpoint: Endpoint, itemName: String, language: String? = nil, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) where T: Mappable {
         
-        let url = query.getItemQuery(projectId: projectId)
+        let endpoint = EndpointHelper.getEndpointUrl(endpoint: endpoint)
+
+        var languageQueryParameter = ""
+        if let language = language {
+            languageQueryParameter = "?language=\(language)"
+        }
+
+        let url = "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
         Alamofire.request(url).responseObject(keyPath: "item") { (response: DataResponse<T>) in
             
             switch response.result {
