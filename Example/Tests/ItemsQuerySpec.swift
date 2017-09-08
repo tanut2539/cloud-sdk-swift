@@ -15,7 +15,9 @@ class ItemsQuerySpec: QuickSpec {
                 
                 it("query with content type is built") {
                     let cafeContentType = "cafe"
-                    let query = ItemsQuery.init(endpoint: endpoint, contentType: cafeContentType)
+                    
+                    let contentTypeParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: cafeContentType)
+                    let query = Query.init(endpoint: endpoint, queryParameters: [contentTypeParameter])
                     waitUntil(timeout: 5) { done in
                         client.getItems(query: query, modelType: CafeTestModel.self, completionHandler: { (isSuccess, items) in
                             if !isSuccess {
