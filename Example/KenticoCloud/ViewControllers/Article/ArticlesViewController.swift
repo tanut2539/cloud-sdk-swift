@@ -84,13 +84,17 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
         let articleTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let articlesQuery = Query.init(endpoint: Endpoint.live, queryParameters: [articleTypeQueryParameter])
         
-        cloudClient.getItems(query: articlesQuery, modelType: Article.self) { (isSuccess, items) in
-            if isSuccess {
-                if let articles = items {
-                    self.articles = articles
-                    self.tableView.reloadData()
+        do {
+            try cloudClient.getItems(query: articlesQuery, modelType: Article.self) { (isSuccess, items) in
+                if isSuccess {
+                    if let articles = items {
+                        self.articles = articles
+                        self.tableView.reloadData()
+                    }
                 }
             }
+        } catch {
+            print("Error info: \(error)")
         }
     }
     

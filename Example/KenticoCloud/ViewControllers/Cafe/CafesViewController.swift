@@ -11,7 +11,7 @@ import KenticoCloud
 import AlamofireImage
 
 class CafesViewController: UIViewController, UITableViewDataSource {
-
+    
     private let contentType = "cafe"
     
     @IBOutlet var tableView: UITableView!
@@ -39,7 +39,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cafes.count
@@ -58,7 +58,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
             let url = URL(string: imageUrl)
             cell.photo.af_setImage(withURL: url!)
         }
-
+        
         
         return cell
     }
@@ -80,7 +80,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     @IBAction func showMenu(_ sender: Any) {
         panel?.openLeft(animated: true)
     }
-
+    
     @IBAction func refreshTable(_ sender: Any) {
         getCafes()
     }
@@ -89,21 +89,25 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
         
         let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
-        // let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
-        let cafesQuery = Query.init(endpoint: Endpoint.live, queryParameters: [typeQueryParameter])
+        let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
+        let cafesQuery = Query.init(endpoint: Endpoint.live, queryParameters: [typeQueryParameter, languageQueryParameter])
         
-        cloudClient.getItems(query: cafesQuery, modelType: Cafe.self) { (isSuccess, items) in
-            if isSuccess {
-                if let cafes = items {
-                    self.cafes = cafes
-                    self.tableView.reloadData()
+        do {
+            try cloudClient.getItems(query: cafesQuery, modelType: Cafe.self) { (isSuccess, items) in
+                if isSuccess {
+                    if let cafes = items {
+                        self.cafes = cafes
+                        self.tableView.reloadData()
+                    }
                 }
+                if self.refreshControl.isRefreshing {
+                    self.refreshControl.endRefreshing()
+                }
+                
+                self.loader.dismiss(animated: false, completion: nil)
             }
-            if self.refreshControl.isRefreshing {
-                self.refreshControl.endRefreshing()
-            }
-            
-            self.loader.dismiss(animated: false, completion: nil)
+        } catch {
+            print("Error info: \(error)")
         }
     }
     
@@ -122,7 +126,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         loader.view.addSubview(loadingIndicator)
         present(loader, animated: true, completion: nil)
     }
-
-
+    
+    
 }
 

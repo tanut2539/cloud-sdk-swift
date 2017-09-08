@@ -6,7 +6,6 @@
 //
 //
 
-import Foundation
 import ObjectMapper
 
 struct ElementContext: MapContext {

@@ -16,4 +16,20 @@ extension String {
             }
         }
     }
+    
+    func isDeliverUrl() -> Bool {
+        if self.hasPrefix(DeliverConstants.liveEndpoint) || self.hasPrefix(DeliverConstants.previewEndpoint) {
+            return true
+        }
+        
+        return false
+    }
+    
+    func isDeliverPreviewUrl() -> Bool {
+        if self.hasPrefix(DeliverConstants.previewEndpoint) {
+            return true
+        }
+        
+        return false
+    }
 }

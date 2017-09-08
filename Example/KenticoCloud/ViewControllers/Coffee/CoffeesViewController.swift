@@ -82,18 +82,22 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let coffeesQuery = Query.init(endpoint: Endpoint.live, queryParameters: [contentTypeQueryParameter])
         
-        cloudClient.getItems(query: coffeesQuery, modelType: Coffee.self) { (isSuccess, items) in
-            if isSuccess {
-                if let cofees = items {
-                    self.coffees = cofees
-                    self.tableView.reloadData()
+        do {
+            try cloudClient.getItems(query: coffeesQuery, modelType: Coffee.self) { (isSuccess, items) in
+                if isSuccess {
+                    if let cofees = items {
+                        self.coffees = cofees
+                        self.tableView.reloadData()
+                    }
+                }
+                
+                if self.refreshControl.isRefreshing {
+                    self.refreshControl.endRefreshing()
                 }
             }
-            
-            if self.refreshControl.isRefreshing {
-                self.refreshControl.endRefreshing()
-            }
+        } catch {
+            print("Error info: \(error)")
         }
     }
-
+    
 }
