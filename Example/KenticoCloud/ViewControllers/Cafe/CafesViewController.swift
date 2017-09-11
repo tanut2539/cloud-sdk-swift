@@ -90,10 +90,10 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         
         let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
-        let cafesQuery = Query.init(endpoint: Endpoint.live, queryParameters: [typeQueryParameter, languageQueryParameter])
+        let cafesQueryParameters = [typeQueryParameter, languageQueryParameter]
         
         do {
-            try cloudClient.getItems(query: cafesQuery, modelType: Cafe.self) { (isSuccess, items) in
+            try cloudClient.getItems(queryParameters: cafesQueryParameters, modelType: Cafe.self) { (isSuccess, items) in
                 if isSuccess {
                     if let cafes = items {
                         self.cafes = cafes

@@ -20,10 +20,10 @@ public class Client {
         self.apiKey = apiKey
     }
     
-    public func getItems<T>(query: Query, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
+    public func getItems<T>(queryParameters: [QueryParameter], modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
         
-        let url = query.getRequestUrl(projectId: projectId)
-        let headers = try HeadersHelper.getHeaders(endpoint: query.endpoint, apiKey: apiKey)
+        let url = getRequestUrl(queryParameters: queryParameters)
+        let headers = getHeaders()
         
         Alamofire.request(url, headers: headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
             
@@ -38,24 +38,17 @@ public class Client {
                 print(response)
                 print(error)
             }
-        
+            
         }
     }
     
-    public func getItems<T>(rawUrlQuery: String, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
+    public func getItems<T>(customQuery: String, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
         
-        if !rawUrlQuery.isDeliverUrl() {
-            throw DeliverError.EndpointError("Given url (\(rawUrlQuery)) is not deliver url")
-        }
+        let endpoint = getEndpoint()
+        let requestUrl = "\(endpoint)/\(projectId)/\(customQuery)"
+        let headers = getHeaders()
         
-        var endpoint = Endpoint.live
-        if rawUrlQuery.isDeliverPreviewUrl() {
-            endpoint = Endpoint.preview
-        }
-        
-        let headers = try HeadersHelper.getHeaders(endpoint: endpoint, apiKey: apiKey)
-        
-        Alamofire.request(rawUrlQuery, headers: headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
+        Alamofire.request(requestUrl, headers: headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
             
             switch response.result {
             case .success:
@@ -72,17 +65,12 @@ public class Client {
         }
     }
     
-    public func getItem<T>(endpoint: Endpoint, itemName: String, language: String? = nil, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) where T: Mappable {
+    public func getItem<T>(itemName: String, language: String? = nil, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) where T: Mappable {
         
-        let endpoint = EndpointHelper.getEndpointUrl(endpoint: endpoint)
+        let requestUrl = getRequestUrl(itemName: itemName, language: language)
+        let headers = getHeaders()
         
-        var languageQueryParameter = ""
-        if let language = language {
-            languageQueryParameter = "?language=\(language)"
-        }
-        
-        let url = "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
-        Alamofire.request(url).responseObject(keyPath: "item") { (response: DataResponse<T>) in
+        Alamofire.request(requestUrl, headers: headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
             
             switch response.result {
             case .success:
@@ -96,20 +84,13 @@ public class Client {
         }
     }
     
-    public func getItem<T>(rawUrlQuery: String, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) throws where T: Mappable {
-
-        if !rawUrlQuery.isDeliverUrl() {
-            throw DeliverError.EndpointError("Given url (\(rawUrlQuery)) is not deliver url")
-        }
+    public func getItem<T>(customQuery: String, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) throws where T: Mappable {
         
-        var endpoint = Endpoint.live
-        if rawUrlQuery.isDeliverPreviewUrl() {
-            endpoint = Endpoint.preview
-        }
+        let endpoint = getEndpoint()
+        let requestUrl = "\(endpoint)/\(projectId)/\(customQuery)"
+        let headers = getHeaders()
         
-        let headers = try HeadersHelper.getHeaders(endpoint: endpoint, apiKey: apiKey)
-        
-        Alamofire.request(rawUrlQuery, headers: headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
+        Alamofire.request(requestUrl, headers: headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
             
             switch response.result {
             case .success:
@@ -121,5 +102,47 @@ public class Client {
             }
             
         }
+    }
+    
+    private func getRequestUrl(queryParameters: [QueryParameter]? = nil, itemName: String? = nil, language: String? = nil) -> String {
+        let endpoint = getEndpoint()
+        let requestBuilder = RequestBuilder.init(endpointUrl: endpoint, projectId: projectId, queryParameters: queryParameters, itemName: itemName, language: language)
+        
+        return requestBuilder.getRequestUrl()
+    }
+    
+    private func getEndpoint() -> String {
+        
+        var endpoint: String?
+        
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            if let propertyList = NSDictionary(contentsOfFile: path) {
+                if let customEndpoint = propertyList["KenticoCloudDeliveryEndpoint"] {
+                    endpoint = customEndpoint as? String
+                }
+            }
+        }
+        
+        if endpoint == nil {
+            if apiKey == nil {
+                endpoint = DeliveryConstants.liveEndpoint
+            } else {
+                endpoint = DeliveryConstants.previewEndpoint
+            }
+        }
+        
+        return endpoint!
+    }
+    
+    private func getHeaders() -> HTTPHeaders {
+        var headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        if let apiKey = self.apiKey {
+            headers["authorization"] = "Bearer " + apiKey
+        }
+        
+        return headers
     }
 }

@@ -6,7 +6,7 @@
 //
 //
 
-public enum DeliverError: Error {
-    case EndpointError(String)
+public enum DeliveryError: Error {
     case ApiKeysError(String)
+    case QueryBuilderError(String)
 }
