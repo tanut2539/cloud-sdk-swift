@@ -26,12 +26,12 @@ class NotificationCafeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let cafeName = cafeName {
             getCafe(name: cafeName)
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
     }
     
@@ -74,15 +74,20 @@ class NotificationCafeViewController: UIViewController {
     
     private func getCafe(name: String) {
         let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
-        cloudClient.getItem(itemName: name, modelType: Cafe.self) { (isSuccess, item) in
-            if isSuccess {
-                if let cafe = item {
-                    self.cafe = cafe
-                    self.setTitles(cafe: cafe)
-                    self.setMap(cafe: cafe)
-                    self.setImages(url: cafe.imageUrl!)
+        
+        do {
+            try cloudClient.getItem(itemName: name, modelType: Cafe.self) { (isSuccess, item) in
+                if isSuccess {
+                    if let cafe = item {
+                        self.cafe = cafe
+                        self.setTitles(cafe: cafe)
+                        self.setMap(cafe: cafe)
+                        self.setImages(url: cafe.imageUrl!)
+                    }
                 }
             }
+        } catch {
+            print("Error info: \(error)")
         }
     }
     

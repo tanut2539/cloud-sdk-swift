@@ -14,18 +14,18 @@ public class Client {
     
     private var projectId: String
     private var apiKey: String?
+    private var headers: HTTPHeaders?
     
     public init(projectId: String, apiKey: String? = nil) {
         self.projectId = projectId
         self.apiKey = apiKey
+        headers = getHeaders()
     }
     
-    public func getItems<T>(queryParameters: [QueryParameter], modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
+    public func getItems<T>(queryParameters: [QueryParameter]? = nil, customQuery: String? = nil, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
         
-        let url = getRequestUrl(queryParameters: queryParameters)
-        let headers = getHeaders()
-        
-        Alamofire.request(url, headers: headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
+        let url = try getItemsRequestUrl(queryParameters: queryParameters, customQuery: customQuery)
+        Alamofire.request(url, headers: self.headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
             
             switch response.result {
             case .success:
@@ -35,42 +35,18 @@ public class Client {
                     completionHandler(true, items)
                 }
             case .failure(let error):
-                print(response)
                 print(error)
             }
             
         }
     }
     
-    public func getItems<T>(customQuery: String, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
-        
-        let endpoint = getEndpoint()
-        let requestUrl = "\(endpoint)/\(projectId)/\(customQuery)"
-        let headers = getHeaders()
-        
-        Alamofire.request(requestUrl, headers: headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
-            
-            switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    var items = [T]()
-                    items = value
-                    completionHandler(true, items)
-                }
-            case .failure(let error):
-                print(response)
-                print(error)
-            }
-            
-        }
-    }
     
-    public func getItem<T>(itemName: String, language: String? = nil, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) where T: Mappable {
+    public func getItem<T>(itemName: String? = nil, customQuery: String? = nil, language: String? = nil, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) throws where T: Mappable {
         
-        let requestUrl = getRequestUrl(itemName: itemName, language: language)
-        let headers = getHeaders()
+        let requestUrl = try getItemRequestUrl(itemName: itemName, language: language)
         
-        Alamofire.request(requestUrl, headers: headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
+        Alamofire.request(requestUrl, headers: self.headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
             
             switch response.result {
             case .success:
@@ -84,54 +60,61 @@ public class Client {
         }
     }
     
-    public func getItem<T>(customQuery: String, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) throws where T: Mappable {
+    private func getItemsRequestUrl(queryParameters: [QueryParameter]? = nil, customQuery: String? = nil) throws -> String {
         
         let endpoint = getEndpoint()
-        let requestUrl = "\(endpoint)/\(projectId)/\(customQuery)"
-        let headers = getHeaders()
         
-        Alamofire.request(requestUrl, headers: headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
-            
-            switch response.result {
-            case .success:
-                if let value = response.result.value {
-                    completionHandler(true, value)
-                }
-            case .failure(let error):
-                print(error)
-            }
-            
+        if let customQuery = customQuery {
+            return "\(endpoint)/\(projectId)/\(customQuery)"
         }
+        
+        if let queryParameters = queryParameters {
+            return ItemsRequestBuilder.init(endpointUrl: endpoint, projectId: projectId, queryParameters: queryParameters).getRequestUrl()
+        }
+        
+        throw DeliveryError.QueryError("You must specify queryParameters or customQuery")
     }
     
-    private func getRequestUrl(queryParameters: [QueryParameter]? = nil, itemName: String? = nil, language: String? = nil) -> String {
+    private func getItemRequestUrl(customQuery: String? = nil, itemName: String? = nil, language: String? = nil) throws -> String {
         let endpoint = getEndpoint()
-        let requestBuilder = RequestBuilder.init(endpointUrl: endpoint, projectId: projectId, queryParameters: queryParameters, itemName: itemName, language: language)
         
-        return requestBuilder.getRequestUrl()
+        if let customQuery = customQuery {
+            return "\(endpoint)/\(projectId)/\(customQuery)"
+        }
+        
+        if let itemName = itemName {
+            var languageQueryParameter = ""
+            if let language = language {
+                languageQueryParameter = "?language=\(language)"
+            }
+            
+            return "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
+        }
+        
+        throw DeliveryError.QueryError("You must specify customQuery or itemName")
     }
     
     private func getEndpoint() -> String {
         
         var endpoint: String?
         
+        // Check override from property list first
         if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
             if let propertyList = NSDictionary(contentsOfFile: path) {
                 if let customEndpoint = propertyList["KenticoCloudDeliveryEndpoint"] {
                     endpoint = customEndpoint as? String
+                    return endpoint!
                 }
             }
         }
         
-        if endpoint == nil {
-            if apiKey == nil {
-                endpoint = DeliveryConstants.liveEndpoint
-            } else {
-                endpoint = DeliveryConstants.previewEndpoint
-            }
+        // We want to request preview api in case there is an apiKey
+        if apiKey == nil {
+            return DeliveryConstants.liveEndpoint
+        } else {
+            return DeliveryConstants.previewEndpoint
         }
-        
-        return endpoint!
+
     }
     
     private func getHeaders() -> HTTPHeaders {
@@ -139,7 +122,7 @@ public class Client {
             "Accept": "application/json"
         ]
         
-        if let apiKey = self.apiKey {
+        if let apiKey = apiKey {
             headers["authorization"] = "Bearer " + apiKey
         }
         
