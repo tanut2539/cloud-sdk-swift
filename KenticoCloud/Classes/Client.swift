@@ -22,7 +22,7 @@ public class Client {
         headers = getHeaders()
     }
     
-    public func getItems<T>(queryParameters: [QueryParameter]? = nil, customQuery: String? = nil, modelType: T.Type, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
+    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter]? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
         
         let url = try getItemsRequestUrl(queryParameters: queryParameters, customQuery: customQuery)
         Alamofire.request(url, headers: self.headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
@@ -41,8 +41,7 @@ public class Client {
         }
     }
     
-    
-    public func getItem<T>(itemName: String? = nil, customQuery: String? = nil, language: String? = nil, modelType: T.Type, completionHandler: @escaping (Bool, T?) -> ()) throws where T: Mappable {
+    public func getItem<T>(modelType: T.Type, itemName: String? = nil, language: String? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, T?) -> ()) throws where T: Mappable {
         
         let requestUrl = try getItemRequestUrl(itemName: itemName, language: language)
         

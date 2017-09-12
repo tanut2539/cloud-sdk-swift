@@ -7,7 +7,6 @@ class ItemsQuerySpec: QuickSpec {
         describe("build items query") {
             context("projectID is specified without Preview API key requesting live items", {
                 var client:  Client!
-                let endpoint: Endpoint! = Endpoint.live
                 
                 beforeEach {
                     client = Client.init(projectId: "adcae48f-b42b-4a53-a8fc-b3b4501561b9", apiKey: nil)
@@ -17,19 +16,22 @@ class ItemsQuerySpec: QuickSpec {
                     let cafeContentType = "cafe"
                     
                     let contentTypeParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: cafeContentType)
-                    let query = Query.init(endpoint: endpoint, queryParameters: [contentTypeParameter])
                     waitUntil(timeout: 5) { done in
-                        client.getItems(query: query, modelType: CafeTestModel.self, completionHandler: { (isSuccess, items) in
-                            if !isSuccess {
-                                fail("Response is not successful")
-                            }
-                            if let cafes = items {
-                                let cafesCount = cafes.count
-                                let expectedCafesCount = 11
-                                expect(cafesCount) == expectedCafesCount
-                                done()
-                            }
-                        })
+                        do {
+                            try client.getItems(modelType: CafeTestModel.self, queryParameters: [contentTypeParameter], completionHandler: { (isSuccess, items) in
+                                if !isSuccess {
+                                    fail("Response is not successful")
+                                }
+                                if let cafes = items {
+                                    let cafesCount = cafes.count
+                                    let expectedCafesCount = 11
+                                    expect(cafesCount) == expectedCafesCount
+                                    done()
+                                }
+                            })
+                        } catch {
+                            fail("\(error)")
+                        }
                     }
                 }
             })
