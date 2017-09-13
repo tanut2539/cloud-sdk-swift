@@ -17,7 +17,7 @@ public class DeliveryClient {
     private var headers: HTTPHeaders?
     private var isDebugLoggingEnabled: Bool
     
-    public init(projectId: String, apiKey: String? = nil, enableDebugLogging: Bool = true) {
+    public init(projectId: String, apiKey: String? = nil, enableDebugLogging: Bool = false) {
         self.projectId = projectId
         self.apiKey = apiKey
         self.isDebugLoggingEnabled = enableDebugLogging
