@@ -10,7 +10,7 @@ import AlamofireObjectMapper
 import Alamofire
 import ObjectMapper
 
-public class Client {
+public class DeliveryClient {
     
     private var projectId: String
     private var apiKey: String?
@@ -22,7 +22,7 @@ public class Client {
         headers = getHeaders()
     }
     
-    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter]? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, [T]?) -> ()) throws where T: Mappable {
+    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter]? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) throws where T: Mappable {
         
         let url = try getItemsRequestUrl(queryParameters: queryParameters, customQuery: customQuery)
         Alamofire.request(url, headers: self.headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
@@ -32,16 +32,16 @@ public class Client {
                 if let value = response.result.value {
                     var items = [T]()
                     items = value
-                    completionHandler(true, items)
+                    completionHandler(true, items, nil)
                 }
             case .failure(let error):
-                print(error)
+                completionHandler(false, nil, error)
             }
             
         }
     }
     
-    public func getItem<T>(modelType: T.Type, itemName: String? = nil, language: String? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, T?) -> ()) throws where T: Mappable {
+    public func getItem<T>(modelType: T.Type, itemName: String? = nil, language: String? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, T?, Error?) -> ()) throws where T: Mappable {
         
         let requestUrl = try getItemRequestUrl(itemName: itemName, language: language)
         
@@ -50,10 +50,10 @@ public class Client {
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    completionHandler(true, value)
+                    completionHandler(true, value, nil)
                 }
             case .failure(let error):
-                print(error)
+                completionHandler(false, nil, error)
             }
             
         }
@@ -109,9 +109,9 @@ public class Client {
         
         // We want to request preview api in case there is an apiKey
         if apiKey == nil {
-            return DeliveryConstants.liveEndpoint
+            return CloudConstants.liveDeliverEndpoint
         } else {
-            return DeliveryConstants.previewEndpoint
+            return CloudConstants.previewDeliverEndpoint
         }
 
     }

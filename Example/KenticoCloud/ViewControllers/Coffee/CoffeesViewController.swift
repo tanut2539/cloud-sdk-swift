@@ -77,13 +77,13 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getCoffees() {
-        let cloudClient = Client.init(projectId: "84ebeafd-cad0-47e5-811a-789df7a43ad0")
+        let cloudClient = DeliveryClient.init(projectId: "84ebeafd-cad0-47e5-811a-789df7a43ad0")
         
         let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let coffeesQueryParameters = [contentTypeQueryParameter]
         
         do {
-            try cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, items) in
+            try cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, items, error) in
                 if isSuccess {
                     if let cofees = items {
                         self.coffees = cofees

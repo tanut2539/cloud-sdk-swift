@@ -86,14 +86,14 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getCafes() {
-        let cloudClient = Client.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
+        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
         
         let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
         let cafesQueryParameters = [typeQueryParameter, languageQueryParameter]
         
         do {
-            try cloudClient.getItems(modelType: Cafe.self, queryParameters: cafesQueryParameters) { (isSuccess, items) in
+            try cloudClient.getItems(modelType: Cafe.self, queryParameters: cafesQueryParameters) { (isSuccess, items, error) in
                 if isSuccess {
                     if let cafes = items {
                         self.cafes = cafes
@@ -115,7 +115,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
     }
     
-    func showLoader() {
+    private func showLoader() {
         loader = UIAlertController(title: nil, message: "Loading cafes...", preferredStyle: .alert)
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
