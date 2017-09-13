@@ -15,11 +15,13 @@ public class DeliveryClient {
     private var projectId: String
     private var apiKey: String?
     private var headers: HTTPHeaders?
+    private var isDebugLoggingEnabled: Bool
     
-    public init(projectId: String, apiKey: String? = nil) {
+    public init(projectId: String, apiKey: String? = nil, enableDebugLogging: Bool = true) {
         self.projectId = projectId
         self.apiKey = apiKey
-        headers = getHeaders()
+        self.isDebugLoggingEnabled = enableDebugLogging
+        self.headers = getHeaders()
     }
     
     public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter]? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) throws where T: Mappable {
@@ -42,9 +44,15 @@ public class DeliveryClient {
                 if let value = response.result.value {
                     var items = [T]()
                     items = value
+                    if self.isDebugLoggingEnabled {
+                        print("[Kentico Cloud] Getting items is successful. Obtained \(items.count) items.")
+                    }
                     completionHandler(true, items, nil)
                 }
             case .failure(let error):
+                if self.isDebugLoggingEnabled {
+                    print("[Kentico Cloud] Getting items failed. Check requested URL: \(url)")
+                }
                 completionHandler(false, nil, error)
             }
         }
@@ -56,9 +64,15 @@ public class DeliveryClient {
             switch response.result {
             case .success:
                 if let value = response.result.value {
+                    if self.isDebugLoggingEnabled {
+                        print("[Kentico Cloud] Getting item is successful.")
+                    }
                     completionHandler(true, value, nil)
                 }
             case .failure(let error):
+                if self.isDebugLoggingEnabled {
+                    print("[Kentico Cloud] Getting items failed. Check requested URL: \(url)")
+                }
                 completionHandler(false, nil, error)
             }
         }
@@ -118,7 +132,7 @@ public class DeliveryClient {
         } else {
             return CloudConstants.previewDeliverEndpoint
         }
-
+        
     }
     
     private func getHeaders() -> HTTPHeaders {

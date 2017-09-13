@@ -13,11 +13,13 @@ public class TrackingClient {
     private var projectId: String
     private var sid: String
     private var uid: String
+    private var isDebugLoggingEnabled: Bool
     
-    public init(projectId: String) {
+    public init(projectId: String, enableDebugLogging: Bool = false) {
         self.projectId = projectId
         self.sid = TrackingSessionHelper.getSid()
         self.uid = TrackingSessionHelper.getUid()
+        self.isDebugLoggingEnabled = enableDebugLogging
     }
     
     public func startSession(completionHandler: @escaping (Bool, Error?) -> () = { _ in }) {
@@ -25,7 +27,7 @@ public class TrackingClient {
         let body = getSessionRequestBody()
         let headers = getHeaders()
         
-        sendTrackingRequest(url: sessionRequestUrl, body: body, headers: headers, completionHandler: completionHandler)
+        sendTrackingRequest(url: sessionRequestUrl, body: body, headers: headers, debugActionMessage: "Starting session", completionHandler: completionHandler)
     }
     
     public func trackActivity(activityName: String, completionHandler: @escaping (Bool, Error?) -> () = { _ in }) {
@@ -34,7 +36,7 @@ public class TrackingClient {
         let body = getActivityRequestBody(activityName: activityName)
         let headers = getHeaders()
         
-        sendTrackingRequest(url: activityRequestUrl, body: body, headers: headers, completionHandler: completionHandler)
+        sendTrackingRequest(url: activityRequestUrl, body: body, headers: headers, debugActionMessage: "Tracking activity",completionHandler: completionHandler)
     }
     
     public func addContact(email: String, completionHandler: @escaping (Bool, Error?) -> () = { _ in }) {
@@ -42,18 +44,24 @@ public class TrackingClient {
         let body = getAddContactRequestBody(email: email)
         let headers = getHeaders()
         
-        sendTrackingRequest(url: addContactRequestUrl, body: body, headers: headers, completionHandler: completionHandler)
+        sendTrackingRequest(url: addContactRequestUrl, body: body, headers: headers, debugActionMessage: "Adding contact", completionHandler: completionHandler)
     }
     
-    private func sendTrackingRequest(url: String, body: Parameters, headers: HTTPHeaders, completionHandler: @escaping (Bool, Error?) -> ()) {
+    private func sendTrackingRequest(url: String, body: Parameters, headers: HTTPHeaders, debugActionMessage: String, completionHandler: @escaping (Bool, Error?) -> ()) {
         
         Alamofire.request(url, method: .post, parameters: body, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseData { response in
                 switch response.result {
                 case .success:
+                    if self.isDebugLoggingEnabled {
+                        print("[Kentico Cloud] \(debugActionMessage) is successful")
+                    }
                     completionHandler(true, nil)
                 case .failure(let error):
+                    if self.isDebugLoggingEnabled {
+                        print("[Kentico Cloud] \(debugActionMessage) failed")
+                    }
                     completionHandler(false, error)
                 }
         }
