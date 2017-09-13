@@ -89,12 +89,16 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
                         self.coffees = cofees
                         self.tableView.reloadData()
                     }
+                } else {
+                    if let error = error {
+                        print(error)
+                    }
                 }
                 
                 if self.refreshControl.isRefreshing {
                     self.refreshControl.endRefreshing()
                 }
-            }
+            } 
         } catch {
             print("Error info: \(error)")
         }

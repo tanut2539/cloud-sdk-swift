@@ -24,7 +24,17 @@ public class DeliveryClient {
     
     public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter]? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) throws where T: Mappable {
         
-        let url = try getItemsRequestUrl(queryParameters: queryParameters, customQuery: customQuery)
+        let requestUrl = try getItemsRequestUrl(queryParameters: queryParameters, customQuery: customQuery)
+        sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
+    }
+    
+    public func getItem<T>(modelType: T.Type, itemName: String? = nil, language: String? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, T?, Error?) -> ()) throws where T: Mappable {
+        
+        let requestUrl = try getItemRequestUrl(itemName: itemName, language: language)
+        sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
+    }
+    
+    private func sendGetItemsRequest<T>(url: String, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) where T: Mappable {
         Alamofire.request(url, headers: self.headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
             
             switch response.result {
@@ -37,15 +47,11 @@ public class DeliveryClient {
             case .failure(let error):
                 completionHandler(false, nil, error)
             }
-            
         }
     }
     
-    public func getItem<T>(modelType: T.Type, itemName: String? = nil, language: String? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, T?, Error?) -> ()) throws where T: Mappable {
-        
-        let requestUrl = try getItemRequestUrl(itemName: itemName, language: language)
-        
-        Alamofire.request(requestUrl, headers: self.headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
+    private func sendGetItemRequest<T>(url: String, completionHandler: @escaping (Bool, T?, Error?) -> ()) where T: Mappable {
+        Alamofire.request(url, headers: self.headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
             
             switch response.result {
             case .success:
@@ -55,7 +61,6 @@ public class DeliveryClient {
             case .failure(let error):
                 completionHandler(false, nil, error)
             }
-            
         }
     }
     

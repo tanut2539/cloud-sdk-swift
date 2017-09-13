@@ -84,6 +84,10 @@ class NotificationCafeViewController: UIViewController {
                         self.setMap(cafe: cafe)
                         self.setImages(url: cafe.imageUrl!)
                     }
+                } else {
+                    if let error = error {
+                        print(error)
+                    }
                 }
             }
         } catch {

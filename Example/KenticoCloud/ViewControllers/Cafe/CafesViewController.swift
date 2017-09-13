@@ -32,7 +32,6 @@ class CafesViewController: UIViewController, UITableViewDataSource {
             self.tableView.deselectRow(at: index, animated: true)
         }
         
-        showLoader()
         getCafes()
     }
     
@@ -86,6 +85,8 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getCafes() {
+        showLoader()
+        
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
         
         let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
@@ -99,7 +100,12 @@ class CafesViewController: UIViewController, UITableViewDataSource {
                         self.cafes = cafes
                         self.tableView.reloadData()
                     }
+                } else {
+                    if let error = error {
+                        print(error)
+                    }
                 }
+                
                 if self.refreshControl.isRefreshing {
                     self.refreshControl.endRefreshing()
                 }
@@ -107,6 +113,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
                 self.loader.dismiss(animated: false, completion: nil)
             }
         } catch {
+            self.loader.dismiss(animated: false, completion: nil)
             print("Error info: \(error)")
         }
     }

@@ -88,6 +88,10 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
                         self.articles = articles
                         self.tableView.reloadData()
                     }
+                } else {
+                    if let error = error {
+                        print(error)
+                    }
                 }
             }
         } catch {
