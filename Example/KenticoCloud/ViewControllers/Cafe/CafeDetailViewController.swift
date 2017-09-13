@@ -33,6 +33,17 @@ class CafeDetailViewController: UIViewController {
         }
         
         setImages()
+        
+        if let city = cafe?.city {
+            let trackingClient = TrackingClient.init(projectId: AppConstants.trackingProjectId)
+            trackingClient.trackActivity(activityName: "Cafe detail view: \(city)", completionHandler: {
+                (isSuccess, error) in
+                if !isSuccess {
+                    // custom retry policy
+                }
+            })
+            trackingClient.addContact(email: "martinkoklingacik@kentico.com")
+        }
     }
     
     private func setTitles(cafe: Cafe) {

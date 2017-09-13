@@ -39,5 +39,5 @@ Swift SDK for Kentico Cloud Delivery service [Draft].
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
    s.dependency 'AlamofireObjectMapper', '~> 4.0'
-   s.dependency 'Kanna', '~> 2.1.0'
+   s.dependency 'Kanna', '~> 2.0.0'
 end
