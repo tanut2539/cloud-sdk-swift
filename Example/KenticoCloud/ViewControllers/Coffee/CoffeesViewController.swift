@@ -78,7 +78,7 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getCoffees() {
-        let cloudClient = DeliveryClient.init(projectId: "84ebeafd-cad0-47e5-811a-789df7a43ad0")
+        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         
         let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let coffeesQueryParameters = [contentTypeQueryParameter]
