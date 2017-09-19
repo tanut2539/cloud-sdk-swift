@@ -79,7 +79,7 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getArticles() {
-        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
+        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         let customQuery = "items?system.type=article&order=elements.post_date[desc]"
         do {
             try cloudClient.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, items, error) in

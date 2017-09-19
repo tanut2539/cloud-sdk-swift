@@ -10,8 +10,14 @@ import UIKit
 
 class CoffeeTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var coffeeDescription: UITextView!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var processing: UILabel!
+    @IBOutlet weak var featured: UILabel!
+    @IBOutlet weak var photo: UIImageView!
     
     override func awakeFromNib() {
+        self.featured.isHidden = true
         super.awakeFromNib()
         // Initialization code
     }

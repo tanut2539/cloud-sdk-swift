@@ -52,6 +52,29 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         
         let coffee = coffees[indexPath.row]
         cell.title.text = coffee.name?.value
+        cell.coffeeDescription.text = coffee.shortDescription?.value
+        if let price = coffee.price?.value {
+            cell.price.text = "$ \(price) / 1lb"
+        }
+        
+        if !((coffee.processing?.value?.isEmpty)!) {
+            if let processingTechnique = coffee.processing?.value?[0].name {
+                cell.processing.text = processingTechnique
+            }
+        }
+        
+        if let imageUrl = coffee.photo?.value?[0].url {
+            let url = URL(string: imageUrl)
+            cell.photo.af_setImage(withURL: url!)
+        }
+        
+        if !((coffee.promotion?.value?.isEmpty)!) {
+            if let promotion = coffee.promotion?.value?[0].name {
+                if promotion == "Featured" {
+                    cell.featured.isHidden = false
+                }
+            }
+        }
         
         return cell
     }
@@ -86,8 +109,8 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         do {
             try cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, items, error) in
                 if isSuccess {
-                    if let cofees = items {
-                        self.coffees = cofees
+                    if let coffees = items {
+                        self.coffees = coffees
                         self.tableView.reloadData()
                     }
                 } else {
@@ -99,7 +122,7 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
                 if self.refreshControl.isRefreshing {
                     self.refreshControl.endRefreshing()
                 }
-            } 
+            }
         } catch {
             print("Error info: \(error)")
         }

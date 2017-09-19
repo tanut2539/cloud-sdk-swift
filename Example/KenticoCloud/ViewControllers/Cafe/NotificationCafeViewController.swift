@@ -73,7 +73,7 @@ class NotificationCafeViewController: UIViewController {
     }
     
     private func getCafe(name: String) {
-        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
+        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         
         do {
             try cloudClient.getItem(modelType: Cafe.self, itemName: name) { (isSuccess, item, error) in

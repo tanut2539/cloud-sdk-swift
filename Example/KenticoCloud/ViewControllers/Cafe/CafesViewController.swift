@@ -87,7 +87,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     private func getCafes() {
         showLoader()
         
-        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId, apiKey: AppConstants.kenticoCloudApiKey)
+        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         
         let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
