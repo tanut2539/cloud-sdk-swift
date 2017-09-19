@@ -131,7 +131,7 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         loadingIndicator.startAnimating();
         
         loader.view.addSubview(loadingIndicator)
-        present(loader, animated: true, completion: nil)
+        self.view.window?.rootViewController?.present(loader, animated: true, completion: nil)
     }
     
     

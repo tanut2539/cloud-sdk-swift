@@ -36,7 +36,7 @@ public class TrackingClient {
         let body = getActivityRequestBody(activityName: activityName)
         let headers = getHeaders()
         
-        sendTrackingRequest(url: activityRequestUrl, body: body, headers: headers, debugActionMessage: "Tracking activity",completionHandler: completionHandler)
+        sendTrackingRequest(url: activityRequestUrl, body: body, headers: headers, debugActionMessage: "Tracking activity \"\(activityName)\"",completionHandler: completionHandler)
     }
     
     public func addContact(email: String, completionHandler: @escaping (Bool, Error?) -> () = { _ in }) {
@@ -44,7 +44,7 @@ public class TrackingClient {
         let body = getAddContactRequestBody(email: email)
         let headers = getHeaders()
         
-        sendTrackingRequest(url: addContactRequestUrl, body: body, headers: headers, debugActionMessage: "Adding contact", completionHandler: completionHandler)
+        sendTrackingRequest(url: addContactRequestUrl, body: body, headers: headers, debugActionMessage: "Adding contact \"\(email)\"", completionHandler: completionHandler)
     }
     
     private func sendTrackingRequest(url: String, body: Parameters, headers: HTTPHeaders, debugActionMessage: String, completionHandler: @escaping (Bool, Error?) -> ()) {

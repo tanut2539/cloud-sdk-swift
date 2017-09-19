@@ -37,7 +37,7 @@
                         <color key="separatorColor" red="0.12549019610000001" green="0.51372549020000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="45" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeCell" rowHeight="111" id="bHw-sY-fSu" customClass="CafeTableViewCell" customModule="KenticoCloud_Example" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeCell" rowHeight="111" id="bHw-sY-fSu" customClass="CafeTableViewCell" customModule="KenticoCloud_Example">
                                 <rect key="frame" x="0.0" y="28" width="375" height="111"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bHw-sY-fSu" id="YBL-0H-K2Y">
@@ -272,7 +272,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableViewCell" rowHeight="61" id="vA4-1N-gXC" userLabel="MenuCell" customClass="MenuTableViewCell" customModule="KenticoCloud_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vA4-1N-gXC" id="Dff-2U-6qB" customClass="MenuCell" customModule="KenticoCloud_Example" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vA4-1N-gXC" id="Dff-2U-6qB">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -420,7 +420,6 @@
         <!--Coffees-->
         <scene sceneID="zlf-0Q-E1T">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QPe-tR-6Rt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="CoffeesViewController" id="gaz-pX-9If" customClass="CoffeesViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" id="GgK-rx-gTF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -467,6 +466,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Hbr-M5-ukU">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refreshTable:" destination="gaz-pX-9If" eventType="valueChanged" id="N8N-tA-gs0"/>
@@ -477,6 +477,7 @@
                         <outlet property="tableView" destination="GgK-rx-gTF" id="RFV-3h-lid"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QPe-tR-6Rt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="444" y="1324.5877061469266"/>
         </scene>
@@ -513,6 +514,78 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7CK-c8-pNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-516" y="1325"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="k0M-cv-jzA">
+            <objects>
+                <navigationController storyboardIdentifier="SettingsNavigationController" id="h5G-c7-YB4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0g7-zp-ulv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YWS-Nc-v9p" kind="relationship" relationship="rootViewController" id="r15-rF-FSu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XBM-ou-wDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-444" y="2051"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="sm0-DX-7CB">
+            <objects>
+                <tableViewController storyboardIdentifier="SettingsViewController" id="YWS-Nc-v9p" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mmo-aZ-jj4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="tfd-uB-VtO">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nk2-5q-FnB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nk2-5q-FnB" id="mmA-vr-WPK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Content language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvJ-lr-q2C">
+                                                    <rect key="frame" x="21" y="12" width="136" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3cg-Am-xsv">
+                                                    <rect key="frame" x="203" y="8" width="152" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="English"/>
+                                                        <segment title="Spanish"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="YWS-Nc-v9p" id="WhQ-jO-5IJ"/>
+                            <outlet property="delegate" destination="YWS-Nc-v9p" id="wfL-bn-Lws"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="puJ-6H-sf6">
+                        <barButtonItem key="leftBarButtonItem" image="menuHamburger" id="0en-nv-oSe">
+                            <connections>
+                                <action selector="showMenu:" destination="YWS-Nc-v9p" id="6rd-Ak-3Rg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGw-He-3jI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444" y="2050.5247376311845"/>
         </scene>
         <!--Article Detail View Controller-->
         <scene sceneID="auE-Bg-TjD">

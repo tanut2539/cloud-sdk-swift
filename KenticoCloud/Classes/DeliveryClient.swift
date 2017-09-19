@@ -1,5 +1,5 @@
 //
-//  Client.swift
+//  DeliveryClient.swift
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 15/08/2017.

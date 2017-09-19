@@ -33,6 +33,7 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         
         getCoffees()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

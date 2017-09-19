@@ -35,14 +35,14 @@ class CafeDetailViewController: UIViewController {
         setImages()
         
         if let city = cafe?.city {
-            let trackingClient = TrackingClient.init(projectId: AppConstants.trackingProjectId)
+            let trackingClient = TrackingClient.init(projectId: AppConstants.trackingProjectId, enableDebugLogging: true)
             trackingClient.trackActivity(activityName: "Cafe detail view: \(city)", completionHandler: {
                 (isSuccess, error) in
                 if !isSuccess {
                     // custom retry policy
                 }
             })
-            trackingClient.addContact(email: "martinkoklingacik@kentico.com")
+            trackingClient.addContact(email: "dubacik@kentico.com")
         }
     }
     
@@ -69,7 +69,6 @@ class CafeDetailViewController: UIViewController {
             
             let pinPoint = MKPointAnnotation()
             pinPoint.coordinate = location.coordinate
-            print(location.coordinate)
             self.map?.addAnnotation(pinPoint)
 
             let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
