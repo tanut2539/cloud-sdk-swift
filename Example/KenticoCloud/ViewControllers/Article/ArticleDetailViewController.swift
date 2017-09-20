@@ -13,19 +13,25 @@ class ArticleDetailViewController: UIViewController {
     var article: Article?
     var image: UIImage?
     
-    @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var articleTitle: UILabel!
     @IBOutlet weak var titleImage: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if let body = article?.bodyCopy?.htmlContentString {
-            webView.loadHTMLString(body , baseURL: nil)
+            do {
+                let str = try NSAttributedString(data: body.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+                textView.attributedText = str
+            } catch {
+                print(error)
+            }
         }
         
         if let image = image {

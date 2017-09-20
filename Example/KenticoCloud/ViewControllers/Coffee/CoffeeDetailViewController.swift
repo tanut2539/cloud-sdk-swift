@@ -40,7 +40,10 @@ class CoffeeDetailViewController: UIViewController {
                 self.processing.text = processingTechnique
             }
         }
-        self.altitude.text = coffee.altitude?.value
+        
+        if let altitude = coffee.altitude?.value {
+            self.altitude.text = "\(altitude) ft"
+        }
         
         if let imageUrl = coffee.photo?.value?[0].url {
             let url = URL(string: imageUrl)
