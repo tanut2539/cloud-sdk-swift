@@ -68,12 +68,10 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
             cell.photo.af_setImage(withURL: url!)
         }
         
-        if !((coffee.promotion?.value?.isEmpty)!) {
-            if let promotion = coffee.promotion?.value?[0].name {
-                if promotion == "Featured" {
-                    cell.featured.isHidden = false
-                }
-            }
+        if (coffee.promotion?.containsCodename(codename: "featured"))! {
+            cell.featured.isHidden = false
+        } else {
+            cell.featured.isHidden = true
         }
         
         return cell
@@ -109,7 +107,7 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, items, error) in
                 if isSuccess {
                     if let coffees = items {
-                        self.coffees = coffees
+                        self.coffees = coffees.sorted { ($0.promotion!.containsCodename(codename: "featured")) && (!$1.promotion!.containsCodename(codename: "featured")) }
                         self.tableView.reloadData()
                     }
                 } else {

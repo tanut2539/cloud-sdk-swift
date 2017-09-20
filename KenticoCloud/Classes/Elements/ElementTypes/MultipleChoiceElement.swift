@@ -26,4 +26,25 @@ public class MultipleChoiceElement: Mappable {
         name <- map["elements.\(elementName).name"]
         value <- map["elements.\(elementName).value"]
     }
+    
+    public func containsCodename(codename: String) -> Bool {
+        if let choices = value {
+            if choices.contains(where: { choice in choice.codename == codename }) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    public func containsName(name: String) -> Bool {
+        if let choices = value {
+            if choices.contains(where: { choice in choice.name == name }) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
 }

@@ -17,7 +17,6 @@ class CoffeeTableViewCell: UITableViewCell {
     @IBOutlet weak var photo: UIImageView!
     
     override func awakeFromNib() {
-        self.featured.isHidden = true
         super.awakeFromNib()
         // Initialization code
     }
