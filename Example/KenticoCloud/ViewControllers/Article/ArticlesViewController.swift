@@ -81,21 +81,18 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
     private func getArticles() {
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         let customQuery = "items?system.type=article&order=elements.post_date[desc]"
-        do {
-            try cloudClient.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, items, error) in
-                if isSuccess {
-                    if let articles = items {
-                        self.articles = articles
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    if let error = error {
-                        print(error)
-                    }
+        
+        cloudClient.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, items, error) in
+            if isSuccess {
+                if let articles = items {
+                    self.articles = articles
+                    self.tableView.reloadData()
+                }
+            } else {
+                if let error = error {
+                    print(error)
                 }
             }
-        } catch {
-            print("Error info: \(error)")
         }
     }
     

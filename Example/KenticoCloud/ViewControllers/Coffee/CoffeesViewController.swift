@@ -106,8 +106,7 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let coffeesQueryParameters = [contentTypeQueryParameter]
         
-        do {
-            try cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, items, error) in
+        cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, items, error) in
                 if isSuccess {
                     if let coffees = items {
                         self.coffees = coffees
@@ -123,9 +122,6 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
                     self.refreshControl.endRefreshing()
                 }
             }
-        } catch {
-            print("Error info: \(error)")
-        }
     }
     
 }

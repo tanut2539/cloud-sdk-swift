@@ -93,28 +93,23 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
         let cafesQueryParameters = [typeQueryParameter, languageQueryParameter]
         
-        do {
-            try cloudClient.getItems(modelType: Cafe.self, queryParameters: cafesQueryParameters) { (isSuccess, items, error) in
-                if isSuccess {
-                    if let cafes = items {
-                        self.cafes = cafes
-                        self.tableView.reloadData()
-                    }
-                } else {
-                    if let error = error {
-                        print(error)
-                    }
+        cloudClient.getItems(modelType: Cafe.self, queryParameters: cafesQueryParameters) { (isSuccess, items, error) in
+            if isSuccess {
+                if let cafes = items {
+                    self.cafes = cafes
+                    self.tableView.reloadData()
                 }
-                
-                if self.refreshControl.isRefreshing {
-                    self.refreshControl.endRefreshing()
+            } else {
+                if let error = error {
+                    print(error)
                 }
-                
-                self.loader.dismiss(animated: false, completion: nil)
             }
-        } catch {
+            
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            
             self.loader.dismiss(animated: false, completion: nil)
-            print("Error info: \(error)")
         }
     }
     
