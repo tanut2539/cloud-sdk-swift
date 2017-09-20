@@ -24,15 +24,27 @@ public class DeliveryClient {
         self.headers = getHeaders()
     }
     
-    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter]? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) throws where T: Mappable {
+    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter?], completionHandler: @escaping (Bool, [T]?, Error?) -> ()) where T: Mappable {
         
-        let requestUrl = try getItemsRequestUrl(queryParameters: queryParameters, customQuery: customQuery)
+        let requestUrl = getItemsRequestUrl(queryParameters: queryParameters)
         sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, itemName: String? = nil, language: String? = nil, customQuery: String? = nil, completionHandler: @escaping (Bool, T?, Error?) -> ()) throws where T: Mappable {
+    public func getItems<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) where T: Mappable {
         
-        let requestUrl = try getItemRequestUrl(itemName: itemName, language: language)
+        let requestUrl = getItemsRequestUrl(customQuery: customQuery)
+        sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
+    }
+    
+    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (Bool, T?, Error?) -> ()) throws where T: Mappable {
+        
+        let requestUrl = getItemRequestUrl(itemName: itemName, language: language)
+        sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
+    }
+    
+    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, T?, Error?) -> ()) throws where T: Mappable {
+        
+        let requestUrl = getItemRequestUrl(customQuery: customQuery)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
@@ -78,38 +90,40 @@ public class DeliveryClient {
         }
     }
     
-    private func getItemsRequestUrl(queryParameters: [QueryParameter]? = nil, customQuery: String? = nil) throws -> String {
+    private func getItemsRequestUrl(queryParameters: [QueryParameter?]) -> String {
         
         let endpoint = getEndpoint()
         
-        if let customQuery = customQuery {
-            return "\(endpoint)/\(projectId)/\(customQuery)"
-        }
+        let requestBuilder = ItemsRequestBuilder.init(endpointUrl: endpoint, projectId: projectId, queryParameters: queryParameters)
         
-        if let queryParameters = queryParameters {
-            return ItemsRequestBuilder.init(endpointUrl: endpoint, projectId: projectId, queryParameters: queryParameters).getRequestUrl()
-        }
+        return requestBuilder.getRequestUrl()
         
-        throw DeliveryError.QueryError("You must specify queryParameters or customQuery")
+        
     }
     
-    private func getItemRequestUrl(customQuery: String? = nil, itemName: String? = nil, language: String? = nil) throws -> String {
+    private func getItemsRequestUrl(customQuery: String) -> String {
+        
         let endpoint = getEndpoint()
         
-        if let customQuery = customQuery {
-            return "\(endpoint)/\(projectId)/\(customQuery)"
+        return "\(endpoint)/\(projectId)/\(customQuery)"
+    }
+    
+    private func getItemRequestUrl(customQuery: String) -> String {
+        let endpoint = getEndpoint()
+        
+        return "\(endpoint)/\(projectId)/\(customQuery)"
+    }
+    
+    private func getItemRequestUrl(itemName: String, language: String? = nil) -> String {
+        let endpoint = getEndpoint()
+        
+        
+        var languageQueryParameter = ""
+        if let language = language {
+            languageQueryParameter = "?language=\(language)"
         }
         
-        if let itemName = itemName {
-            var languageQueryParameter = ""
-            if let language = language {
-                languageQueryParameter = "?language=\(language)"
-            }
-            
-            return "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
-        }
-        
-        throw DeliveryError.QueryError("You must specify customQuery or itemName")
+        return "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
     }
     
     private func getEndpoint() -> String {
@@ -135,6 +149,7 @@ public class DeliveryClient {
         
     }
     
+    // TODO: Add new headers
     private func getHeaders() -> HTTPHeaders {
         var headers: HTTPHeaders = [
             "Accept": "application/json"

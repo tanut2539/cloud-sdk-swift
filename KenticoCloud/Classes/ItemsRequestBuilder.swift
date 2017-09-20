@@ -10,10 +10,10 @@ class ItemsRequestBuilder {
     
     private var endpointUrl: String
     private var projectId: String
-    private var queryParameters: [QueryParameter]
-
+    private var queryParameters: [QueryParameter?]
     
-    init(endpointUrl: String, projectId: String, queryParameters: [QueryParameter]) {
+    
+    init(endpointUrl: String, projectId: String, queryParameters: [QueryParameter?]) {
         self.endpointUrl = endpointUrl
         self.projectId = projectId
         self.queryParameters = queryParameters
@@ -24,12 +24,14 @@ class ItemsRequestBuilder {
         var queryParametersString = "?"
         
         for queryParameter in queryParameters {
-            queryParametersString.append(queryParameter.getQueryStringParameter())
-            queryParametersString.append("&")
+            if let queryParameter = queryParameter {
+                queryParametersString.append(queryParameter.getQueryStringParameter())
+                queryParametersString.append("&")
+            }
         }
         queryParametersString = String(queryParametersString.characters.dropLast(1))
         
         return "\(endpointUrl)/\(projectId)/items\(queryParametersString)"
     }
-
+    
 }
