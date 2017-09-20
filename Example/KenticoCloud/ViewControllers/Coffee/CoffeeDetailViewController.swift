@@ -9,7 +9,7 @@
 import UIKit
 
 class CoffeeDetailViewController: UIViewController {
-    @IBOutlet var coffeeDescription: UIWebView!
+    @IBOutlet var coffeeDescription: UITextView!
     @IBOutlet var price: UILabel!
     @IBOutlet var farm: UILabel!
     @IBOutlet var variety: UILabel!
@@ -27,8 +27,13 @@ class CoffeeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = coffee.name?.value
-        if let description = coffee.longDescription?.value {
-            coffeeDescription.loadHTMLString(description , baseURL: nil)
+        if let description = coffee.longDescription?.htmlContentString {
+            do {
+                let attributedString = try NSAttributedString(data: description.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+                coffeeDescription.attributedText = attributedString
+            } catch {
+                print(error)
+            }
         }
         if let price = coffee.price?.value {
             self.price.text = "$\(price) / 1lb"
