@@ -74,25 +74,21 @@ class NotificationCafeViewController: UIViewController {
     
     private func getCafe(name: String) {
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
-        
-        do {
-            try cloudClient.getItem(modelType: Cafe.self, itemName: name) { (isSuccess, item, error) in
-                if isSuccess {
-                    if let cafe = item {
-                        self.cafe = cafe
-                        self.setTitles(cafe: cafe)
-                        self.setMap(cafe: cafe)
-                        self.setImages(url: cafe.imageUrl!)
-                    }
-                } else {
-                    if let error = error {
-                        print(error)
-                    }
+        cloudClient.getItem(modelType: Cafe.self, itemName: name) { (isSuccess, item, error) in
+            if isSuccess {
+                if let cafe = item {
+                    self.cafe = cafe
+                    self.setTitles(cafe: cafe)
+                    self.setMap(cafe: cafe)
+                    self.setImages(url: cafe.imageUrl!)
+                }
+            } else {
+                if let error = error {
+                    print(error)
                 }
             }
-        } catch {
-            print("Error info: \(error)")
         }
+        
     }
     
     @IBAction func closeModal(_ sender: Any) {
