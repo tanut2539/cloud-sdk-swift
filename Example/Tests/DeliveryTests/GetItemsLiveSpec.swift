@@ -1,8 +1,16 @@
+//
+//  GetItemsLive.swift
+//  KenticoCloud
+//
+//  Created by Martin Makarsky on 21/09/2017.
+//  Copyright © 2017 CocoaPods. All rights reserved.
+//
+
 import Quick
 import Nimble
 import KenticoCloud
 
-class GetItemsSpec: QuickSpec {
+class GetItemsLiveSpec: QuickSpec {
     override func spec() {
         describe("Get live items request") {
             
@@ -23,7 +31,7 @@ class GetItemsSpec: QuickSpec {
                             
                             if let items = items {
                                 let itemsCount = items.count
-                                let expectedCount = 11
+                                let expectedCount = 10
                                 expect(itemsCount) == expectedCount
                                 done()
                             }
@@ -86,7 +94,7 @@ class GetItemsSpec: QuickSpec {
             context("using custom query and Delivery element types", {
                 
                 it("returns array of items") {
-                    let customQuery = "items?system.type=article&order=elements.title[desc]&limit=4"
+                    let customQuery = "items?system.type=article&order=elements.title[desc]"
                     
                     waitUntil(timeout: 5) { done in
                         client.getItems(modelType: ArticleTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, items, error) in
@@ -96,7 +104,7 @@ class GetItemsSpec: QuickSpec {
                             
                             if let items = items {
                                 let itemsCount = items.count
-                                let expectedCount = 4
+                                let expectedCount = 5
                                 expect(itemsCount) == expectedCount
                                 done()
                             }
