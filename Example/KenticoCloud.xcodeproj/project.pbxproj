@@ -36,6 +36,8 @@
 		8FB0AC7E1F73BBF000102112 /* GetItemsPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC7D1F73BBF000102112 /* GetItemsPreview.swift */; };
 		8FB0AC801F73BDE100102112 /* GetItemLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC7F1F73BDE100102112 /* GetItemLive.swift */; };
 		8FB0AC821F73C4C600102112 /* GetItemPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC811F73C4C600102112 /* GetItemPreview.swift */; };
+		8FB0AC851F73D77200102112 /* StartSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC841F73D77200102112 /* StartSession.swift */; };
+		8FB0AC871F73DBC900102112 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC861F73DBC900102112 /* Tracking.swift */; };
 		8FF9211D1F5818BB001A95D9 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF9211C1F5818BB001A95D9 /* AppConstants.swift */; };
 		E8F656009DE299D55163A745 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72FCB95A095327A5FE4B4C3 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,8 @@
 		8FB0AC7D1F73BBF000102112 /* GetItemsPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemsPreview.swift; sourceTree = "<group>"; };
 		8FB0AC7F1F73BDE100102112 /* GetItemLive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemLive.swift; sourceTree = "<group>"; };
 		8FB0AC811F73C4C600102112 /* GetItemPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemPreview.swift; sourceTree = "<group>"; };
+		8FB0AC841F73D77200102112 /* StartSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSession.swift; sourceTree = "<group>"; };
+		8FB0AC861F73DBC900102112 /* Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 		8FF9211C1F5818BB001A95D9 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KenticoCloud_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4910C3C291811E12E837C8C /* Pods-KenticoCloud_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example/Pods-KenticoCloud_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				8FB0AC7B1F73BA4700102112 /* TestConstants.swift */,
+				8FB0AC831F73C62600102112 /* TrackingTests */,
 				8FB0AC711F73B26400102112 /* DeliveryTests */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -306,6 +311,15 @@
 				8FB0AC761F73B26400102112 /* CafeTestModel.swift */,
 			);
 			path = TestModels;
+			sourceTree = "<group>";
+		};
+		8FB0AC831F73C62600102112 /* TrackingTests */ = {
+			isa = PBXGroup;
+			children = (
+				8FB0AC841F73D77200102112 /* StartSession.swift */,
+				8FB0AC861F73DBC900102112 /* Tracking.swift */,
+			);
+			path = TrackingTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -579,8 +593,10 @@
 			files = (
 				8FB0AC821F73C4C600102112 /* GetItemPreview.swift in Sources */,
 				8FB0AC771F73B26400102112 /* GetItemsLive.swift in Sources */,
+				8FB0AC871F73DBC900102112 /* Tracking.swift in Sources */,
 				8FB0AC791F73B26400102112 /* ArticleTestModel.swift in Sources */,
 				8FB0AC7A1F73B26400102112 /* CafeTestModel.swift in Sources */,
+				8FB0AC851F73D77200102112 /* StartSession.swift in Sources */,
 				8FB0AC801F73BDE100102112 /* GetItemLive.swift in Sources */,
 				8FB0AC7E1F73BBF000102112 /* GetItemsPreview.swift in Sources */,
 				8FB0AC7C1F73BA4700102112 /* TestConstants.swift in Sources */,
