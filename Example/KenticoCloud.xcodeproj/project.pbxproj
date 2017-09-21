@@ -29,11 +29,12 @@
 		8F38073D1F6013C30008AFA1 /* CoffeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072E1F6013C30008AFA1 /* CoffeeTableViewCell.swift */; };
 		8F38073E1F6013C30008AFA1 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072F1F6013C30008AFA1 /* MenuTableViewCell.swift */; };
 		8F7465E11F45D36300908DF5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7465E01F45D36300908DF5 /* UserNotifications.framework */; };
-		8FB0AC771F73B26400102112 /* GetItemsLiveSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC721F73B26400102112 /* GetItemsLiveSpec.swift */; };
+		8FB0AC771F73B26400102112 /* GetItemsLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC721F73B26400102112 /* GetItemsLive.swift */; };
 		8FB0AC791F73B26400102112 /* ArticleTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC751F73B26400102112 /* ArticleTestModel.swift */; };
 		8FB0AC7A1F73B26400102112 /* CafeTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC761F73B26400102112 /* CafeTestModel.swift */; };
 		8FB0AC7C1F73BA4700102112 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC7B1F73BA4700102112 /* TestConstants.swift */; };
 		8FB0AC7E1F73BBF000102112 /* GetItemsPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC7D1F73BBF000102112 /* GetItemsPreview.swift */; };
+		8FB0AC801F73BDE100102112 /* GetItemLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC7F1F73BDE100102112 /* GetItemLive.swift */; };
 		8FF9211D1F5818BB001A95D9 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF9211C1F5818BB001A95D9 /* AppConstants.swift */; };
 		E8F656009DE299D55163A745 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72FCB95A095327A5FE4B4C3 /* Pods_KenticoCloud_Example_KenticoCloud_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -78,11 +79,12 @@
 		8F38072F1F6013C30008AFA1 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		8F7465DF1F45D2EC00908DF5 /* KenticoCloud_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KenticoCloud_Example.entitlements; sourceTree = "<group>"; };
 		8F7465E01F45D36300908DF5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		8FB0AC721F73B26400102112 /* GetItemsLiveSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemsLiveSpec.swift; sourceTree = "<group>"; };
+		8FB0AC721F73B26400102112 /* GetItemsLive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemsLive.swift; sourceTree = "<group>"; };
 		8FB0AC751F73B26400102112 /* ArticleTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTestModel.swift; sourceTree = "<group>"; };
 		8FB0AC761F73B26400102112 /* CafeTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeTestModel.swift; sourceTree = "<group>"; };
 		8FB0AC7B1F73BA4700102112 /* TestConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
 		8FB0AC7D1F73BBF000102112 /* GetItemsPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemsPreview.swift; sourceTree = "<group>"; };
+		8FB0AC7F1F73BDE100102112 /* GetItemLive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemLive.swift; sourceTree = "<group>"; };
 		8FF9211C1F5818BB001A95D9 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KenticoCloud_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4910C3C291811E12E837C8C /* Pods-KenticoCloud_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example/Pods-KenticoCloud_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -286,8 +288,9 @@
 		8FB0AC711F73B26400102112 /* DeliveryTests */ = {
 			isa = PBXGroup;
 			children = (
-				8FB0AC721F73B26400102112 /* GetItemsLiveSpec.swift */,
+				8FB0AC721F73B26400102112 /* GetItemsLive.swift */,
 				8FB0AC7D1F73BBF000102112 /* GetItemsPreview.swift */,
+				8FB0AC7F1F73BDE100102112 /* GetItemLive.swift */,
 				8FB0AC741F73B26400102112 /* TestModels */,
 			);
 			path = DeliveryTests;
@@ -571,9 +574,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FB0AC771F73B26400102112 /* GetItemsLiveSpec.swift in Sources */,
+				8FB0AC771F73B26400102112 /* GetItemsLive.swift in Sources */,
 				8FB0AC791F73B26400102112 /* ArticleTestModel.swift in Sources */,
 				8FB0AC7A1F73B26400102112 /* CafeTestModel.swift in Sources */,
+				8FB0AC801F73BDE100102112 /* GetItemLive.swift in Sources */,
 				8FB0AC7E1F73BBF000102112 /* GetItemsPreview.swift in Sources */,
 				8FB0AC7C1F73BA4700102112 /* TestConstants.swift in Sources */,
 			);

@@ -36,13 +36,13 @@ public class DeliveryClient {
         sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (Bool, T?, Error?) -> ()) throws where T: Mappable {
+    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (Bool, T?, Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemRequestUrl(itemName: itemName, language: language)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, T?, Error?) -> ()) throws where T: Mappable {
+    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, T?, Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemRequestUrl(customQuery: customQuery)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
