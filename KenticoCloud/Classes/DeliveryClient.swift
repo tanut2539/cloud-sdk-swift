@@ -48,6 +48,12 @@ public class DeliveryClient {
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
+    public func getTaxonomyGroup(taxonomyGroupName: String, completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
+        
+        let requestUrl = getTaxonomyGroupRequestUrl(taxonomyGroupName: taxonomyGroupName)
+        sendGetTaxonomyGroupRequest(url: requestUrl, completionHandler: completionHandler)
+    }
+    
     private func sendGetItemsRequest<T>(url: String, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) where T: Mappable {
         Alamofire.request(url, headers: self.headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
             
@@ -90,6 +96,27 @@ public class DeliveryClient {
         }
     }
     
+    private func sendGetTaxonomyGroupRequest(url: String, completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
+        Alamofire.request(url, headers: self.headers).responseArray(keyPath: "terms") { (response: DataResponse<[TaxonomyGroup]>) in
+            
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    if self.isDebugLoggingEnabled {
+                        print("[Kentico Cloud] Getting taxonomies successful.")
+                    }
+                    completionHandler(true, value, nil)
+                }
+            case .failure(let error):
+                if self.isDebugLoggingEnabled {
+                    print("[Kentico Cloud] Getting taxonomies failed. Check requested URL: \(url)")
+                }
+                
+                completionHandler(false, [], error)
+            }
+        }
+    }
+    
     private func getItemsRequestUrl(queryParameters: [QueryParameter?]) -> String {
         
         let endpoint = getEndpoint()
@@ -124,6 +151,12 @@ public class DeliveryClient {
         }
         
         return "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
+    }
+    
+    private func getTaxonomyGroupRequestUrl(taxonomyGroupName: String) -> String {
+        let endpoint = getEndpoint()
+        
+        return "\(endpoint)/\(projectId)/taxonomies/\(taxonomyGroupName)"
     }
     
     private func getEndpoint() -> String {
