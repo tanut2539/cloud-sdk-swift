@@ -48,9 +48,9 @@ public class DeliveryClient {
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getTaxonomies(completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
+    public func getTaxonomies(customQuery: String? = nil, completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
         
-        let requestUrl = getTaxonomiesRequestUrl()
+        let requestUrl = getTaxonomiesRequestUrl(customQuery: customQuery)
         sendGetTaxonomiesRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
@@ -180,10 +180,15 @@ public class DeliveryClient {
         return "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
     }
     
-    private func getTaxonomiesRequestUrl() -> String {
+    private func getTaxonomiesRequestUrl(customQuery: String?) -> String {
         let endpoint = getEndpoint()
+        var queryString = ""
+        if let customQuery = customQuery {
+            queryString = "?\(customQuery)"
+        }
         
-        return "\(endpoint)/\(projectId)/taxonomies"
+        
+        return "\(endpoint)/\(projectId)/taxonomies\(queryString)"
     }
     
     private func getTaxonomyRequestUrl(taxonomyName: String) -> String {

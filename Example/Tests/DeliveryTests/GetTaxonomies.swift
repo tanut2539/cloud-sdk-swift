@@ -19,7 +19,7 @@ class GetTaxonomiesSpec: QuickSpec {
             //MARK: Get all taxonomies
             context("getting all taxonomies", {
                 
-                it("returns list of taxonomies") {
+                it("returns list of all taxonomies") {
                     
                     waitUntil(timeout: 5) { done in
                         client.getTaxonomies(completionHandler: { (isSuccess, items, error) in
@@ -31,6 +31,30 @@ class GetTaxonomiesSpec: QuickSpec {
                                 let fstLvl = taxonomies[0].terms?[1].codename
                                 let sndLvl = taxonomies[1].terms?[1].codename
                                 expect(fstLvl) == "coffee_enthusiast"
+                                expect(sndLvl) == "bestseller"
+                                done()
+                            }
+                        })
+                    }
+                }
+            })
+            
+            //MARK: Get taxonomies with custom query
+            context("getting taxonomies with custom query", {
+                
+                it("returns list of required taxonomies") {
+                    
+                    waitUntil(timeout: 5) { done in
+                        let customQuery = "skip=1&limit=1"
+                        client.getTaxonomies(customQuery: customQuery, completionHandler: { (isSuccess, items, error) in
+                            if !isSuccess {
+                                fail("Response is not successful. Error: \(String(describing: error))")
+                            }
+                            
+                            if let taxonomies = items {
+                                let count = taxonomies.count
+                                let sndLvl = taxonomies[0].terms?[1].codename
+                                expect(count) == 1
                                 expect(sndLvl) == "bestseller"
                                 done()
                             }
