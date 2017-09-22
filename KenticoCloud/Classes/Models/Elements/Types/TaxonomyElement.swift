@@ -28,4 +28,24 @@ public class TaxonomyElement: Mappable {
         taxonomyGroup <- map["elements.\(elementName).taxonomy_group"]
         value <- map["elements.\(elementName).value"]
     }
+    
+    public func containsCodename(codename: String) -> Bool {
+        if let taxonomies = value {
+            if taxonomies.contains(where: { taxonomy in taxonomy.codename == codename }) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    public func containsName(name: String) -> Bool {
+        if let taxonomies = value {
+            if taxonomies.contains(where: { taxonomy in taxonomy.name == name }) {
+                return true
+            }
+        }
+        
+        return false
+    }
 }

@@ -40,6 +40,7 @@
 		8FB0AC871F73DBC900102112 /* Tracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC861F73DBC900102112 /* Tracking.swift */; };
 		8FB0AC891F73E05200102112 /* GetTaxonomyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC881F73E05200102112 /* GetTaxonomyGroup.swift */; };
 		8FB0ACB91F73F41000102112 /* GetTaxonomies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0ACB81F73F41000102112 /* GetTaxonomies.swift */; };
+		8FB0ACF91F752FE800102112 /* CallToAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0ACF81F752FE800102112 /* CallToAction.swift */; };
 		8FF9211D1F5818BB001A95D9 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF9211C1F5818BB001A95D9 /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +95,7 @@
 		8FB0AC861F73DBC900102112 /* Tracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tracking.swift; sourceTree = "<group>"; };
 		8FB0AC881F73E05200102112 /* GetTaxonomyGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaxonomyGroup.swift; sourceTree = "<group>"; };
 		8FB0ACB81F73F41000102112 /* GetTaxonomies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTaxonomies.swift; sourceTree = "<group>"; };
+		8FB0ACF81F752FE800102112 /* CallToAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallToAction.swift; sourceTree = "<group>"; };
 		8FF9211C1F5818BB001A95D9 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		99725F4007DE4870CB827E90 /* Pods_KenticoCloud_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KenticoCloud_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4910C3C291811E12E837C8C /* Pods-KenticoCloud_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KenticoCloud_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KenticoCloud_Example/Pods-KenticoCloud_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				8F38071B1F6013C30008AFA1 /* Article.swift */,
 				8F38071C1F6013C30008AFA1 /* Cafe.swift */,
 				8F38071D1F6013C30008AFA1 /* Coffee.swift */,
+				8FB0ACF81F752FE800102112 /* CallToAction.swift */,
 			);
 			path = CloudModels;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				8F3807321F6013C30008AFA1 /* Coffee.swift in Sources */,
 				8F38073B1F6013C30008AFA1 /* ArticleTableViewCell.swift in Sources */,
 				8F3807361F6013C30008AFA1 /* CafesViewController.swift in Sources */,
+				8FB0ACF91F752FE800102112 /* CallToAction.swift in Sources */,
 				8F38073D1F6013C30008AFA1 /* CoffeeTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

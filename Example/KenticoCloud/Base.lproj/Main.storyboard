@@ -639,12 +639,19 @@
                                                 <color key="textColor" red="0.12549019610000001" green="0.51372549020000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="su1-vO-KE5">
+                                                <rect key="frame" x="66" y="249" width="213" height="30"/>
+                                                <color key="backgroundColor" red="0.12549019610000001" green="0.51372549020000002" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" title="Show me some smelling coffee"/>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="mAM-3v-ba3" firstAttribute="leading" secondItem="ALB-2W-yz5" secondAttribute="leading" id="0Jd-e1-rHU"/>
                                             <constraint firstItem="ALB-2W-yz5" firstAttribute="leading" secondItem="KjR-J7-Ju4" secondAttribute="leading" id="46H-Cx-oWR"/>
                                             <constraint firstItem="cyj-xg-hfo" firstAttribute="leading" secondItem="MZ6-TI-oGS" secondAttribute="leadingMargin" id="6ua-7C-tLZ"/>
+                                            <constraint firstItem="su1-vO-KE5" firstAttribute="top" secondItem="rcg-uw-JeX" secondAttribute="bottom" constant="17" id="7Sp-50-I9m"/>
                                             <constraint firstAttribute="trailing" secondItem="mAM-3v-ba3" secondAttribute="trailing" constant="74" id="Bky-GT-3Fz"/>
                                             <constraint firstAttribute="trailing" secondItem="KjR-J7-Ju4" secondAttribute="trailing" constant="53" id="Cax-IY-8CU"/>
                                             <constraint firstItem="paT-FN-67d" firstAttribute="baseline" secondItem="KjR-J7-Ju4" secondAttribute="firstBaseline" id="ExM-dV-BIx"/>
@@ -654,7 +661,9 @@
                                             <constraint firstAttribute="trailing" secondItem="2r5-0z-7ak" secondAttribute="trailing" id="PCp-9P-f6X"/>
                                             <constraint firstItem="cyj-xg-hfo" firstAttribute="top" secondItem="fOb-t5-xeN" secondAttribute="bottom" constant="8" symbolic="YES" id="WSL-jr-UIr"/>
                                             <constraint firstItem="fOb-t5-xeN" firstAttribute="centerX" secondItem="MZ6-TI-oGS" secondAttribute="centerX" constant="-4" id="Xj0-zq-5XD"/>
+                                            <constraint firstItem="su1-vO-KE5" firstAttribute="centerX" secondItem="MZ6-TI-oGS" secondAttribute="centerX" constant="-15" id="YwW-rT-7am"/>
                                             <constraint firstAttribute="bottom" secondItem="2r5-0z-7ak" secondAttribute="bottom" constant="196.5" id="Z34-7o-Bhi"/>
+                                            <constraint firstItem="2r5-0z-7ak" firstAttribute="top" secondItem="su1-vO-KE5" secondAttribute="bottom" constant="8" id="Z8I-Fb-mQ7"/>
                                             <constraint firstItem="FZs-fv-2bN" firstAttribute="leading" secondItem="mAM-3v-ba3" secondAttribute="leading" id="Ze6-tW-7gb"/>
                                             <constraint firstItem="rcg-uw-JeX" firstAttribute="leading" secondItem="KjR-J7-Ju4" secondAttribute="leading" id="btn-fm-3wJ"/>
                                             <constraint firstItem="paT-FN-67d" firstAttribute="leading" secondItem="2r5-0z-7ak" secondAttribute="leading" constant="8" id="cWY-Gs-Kar"/>
@@ -697,6 +706,7 @@
                     </view>
                     <connections>
                         <outlet property="altitude" destination="ALB-2W-yz5" id="Qqy-2Z-Cf0"/>
+                        <outlet property="callToActionButton" destination="su1-vO-KE5" id="zDp-ga-yZU"/>
                         <outlet property="coffeeDescription" destination="2r5-0z-7ak" id="XN1-eP-Akl"/>
                         <outlet property="coffeeImage" destination="cyj-xg-hfo" id="B6C-x8-9kQ"/>
                         <outlet property="farm" destination="fOb-t5-xeN" id="0ly-to-wCZ"/>

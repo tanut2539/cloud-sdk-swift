@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import  KenticoCloud
 
 class CoffeeDetailViewController: UIViewController {
     @IBOutlet var coffeeDescription: UITextView!
@@ -16,8 +17,10 @@ class CoffeeDetailViewController: UIViewController {
     @IBOutlet var processing: UILabel!
     @IBOutlet var altitude: UILabel!
     @IBOutlet var coffeeImage: UIImageView!
+    @IBOutlet var callToActionButton: UIButton!
     
     var coffee: Coffee!
+    private var callToAction: CallToAction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,11 @@ class CoffeeDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        callToActionButton.isHidden = true
+        if let callToActionNames = coffee.callToActions?.value {
+            getCoffeeEnthusiastCta(callToActionNames: callToActionNames)
+        }
+        
         self.title = coffee.name?.value
         if let description = coffee.longDescription?.htmlContentString {
             do {
@@ -59,5 +67,34 @@ class CoffeeDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Get Call to Action for Coffee enthusiast persona only
+    private func getCoffeeEnthusiastCta(callToActionNames: [String?]) {
+        
+        for callToActionName in callToActionNames {
+            if let ctoName = callToActionName {
+                let client = DeliveryClient.init(projectId: AppConstants.projectId)
+                client.getItem(modelType: CallToAction.self, itemName: ctoName, completionHandler: {isSuccess, item, error in
+                    if isSuccess {
+                        if let cto = item {
+                            if (cto.persona?.containsName(name: "Coffee enthusiast"))! {
+                                self.callToAction = cto
+                                self.showCallToAction()
+                            }
+                        }
+                    } else {
+                        print("Error while getting CTOs. Error: \(String(describing: error))")
+                    }
+                })
+            }
+        }
+    }
+    
+    private func showCallToAction() {
+        if let titleText = self.callToAction?.actionButtonText?.value {
+            callToActionButton.setTitle(titleText, for: .normal)
+            callToActionButton.isHidden = false
+        }
     }
 }
