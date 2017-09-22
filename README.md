@@ -284,6 +284,13 @@ If you want to view debug info from both clients set client's `enableDebugLoggin
 let deliveryClient = DeliveryClient.init(projectId: "YOUR_PROJECT_ID", enableDebugLogging = true)
 let trackingClient = TrackingClient.init(projectId: "YOUR_PROJECT_ID", enableDebugLogging = true)
 ```
+## Further information
+
+For more developer resources, visit the Kentico Cloud Developer Hub at <https://developer.kenticocloud.com>.
+
+## Feedback & Contributing
+
+Check out the [contributing](https://github.com/Kentico/cloud-sample-app-swift/blob/master/CONTRIBUTING.md) page to see the best places to file issues, start discussions, and begin contributing.
 
 ## License
 
