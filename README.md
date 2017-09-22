@@ -290,7 +290,7 @@ For more developer resources, visit the Kentico Cloud Developer Hub at <https://
 
 ## Feedback & Contributing
 
-Check out the [contributing](https://github.com/Kentico/cloud-sample-app-swift/blob/master/CONTRIBUTING.md) page to see the best places to file issues, start discussions, and begin contributing.
+Check out the [contributing](https://github.com/Kentico/cloud-sdk-swift/blob/master/CONTRIBUTING.md) page to see the best places to file issues, start discussions, and begin contributing.
 
 ## License
 
