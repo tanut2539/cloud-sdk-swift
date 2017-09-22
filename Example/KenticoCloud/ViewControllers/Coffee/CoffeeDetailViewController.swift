@@ -21,6 +21,7 @@ class CoffeeDetailViewController: UIViewController {
     
     var coffee: Coffee!
     private var callToAction: CallToAction?
+    private var selectedCafes: SelectedCafes?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +70,18 @@ class CoffeeDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "coffeeDetailCtaSegue" {
+            
+            let coffeeDetailCtaViewController = segue.destination
+                as! CoffeeDetailCallToActionViewController
+            
+            coffeeDetailCtaViewController.callToAction = callToAction
+            coffeeDetailCtaViewController.selectedCafes = selectedCafes
+        }
+    }
+    
+    
     // Get Call to Action for Coffee enthusiast persona only
     private func getCoffeeEnthusiastCta(callToActionNames: [String?]) {
         
@@ -89,12 +102,26 @@ class CoffeeDetailViewController: UIViewController {
                 })
             }
         }
+        
+        let client = DeliveryClient.init(projectId: AppConstants.projectId)
+        client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, item, error in
+            if isSuccess {
+                if let selectedCafes = item {
+                    self.selectedCafes = selectedCafes
+                    self.showCallToAction()
+                }
+            } else {
+                print("Error while getting CTOs. Error: \(String(describing: error))")
+            }
+        })
     }
     
     private func showCallToAction() {
         if let titleText = self.callToAction?.actionButtonText?.value {
-            callToActionButton.setTitle(titleText, for: .normal)
-            callToActionButton.isHidden = false
+            if selectedCafes != nil {
+                callToActionButton.setTitle(titleText, for: .normal)
+                callToActionButton.isHidden = false
+            }
         }
     }
 }
