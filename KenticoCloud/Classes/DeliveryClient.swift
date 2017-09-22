@@ -48,10 +48,16 @@ public class DeliveryClient {
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getTaxonomyGroup(taxonomyGroupName: String, completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
+    public func getTaxonomies(completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
         
-        let requestUrl = getTaxonomyGroupRequestUrl(taxonomyGroupName: taxonomyGroupName)
-        sendGetTaxonomyGroupRequest(url: requestUrl, completionHandler: completionHandler)
+        let requestUrl = getTaxonomiesRequestUrl()
+        sendGetTaxonomiesRequest(url: requestUrl, completionHandler: completionHandler)
+    }
+    
+    public func getTaxonomyGroup(taxonomyGroupName: String, completionHandler: @escaping (Bool, TaxonomyGroup?, Error?) -> ()) {
+        
+        let requestUrl = getTaxonomyRequestUrl(taxonomyName: taxonomyGroupName)
+        sendGetTaxonomyRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
     private func sendGetItemsRequest<T>(url: String, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) where T: Mappable {
@@ -96,8 +102,8 @@ public class DeliveryClient {
         }
     }
     
-    private func sendGetTaxonomyGroupRequest(url: String, completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
-        Alamofire.request(url, headers: self.headers).responseArray(keyPath: "terms") { (response: DataResponse<[TaxonomyGroup]>) in
+    private func sendGetTaxonomiesRequest(url: String, completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
+        Alamofire.request(url, headers: self.headers).responseArray(keyPath: "taxonomies") { (response: DataResponse<[TaxonomyGroup]>) in
             
             switch response.result {
             case .success:
@@ -113,6 +119,27 @@ public class DeliveryClient {
                 }
                 
                 completionHandler(false, [], error)
+            }
+        }
+    }
+    
+    private func sendGetTaxonomyRequest(url: String, completionHandler: @escaping (Bool, TaxonomyGroup?, Error?) -> ()) {
+        Alamofire.request(url, headers: self.headers).responseObject { (response: DataResponse<TaxonomyGroup>) in
+            
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    if self.isDebugLoggingEnabled {
+                        print("[Kentico Cloud] Getting taxonomies successful.")
+                    }
+                    completionHandler(true, value, nil)
+                }
+            case .failure(let error):
+                if self.isDebugLoggingEnabled {
+                    print("[Kentico Cloud] Getting taxonomies failed. Check requested URL: \(url)")
+                }
+                
+                completionHandler(false, nil, error)
             }
         }
     }
@@ -153,10 +180,16 @@ public class DeliveryClient {
         return "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
     }
     
-    private func getTaxonomyGroupRequestUrl(taxonomyGroupName: String) -> String {
+    private func getTaxonomiesRequestUrl() -> String {
         let endpoint = getEndpoint()
         
-        return "\(endpoint)/\(projectId)/taxonomies/\(taxonomyGroupName)"
+        return "\(endpoint)/\(projectId)/taxonomies"
+    }
+    
+    private func getTaxonomyRequestUrl(taxonomyName: String) -> String {
+        let endpoint = getEndpoint()
+        
+        return "\(endpoint)/\(projectId)/taxonomies/\(taxonomyName)"
     }
     
     private func getEndpoint() -> String {
