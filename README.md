@@ -1,5 +1,5 @@
 
-# KenticoCloud
+# Kentico Cloud swift SDK
 
 [![CI Status](http://img.shields.io/travis/martinmakarsky@gmail.com/KenticoCloud.svg?style=flat)](https://travis-ci.org/martinmakarsky@gmail.com/KenticoCloud)
 [![Version](https://img.shields.io/cocoapods/v/KenticoCloud.svg?style=flat)](http://cocoapods.org/pods/KenticoCloud)
