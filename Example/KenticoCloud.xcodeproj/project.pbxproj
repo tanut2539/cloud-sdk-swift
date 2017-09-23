@@ -23,7 +23,6 @@
 		8F3807371F6013C30008AFA1 /* NotificationCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807251F6013C30008AFA1 /* NotificationCafeViewController.swift */; };
 		8F3807381F6013C30008AFA1 /* CoffeeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807271F6013C30008AFA1 /* CoffeeDetailViewController.swift */; };
 		8F3807391F6013C30008AFA1 /* CoffeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807281F6013C30008AFA1 /* CoffeesViewController.swift */; };
-		8F38073A1F6013C30008AFA1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072A1F6013C30008AFA1 /* MenuViewController.swift */; };
 		8F38073B1F6013C30008AFA1 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072C1F6013C30008AFA1 /* ArticleTableViewCell.swift */; };
 		8F38073C1F6013C30008AFA1 /* CafeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072D1F6013C30008AFA1 /* CafeTableViewCell.swift */; };
 		8F38073D1F6013C30008AFA1 /* CoffeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072E1F6013C30008AFA1 /* CoffeeTableViewCell.swift */; };
@@ -80,7 +79,6 @@
 		8F3807251F6013C30008AFA1 /* NotificationCafeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCafeViewController.swift; sourceTree = "<group>"; };
 		8F3807271F6013C30008AFA1 /* CoffeeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeDetailViewController.swift; sourceTree = "<group>"; };
 		8F3807281F6013C30008AFA1 /* CoffeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeesViewController.swift; sourceTree = "<group>"; };
-		8F38072A1F6013C30008AFA1 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8F38072C1F6013C30008AFA1 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		8F38072D1F6013C30008AFA1 /* CafeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeTableViewCell.swift; sourceTree = "<group>"; };
 		8F38072E1F6013C30008AFA1 /* CoffeeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeTableViewCell.swift; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 				8F38071F1F6013C30008AFA1 /* Article */,
 				8F3807221F6013C30008AFA1 /* Cafe */,
 				8F3807261F6013C30008AFA1 /* Coffee */,
-				8F3807291F6013C30008AFA1 /* Menu */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -280,14 +277,6 @@
 				8FB0ACFA1F753EDD00102112 /* CoffeeDetailCallToActionViewController.swift */,
 			);
 			path = Coffee;
-			sourceTree = "<group>";
-		};
-		8F3807291F6013C30008AFA1 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				8F38072A1F6013C30008AFA1 /* MenuViewController.swift */,
-			);
-			path = Menu;
 			sourceTree = "<group>";
 		};
 		8F38072B1F6013C30008AFA1 /* Views */ = {
@@ -552,7 +541,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/FAPanels/FAPanels.framework",
 				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
 				"${BUILT_PRODUCTS_DIR}/KenticoCloud/KenticoCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -562,7 +550,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FAPanels.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KenticoCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -589,7 +576,6 @@
 				8F3807351F6013C30008AFA1 /* CafeDetailViewController.swift in Sources */,
 				8F38073C1F6013C30008AFA1 /* CafeTableViewCell.swift in Sources */,
 				8F3807331F6013C30008AFA1 /* ArticleDetailViewController.swift in Sources */,
-				8F38073A1F6013C30008AFA1 /* MenuViewController.swift in Sources */,
 				8F3807341F6013C30008AFA1 /* ArticlesViewController.swift in Sources */,
 				8FF9211D1F5818BB001A95D9 /* AppConstants.swift in Sources */,
 				8F3807301F6013C30008AFA1 /* Article.swift in Sources */,

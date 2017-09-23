@@ -73,10 +73,7 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
             articleDetailViewController.image = cell.photo.image!
         }
     }
-    
-    @IBAction func showMenu(_ sender: Any) {
-        panel?.openLeft(animated: true)
-    }
+
     
     private func getArticles() {
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FAPanels
 import KenticoCloud
 import UserNotifications
 
@@ -25,18 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         configureNavigationBarAppearance()
-        
-        //  Load the Controllers
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let menu: MenuViewController = mainStoryboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        
-        let center: CafesViewController = mainStoryboard.instantiateViewController(withIdentifier: "CafesViewController") as! CafesViewController
-        let centerNavigationViewController = UINavigationController(rootViewController: center)
-        
-        //  Set the Panel controllers
-        let rootController: FAPanelController = window?.rootViewController as! FAPanelController
-        _ = rootController.center(centerNavigationViewController).left(menu)
         
         return true
     }
