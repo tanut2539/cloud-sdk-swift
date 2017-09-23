@@ -21,7 +21,7 @@ class CoffeeDetailViewController: UIViewController {
     
     var coffee: Coffee!
     private var callToAction: CallToAction?
-    private var selectedCafes: SelectedCafes?
+    private var selectedCafes: [Cafe?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +77,7 @@ class CoffeeDetailViewController: UIViewController {
                 as! CoffeeDetailCallToActionViewController
             
             coffeeDetailCtaViewController.callToAction = callToAction
-            coffeeDetailCtaViewController.selectedCafes = selectedCafes
+            coffeeDetailCtaViewController.cafes = selectedCafes
         }
     }
     
@@ -93,7 +93,7 @@ class CoffeeDetailViewController: UIViewController {
                         if let cto = itemResponse?.item {
                             if (cto.persona?.containsName(name: "Coffee enthusiast"))! {
                                 self.callToAction = cto
-                                self.showCallToAction()
+                                self.updateCallToActionButton()
                             }
                         }
                     } else {
@@ -103,6 +103,7 @@ class CoffeeDetailViewController: UIViewController {
             }
         }
         
+        // Get SelectedCafes
         let client = DeliveryClient.init(projectId: AppConstants.projectId)
         client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, itemResponse, error in
             if isSuccess {
@@ -112,7 +113,8 @@ class CoffeeDetailViewController: UIViewController {
                         cafes.append(itemResponse?.getModularContent(codename: cafeCodename, type: Cafe.self))
                     }
                     
-                    self.showCallToAction()
+                    self.selectedCafes = cafes as! [Cafe]
+                    self.updateCallToActionButton()
                 }
             } else {
                 print("Error while getting CTOs. Error: \(String(describing: error))")
@@ -120,9 +122,9 @@ class CoffeeDetailViewController: UIViewController {
         })
     }
     
-    private func showCallToAction() {
+    private func updateCallToActionButton() {
         if let titleText = self.callToAction?.actionButtonText?.value {
-            if selectedCafes != nil {
+            if selectedCafes.count > 0 {
                 callToActionButton.setTitle(titleText, for: .normal)
                 callToActionButton.isHidden = false
             }

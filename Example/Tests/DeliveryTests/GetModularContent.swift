@@ -12,11 +12,11 @@ import KenticoCloud
 
 class GetModularContentItemSpec: QuickSpec {
     override func spec() {
-        describe("Get modular content from Item response") {
+        describe("Get modular content ") {
             
             let client = DeliveryClient.init(projectId: TestConstants.projectId)
             
-            context("using specific codename", {
+            context("from ItemResponse using specific codename", {
                 
                 it("returns modualr content item") {
                     waitUntil(timeout: 5) { done in
@@ -36,6 +36,29 @@ class GetModularContentItemSpec: QuickSpec {
                     }
                 }
             })
+            
+            context("from ItemsResponse using specific codename", {
+                
+                it("returns modualr content item") {
+                    waitUntil(timeout: 5) { done in
+                        let contentTypeParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: "article")
+                        client.getItems(modelType: ArticleTestModel.self, queryParameters: [contentTypeParameter], completionHandler:  { (isSuccess, itemsResponse, error) in
+                            if !isSuccess {
+                                fail("Response is not successful. Error: \(String(describing: error))")
+                            }
+                            
+                            if let items = itemsResponse?.items {
+                                let itemRelatedContent = items[1].relatedContent
+                                let originsOfArabicaCodeName = itemRelatedContent?.value?[0]
+                                let coffeeItem = itemsResponse?.getModularContent(codename: originsOfArabicaCodeName!, type: ArticleTestModel.self)
+                                expect(coffeeItem?.title?.value) == "On roasts"
+                                done()
+                            }
+                        })
+                    }
+                }
+            })
+            
         }
     }
 }

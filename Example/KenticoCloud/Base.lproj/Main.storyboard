@@ -616,7 +616,7 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2r5-0z-7ak">
                                                 <rect key="frame" x="0.0" y="287" width="375" height="295.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -722,10 +722,10 @@
             </objects>
             <point key="canvasLocation" x="1216.8" y="1324.5877061469266"/>
         </scene>
-        <!--View Controller-->
+        <!--Coffee Detail Call To Action View Controller-->
         <scene sceneID="VOA-Dl-sul">
             <objects>
-                <viewController id="8vc-C0-LeV" sceneMemberID="viewController">
+                <viewController id="8vc-C0-LeV" customClass="CoffeeDetailCallToActionViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K8b-EX-AjT"/>
                         <viewControllerLayoutGuide type="bottom" id="Vw4-wi-Qxs"/>
@@ -734,24 +734,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y6d-Lj-5fc">
-                                <rect key="frame" x="67" y="223" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to CTA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEx-id-XPx">
-                                <rect key="frame" x="124" y="142" width="127" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to CTA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEx-id-XPx">
+                                <rect key="frame" x="248" y="72" width="127" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y6d-Lj-5fc">
+                                <rect key="frame" x="0.0" y="137" width="375" height="335"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y6d-Lj-5fc" firstAttribute="top" secondItem="GEx-id-XPx" secondAttribute="bottom" constant="44" id="06C-LS-mJi"/>
+                            <constraint firstItem="Vw4-wi-Qxs" firstAttribute="top" secondItem="Y6d-Lj-5fc" secondAttribute="bottom" constant="195" id="LYq-d2-aye"/>
+                            <constraint firstItem="GEx-id-XPx" firstAttribute="top" secondItem="K8b-EX-AjT" secondAttribute="bottom" constant="8" symbolic="YES" id="S13-82-HA4"/>
+                            <constraint firstItem="GEx-id-XPx" firstAttribute="trailing" secondItem="Y6d-Lj-5fc" secondAttribute="trailing" id="hCx-Aj-YvW"/>
+                            <constraint firstAttribute="trailing" secondItem="GEx-id-XPx" secondAttribute="trailing" id="sEW-OY-Wa5"/>
+                            <constraint firstItem="Y6d-Lj-5fc" firstAttribute="leading" secondItem="XiG-LV-GJ9" secondAttribute="leading" id="wvk-gF-xWc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="Y6d-Lj-5fc" id="nLK-q2-H0i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tz1-nW-JU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1966" y="1325"/>
+            <point key="canvasLocation" x="1965.5" y="1324.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ayl-QN-mdn">
