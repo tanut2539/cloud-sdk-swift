@@ -51,7 +51,7 @@ class GetModularContentItemSpec: QuickSpec {
                                 let itemRelatedContent = items[1].relatedContent
                                 let originsOfArabicaCodeName = itemRelatedContent?.value?[0]
                                 let coffeeItem = itemsResponse?.getModularContent(codename: originsOfArabicaCodeName!, type: ArticleTestModel.self)
-                                expect(coffeeItem?.title?.value) == "On roasts"
+                                expect(coffeeItem?.title?.value) == "On Roasts"
                                 done()
                             }
                         })
