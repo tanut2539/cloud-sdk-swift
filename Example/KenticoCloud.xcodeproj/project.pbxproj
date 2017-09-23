@@ -29,6 +29,7 @@
 		8F38073D1F6013C30008AFA1 /* CoffeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072E1F6013C30008AFA1 /* CoffeeTableViewCell.swift */; };
 		8F38073E1F6013C30008AFA1 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072F1F6013C30008AFA1 /* MenuTableViewCell.swift */; };
 		8F7465E11F45D36300908DF5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7465E01F45D36300908DF5 /* UserNotifications.framework */; };
+		8FA7D8A71F768B000057C590 /* GetModularContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7D8A31F7687180057C590 /* GetModularContent.swift */; };
 		8FB0AC771F73B26400102112 /* GetItemsLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC721F73B26400102112 /* GetItemsLive.swift */; };
 		8FB0AC791F73B26400102112 /* ArticleTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC751F73B26400102112 /* ArticleTestModel.swift */; };
 		8FB0AC7A1F73B26400102112 /* CafeTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC761F73B26400102112 /* CafeTestModel.swift */; };
@@ -86,6 +87,7 @@
 		8F38072F1F6013C30008AFA1 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		8F7465DF1F45D2EC00908DF5 /* KenticoCloud_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KenticoCloud_Example.entitlements; sourceTree = "<group>"; };
 		8F7465E01F45D36300908DF5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		8FA7D8A31F7687180057C590 /* GetModularContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetModularContent.swift; sourceTree = "<group>"; };
 		8FB0AC721F73B26400102112 /* GetItemsLive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemsLive.swift; sourceTree = "<group>"; };
 		8FB0AC751F73B26400102112 /* ArticleTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTestModel.swift; sourceTree = "<group>"; };
 		8FB0AC761F73B26400102112 /* CafeTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeTestModel.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				8FB0AC811F73C4C600102112 /* GetItemPreview.swift */,
 				8FB0AC881F73E05200102112 /* GetTaxonomyGroup.swift */,
 				8FB0ACB81F73F41000102112 /* GetTaxonomies.swift */,
+				8FA7D8A31F7687180057C590 /* GetModularContent.swift */,
 				8FB0AC741F73B26400102112 /* TestModels */,
 			);
 			path = DeliveryTests;
@@ -612,6 +615,7 @@
 				8FB0AC891F73E05200102112 /* GetTaxonomyGroup.swift in Sources */,
 				8FB0AC851F73D77200102112 /* StartSession.swift in Sources */,
 				8FB0AC801F73BDE100102112 /* GetItemLive.swift in Sources */,
+				8FA7D8A71F768B000057C590 /* GetModularContent.swift in Sources */,
 				8FB0AC7E1F73BBF000102112 /* GetItemsPreview.swift in Sources */,
 				8FB0AC7C1F73BA4700102112 /* TestConstants.swift in Sources */,
 			);
