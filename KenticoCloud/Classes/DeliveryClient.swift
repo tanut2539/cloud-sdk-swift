@@ -36,13 +36,13 @@ public class DeliveryClient {
         sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (Bool, DeliveryItem<T>?, Error?) -> ()) where T: Mappable {
+    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (Bool, ItemResponse<T>?, Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemRequestUrl(itemName: itemName, language: language)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, DeliveryItem<T>?, Error?) -> ()) where T: Mappable {
+    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, ItemResponse<T>?, Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemRequestUrl(customQuery: customQuery)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
@@ -81,8 +81,8 @@ public class DeliveryClient {
         }
     }
     
-    private func sendGetItemRequest<T>(url: String, completionHandler: @escaping (Bool, DeliveryItem<T>?, Error?) -> ()) where T: Mappable {
-        Alamofire.request(url, headers: self.headers).responseObject() { (response: DataResponse<DeliveryItem<T>>) in
+    private func sendGetItemRequest<T>(url: String, completionHandler: @escaping (Bool, ItemResponse<T>?, Error?) -> ()) where T: Mappable {
+        Alamofire.request(url, headers: self.headers).responseObject() { (response: DataResponse<ItemResponse<T>>) in
             
             switch response.result {
             case .success:

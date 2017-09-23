@@ -88,9 +88,9 @@ class CoffeeDetailViewController: UIViewController {
         for callToActionName in callToActionNames {
             if let ctoName = callToActionName {
                 let client = DeliveryClient.init(projectId: AppConstants.projectId)
-                client.getItem(modelType: CallToAction.self, itemName: ctoName, completionHandler: {isSuccess, deliveryItem, error in
+                client.getItem(modelType: CallToAction.self, itemName: ctoName, completionHandler: {isSuccess, itemResponse, error in
                     if isSuccess {
-                        if let cto = deliveryItem?.item {
+                        if let cto = itemResponse?.item {
                             if (cto.persona?.containsName(name: "Coffee enthusiast"))! {
                                 self.callToAction = cto
                                 self.showCallToAction()
@@ -107,7 +107,11 @@ class CoffeeDetailViewController: UIViewController {
         client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, itemResponse, error in
             if isSuccess {
                 if let selectedCafes = itemResponse?.item {
-                    self.selectedCafes = selectedCafes
+                    var cafes : [Cafe?] = []
+                    for cafeCodename in (selectedCafes.handpickedCafes?.value)! {
+                        cafes.append(itemResponse?.getModularContent(codename: cafeCodename, type: Cafe.self))
+                    }
+                    
                     self.showCallToAction()
                 }
             } else {
