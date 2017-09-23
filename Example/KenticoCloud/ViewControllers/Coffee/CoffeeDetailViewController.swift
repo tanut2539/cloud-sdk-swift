@@ -104,9 +104,9 @@ class CoffeeDetailViewController: UIViewController {
         }
         
         let client = DeliveryClient.init(projectId: AppConstants.projectId)
-        client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, deliveryItem, error in
+        client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, itemResponse, error in
             if isSuccess {
-                if let selectedCafes = deliveryItem?.item {
+                if let selectedCafes = itemResponse?.item {
                     self.selectedCafes = selectedCafes
                     self.showCallToAction()
                 }

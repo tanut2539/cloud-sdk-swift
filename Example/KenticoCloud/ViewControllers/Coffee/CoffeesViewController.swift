@@ -104,9 +104,9 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         let coffeesQueryParameters = [contentTypeQueryParameter]
         
-        cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, deliveryItems, error) in
+        cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, itemsResponse, error) in
                 if isSuccess {
-                    if let coffees = deliveryItems?.items {
+                    if let coffees = itemsResponse?.items {
                         self.coffees = coffees.sorted { ($0.promotion!.containsCodename(codename: "featured")) && (!$1.promotion!.containsCodename(codename: "featured")) }
                         self.tableView.reloadData()
                     }

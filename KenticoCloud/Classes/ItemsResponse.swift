@@ -8,7 +8,8 @@
 
 import ObjectMapper
 
-public class DeliveryItems<T>: Mappable where T: Mappable {
+public class ItemsResponse<T>: Mappable where T: Mappable {
+    public var deliveryItems: [DeliveryItem<T>]?
     public var items: [T]?
     
     
@@ -16,6 +17,7 @@ public class DeliveryItems<T>: Mappable where T: Mappable {
     }
     
     public func mapping(map: Map) {
+        deliveryItems <- map["items"]
         items <- map["items"]
     }
 }
