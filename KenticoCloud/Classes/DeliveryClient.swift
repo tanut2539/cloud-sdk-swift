@@ -24,25 +24,25 @@ public class DeliveryClient {
         self.headers = getHeaders()
     }
     
-    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter?], completionHandler: @escaping (Bool, [T]?, Error?) -> ()) where T: Mappable {
+    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter?], completionHandler: @escaping (Bool, DeliveryItems<T>?, Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemsRequestUrl(queryParameters: queryParameters)
         sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItems<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) where T: Mappable {
+    public func getItems<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, DeliveryItems<T>?, Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemsRequestUrl(customQuery: customQuery)
         sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (Bool, T?, Error?) -> ()) where T: Mappable {
+    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (Bool, DeliveryItem<T>?, Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemRequestUrl(itemName: itemName, language: language)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, T?, Error?) -> ()) where T: Mappable {
+    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, DeliveryItem<T>?, Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemRequestUrl(customQuery: customQuery)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
@@ -60,18 +60,17 @@ public class DeliveryClient {
         sendGetTaxonomyRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    private func sendGetItemsRequest<T>(url: String, completionHandler: @escaping (Bool, [T]?, Error?) -> ()) where T: Mappable {
-        Alamofire.request(url, headers: self.headers).responseArray(keyPath: "items") { (response: DataResponse<[T]>) in
+    private func sendGetItemsRequest<T>(url: String, completionHandler: @escaping (Bool, DeliveryItems<T>?, Error?) -> ()) where T: Mappable {
+        Alamofire.request(url, headers: self.headers).responseObject { (response: DataResponse<DeliveryItems<T>>) in
             
             switch response.result {
             case .success:
                 if let value = response.result.value {
-                    var items = [T]()
-                    items = value
+                    let deliveryItems = value
                     if self.isDebugLoggingEnabled {
-                        print("[Kentico Cloud] Getting items is successful. Obtained \(items.count) items.")
+                        print("[Kentico Cloud] Getting items is successful. Obtained \(String(describing: deliveryItems.items?.count)) items.")
                     }
-                    completionHandler(true, items, nil)
+                    completionHandler(true, deliveryItems, nil)
                 }
             case .failure(let error):
                 if self.isDebugLoggingEnabled {
@@ -82,8 +81,8 @@ public class DeliveryClient {
         }
     }
     
-    private func sendGetItemRequest<T>(url: String, completionHandler: @escaping (Bool, T?, Error?) -> ()) where T: Mappable {
-        Alamofire.request(url, headers: self.headers).responseObject(keyPath: "item") { (response: DataResponse<T>) in
+    private func sendGetItemRequest<T>(url: String, completionHandler: @escaping (Bool, DeliveryItem<T>?, Error?) -> ()) where T: Mappable {
+        Alamofire.request(url, headers: self.headers).responseObject() { (response: DataResponse<DeliveryItem<T>>) in
             
             switch response.result {
             case .success:

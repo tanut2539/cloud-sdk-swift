@@ -74,9 +74,9 @@ class NotificationCafeViewController: UIViewController {
     
     private func getCafe(name: String) {
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
-        cloudClient.getItem(modelType: Cafe.self, itemName: name) { (isSuccess, item, error) in
+        cloudClient.getItem(modelType: Cafe.self, itemName: name) { (isSuccess, deliveryItem, error) in
             if isSuccess {
-                if let cafe = item {
+                if let cafe = deliveryItem?.item {
                     self.cafe = cafe
                     self.setTitles(cafe: cafe)
                     self.setMap(cafe: cafe)

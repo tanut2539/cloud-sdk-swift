@@ -23,12 +23,12 @@ class GetItemPreviewSpec: QuickSpec {
                     
                     waitUntil(timeout: 5) { done in
                         client.getItem(modelType: CafeTestModel.self, itemName: "new_york", completionHandler:
-                            { (isSuccess, item, error) in
+                            { (isSuccess, deliveryItem, error) in
                                 if !isSuccess {
                                     fail("Response is not successful. Error: \(String(describing: error))")
                                 }
                                 
-                                if let country = item?.country {
+                                if let country = deliveryItem?.item?.country {
                                     let expectedCountry = "USA"
                                     expect(country) == expectedCountry
                                     done()
@@ -46,12 +46,12 @@ class GetItemPreviewSpec: QuickSpec {
                     let customQuery = "items/new_york?elements=country"
                     
                     waitUntil(timeout: 5) { done in
-                        client.getItem(modelType: CafeTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, item, error) in
+                        client.getItem(modelType: CafeTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, deliveryItem, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
                             }
                             
-                            if let country = item?.country {
+                            if let country = deliveryItem?.item?.country {
                                 let expectedCountry = "USA"
                                 expect(country) == expectedCountry
                                 done()
@@ -67,12 +67,12 @@ class GetItemPreviewSpec: QuickSpec {
                 it("returns proper item") {
                     
                     waitUntil(timeout: 5) { done in
-                        client.getItem(modelType: ArticleTestModel.self, itemName: "which_brewing_fits_you_", completionHandler: { (isSuccess, item, error) in
+                        client.getItem(modelType: ArticleTestModel.self, itemName: "which_brewing_fits_you_", completionHandler: { (isSuccess, deliveryItem, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
                             }
                             
-                            if let title = item?.title?.value {
+                            if let title = deliveryItem?.item?.title?.value {
                                 let expectedTitle = "Which brewing fits you?"
                                 expect(title) == expectedTitle
                                 done()
@@ -89,12 +89,12 @@ class GetItemPreviewSpec: QuickSpec {
                     let customQuery = "items/which_brewing_fits_you_?elements=title"
                     
                     waitUntil(timeout: 5) { done in
-                        client.getItem(modelType: ArticleTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, item, error) in
+                        client.getItem(modelType: ArticleTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, deliveryItem, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
                             }
                             
-                            if let title = item?.title?.value {
+                            if let title = deliveryItem?.item?.title?.value {
                                 let expectedTitle = "Which brewing fits you?"
                                 expect(title) == expectedTitle
                                 done()

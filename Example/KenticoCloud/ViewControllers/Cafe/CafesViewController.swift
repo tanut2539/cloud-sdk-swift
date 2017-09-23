@@ -93,9 +93,9 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
         let cafesQueryParameters = [typeQueryParameter, languageQueryParameter]
         
-        cloudClient.getItems(modelType: Cafe.self, queryParameters: cafesQueryParameters) { (isSuccess, items, error) in
+        cloudClient.getItems(modelType: Cafe.self, queryParameters: cafesQueryParameters) { (isSuccess, deliveryItems, error) in
             if isSuccess {
-                if let cafes = items {
+                if let cafes = deliveryItems?.items {
                     self.cafes = cafes
                     self.tableView.reloadData()
                 }

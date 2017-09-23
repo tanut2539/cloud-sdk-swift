@@ -9,17 +9,15 @@
 import ObjectMapper
 import KenticoCloud
 
-class SelectedCafes: DeliveryItem {
+class SelectedCafes: Mappable {
     var handpickedCafes: ModularContentElement?
     
     required init?(map: Map){
-        super.init(map: map)
-        
         let mapper = MapElement.init(map: map)
         handpickedCafes = mapper.map(elementName: "handpicked_cafes", elementType: ModularContentElement.self)
     }
     
-    override func mapping(map: Map) {
+    public func mapping(map: Map) {
         
     }
 }

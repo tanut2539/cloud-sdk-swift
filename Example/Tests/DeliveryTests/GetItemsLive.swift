@@ -24,13 +24,13 @@ class GetItemsLiveSpec: QuickSpec {
                     let contentTypeParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: "cafe")
                     
                     waitUntil(timeout: 5) { done in
-                        client.getItems(modelType: CafeTestModel.self, queryParameters: [contentTypeParameter], completionHandler: { (isSuccess, items, error) in
+                        client.getItems(modelType: CafeTestModel.self, queryParameters: [contentTypeParameter], completionHandler: { (isSuccess, deliveryItems, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
                             }
                             
-                            if let items = items {
-                                let itemsCount = items.count
+                            if let items = deliveryItems?.items {
+                                let itemsCount = deliveryItems?.items?.count
                                 let expectedCount = 10
                                 expect(itemsCount) == expectedCount
                                 done()
@@ -48,13 +48,13 @@ class GetItemsLiveSpec: QuickSpec {
                     let customQuery = "items?system.type=cafe&order=elements.country[desc]&limit=3"
                     
                     waitUntil(timeout: 5) { done in
-                        client.getItems(modelType: CafeTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, items, error) in
+                        client.getItems(modelType: CafeTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, deliveryItems, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
                             }
                             
-                            if let items = items {
-                                let itemsCount = items.count
+                            if let items = deliveryItems?.items {
+                                let itemsCount = deliveryItems?.items?.count
                                 let expectedCount = 3
                                 expect(itemsCount) == expectedCount
                                 done()
@@ -75,12 +75,12 @@ class GetItemsLiveSpec: QuickSpec {
                     let parameters = [contentTypeParameter, languageParameter]
                     
                     waitUntil(timeout: 5) { done in
-                        client.getItems(modelType: ArticleTestModel.self, queryParameters: parameters, completionHandler: { (isSuccess, items, error) in
+                        client.getItems(modelType: ArticleTestModel.self, queryParameters: parameters, completionHandler: { (isSuccess, deliveryItems, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
                             }
                             
-                            if let items = items {
+                            if let items = deliveryItems?.items {
                                 let itemsCount = items.count
                                 let expectedCount = 11
                                 expect(itemsCount) == expectedCount
@@ -97,12 +97,12 @@ class GetItemsLiveSpec: QuickSpec {
                     let customQuery = "items?system.type=article&order=elements.title[desc]"
                     
                     waitUntil(timeout: 5) { done in
-                        client.getItems(modelType: ArticleTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, items, error) in
+                        client.getItems(modelType: ArticleTestModel.self, customQuery: customQuery, completionHandler: { (isSuccess, deliveryItems, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
                             }
                             
-                            if let items = items {
+                            if let items = deliveryItems?.items {
                                 let itemsCount = items.count
                                 let expectedCount = 5
                                 expect(itemsCount) == expectedCount
