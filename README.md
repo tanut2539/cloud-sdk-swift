@@ -63,9 +63,9 @@ let articlesQueryParameters = [typeQueryParameter, languageQueryParameter]
  ```
  5. Get and use items
 ```swift
-client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, items, error) in
+client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, deliveryItems, error) in
     if isSuccess {
-        if let articles = items {
+        if let articles = deliveryItems?.items {
             // use your articles here
         }
     } else {
@@ -182,14 +182,14 @@ Once you have a `DeliveryClient` instance, you can start querying your project r
 - creating custom string query
 ```swift
 let customQuery = "items?system.type=article&order=elements.post_date[desc]"
-client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, items, error) in ...
+client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, deliveryItems, error) in ...
  ```
  - using query parameters array
  ```swift
  let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
 let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
 let coffeesQueryParameters = [contentTypeQueryParameter, languageQueryParameter]
-client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, items, error) in ...
+client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, deliveryItems, error) in ...
  ```
  
  Then you can use your obtained items in completetion handler like:
@@ -198,9 +198,9 @@ client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters)
  // Retrieves a list of all content items of certain type
 let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: "coffee")
 let coffeesQueryParameters = [contentTypeQueryParameter]
-client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, items, error) in
+client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, deliveryItems, error) in
         if isSuccess {
-            if let coffees = items {
+            if let coffees = deliveryItems?.items {
                 // Use your items here
             }
         } else {
@@ -215,9 +215,9 @@ You can also retrieve just a single item
 ```swift
 // Retrieves a single content item
 let client = DeliveryClient.init(projectId: "YOUR_PROJECT_ID")
-client.getItem(modelType: Cafe.self, itemName: "boston") { (isSuccess, item, error) in
+client.getItem(modelType: Cafe.self, itemName: "boston") { (isSuccess, deliveryItem, error) in
     if isSuccess {
-        if let cafe = item {
+        if let cafe = deliveryItem.item {
             // Use your item here
         }
     } else {
@@ -232,9 +232,9 @@ client.getItem(modelType: Cafe.self, itemName: "boston") { (isSuccess, item, err
 ### Get taxonomy group
 ```swift
 let client = DeliveryClient.init(projectId: "YOUR_PROJECT_ID")
-client.getTaxonomyGroup(taxonomyGroupName: "personas", completionHandler: { (isSuccess, item, error) in
+client.getTaxonomyGroup(taxonomyGroupName: "personas", completionHandler: { (isSuccess, deliveryItem, error) in
    if isSuccess {
-       if let taxonomyGroup = item {
+       if let taxonomyGroup = deliveryItems.item {
         // use your taxonomy group here
        }
     } else {
@@ -248,9 +248,9 @@ client.getTaxonomyGroup(taxonomyGroupName: "personas", completionHandler: { (isS
 ### Get all taxonomies
 ```swift
 let client = DeliveryClient.init(projectId: "YOUR_PROJECT_ID")
-client.getTaxonomies(completionHandler: { (isSuccess, items, error) in
+client.getTaxonomies(completionHandler: { (isSuccess, deliveryItems, error) in
    if isSuccess {
-       if let taxonomies = items {
+       if let taxonomies = deliveryItems?.items {
         // use your taxonomies here
        }
     } else {
