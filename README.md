@@ -7,7 +7,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/KenticoCloud.svg?style=flat)](http://cocoapods.org/pods/KenticoCloud)
 
 ## Summary
-The KenticoCloud iOS SDK is a library used for retrieving content and tracking activities. You can use the SDK in the form of a CocoaPod package or manually.
+The KenticoCloud iOS SDK is a library used for retrieving content and tracking activities. You can use the SDK in the form of a CocoaPod package or add it manually.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ To retrieve content from a Kentico Cloud project via the Delivery API, you first
 
 
 ## Quick start
-1. Add pod  
+**1. Add pod**  
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
@@ -29,7 +29,7 @@ end
 ```bash
 $ pod install
 ```
-2. Create type object - in this example it is `Article`. This is content type in Kentico Cloud which we want to get items for. This type has three elements with following codenames: `title` (is a text element),`easer_image` (is an asset element),`post_date` (is a DateTime element).
+**2. Create type object** - in this example it is `Article`. This is content type in Kentico Cloud which we want to get items for. This type has three elements with following codenames: `title` (is a text element),`easer_image` (is an asset element),`post_date` (is a DateTime element).
 ```swift
 import ObjectMapper
 
@@ -49,19 +49,19 @@ class Article: Mappable {
 
     }
  ```
-3. Prepare Delivery client
+**3. Prepare Delivery client**
 ```swift
 import KenticoCloud
 
 let client = DeliveryClient.init(projectId: "YOUR_PROJECT_ID")
  ```
-4. Prepare query
+**4. Prepare query**
 ```swift
 let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: "article")
 let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
 let articlesQueryParameters = [typeQueryParameter, languageQueryParameter]
  ```
- 5. Get and use items
+**5. Get and use items**
 ```swift
 client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, deliveryItems, error) in
     if isSuccess {
@@ -227,6 +227,19 @@ client.getItem(modelType: Cafe.self, itemName: "boston") { (isSuccess, deliveryI
     }
 }
 ```
+### Get modular content
+You can get modular content from `itemResponse` or `itemsResponse` object like:
+```swift
+let client = DeliveryClient.init(projectId: "YOUR_PROJECT_ID")
+client.getItem(modelType: Article.self, itemName: "on_roasts", completionHandler: { (isSuccess, itemResponse, error) in
+	if isSuccess {
+		let relatedArticle = itemResponse?.getModularContent(codename: "on_roasts", type: Article.self)
+	}
+}
+                            
+                         
+```
+
 ## Getting taxonomies
 
 ### Get taxonomy group
