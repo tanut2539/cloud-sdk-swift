@@ -63,9 +63,9 @@ let articlesQueryParameters = [typeQueryParameter, languageQueryParameter]
  ```
 **5. Get and use items**
 ```swift
-client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, deliveryItems, error) in
+client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, itemsResponse, error) in
     if isSuccess {
-        if let articles = deliveryItems?.items {
+        if let articles = itemsResponse?.items {
             // use your articles here
         }
     } else {
@@ -182,14 +182,14 @@ Once you have a `DeliveryClient` instance, you can start querying your project r
 - creating custom string query
 ```swift
 let customQuery = "items?system.type=article&order=elements.post_date[desc]"
-client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, deliveryItems, error) in ...
+client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, itemsResponse, error) in ...
  ```
  - using query parameters array
  ```swift
  let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
 let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
 let coffeesQueryParameters = [contentTypeQueryParameter, languageQueryParameter]
-client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, deliveryItems, error) in ...
+client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, itemsResponse, error) in ...
  ```
  
  Then you can use your obtained items in completetion handler like:
@@ -198,9 +198,9 @@ client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters)
  // Retrieves a list of all content items of certain type
 let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: "coffee")
 let coffeesQueryParameters = [contentTypeQueryParameter]
-client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, deliveryItems, error) in
+client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, itemsResponse, error) in
         if isSuccess {
-            if let coffees = deliveryItems?.items {
+            if let coffees = itemsResponse?.items {
                 // Use your items here
             }
         } else {
