@@ -22,8 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Register for notifications
         UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
         application.registerForRemoteNotifications()
-        
-        configureNavigationBarAppearance()
+        UINavigationBar.appearance().isHidden = true
         
         return true
     }
@@ -50,12 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    private func configureNavigationBarAppearance() {
-        UINavigationBar.appearance().barTintColor = UIColor(red: 178.0/255, green: 65.0/255, blue: 67.0/255, alpha: 1.0)
-        UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
     }
 
     // Called when APNs has assigned the device a unique token
