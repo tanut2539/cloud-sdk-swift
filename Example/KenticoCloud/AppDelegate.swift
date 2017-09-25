@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Register for notifications
         UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]){ (granted, error) in }
         application.registerForRemoteNotifications()
+        
+        // Appearance customization
+        UIApplication.shared.statusBarStyle = .default
         UINavigationBar.appearance().isHidden = true
         
         return true

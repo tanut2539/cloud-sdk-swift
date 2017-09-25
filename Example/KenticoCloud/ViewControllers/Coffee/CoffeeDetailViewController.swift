@@ -10,7 +10,7 @@ import UIKit
 import  KenticoCloud
 
 class CoffeeDetailViewController: UIViewController {
-    @IBOutlet var coffeeDescription: UITextView!
+    @IBOutlet var coffeeDescription: UILabel!
     @IBOutlet var price: UILabel!
     @IBOutlet var farm: UILabel!
     @IBOutlet var variety: UILabel!
@@ -129,5 +129,9 @@ class CoffeeDetailViewController: UIViewController {
                 callToActionButton.isHidden = false
             }
         }
+    }
+    
+    @IBAction func navigateBack(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
     }
 }

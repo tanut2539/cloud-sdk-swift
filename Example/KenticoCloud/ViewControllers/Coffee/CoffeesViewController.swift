@@ -40,58 +40,40 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {
-            return coffees.count
-        }
-        
         return 1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return coffees.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Fist cell is header static one
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeHeaderCell")!
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeCell") as! CoffeeTableViewCell
+        
+        let coffee = coffees[indexPath.row]
+        cell.title.text = coffee.name?.value
+        cell.coffeeDescription.text = coffee.shortDescription?.value
+        if let price = coffee.price?.value {
+            cell.price.text = "$ \(price) / 1lb"
         }
         
-        // Normal prototype coffee cell
-        if indexPath.section == 1 {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeCell") as! CoffeeTableViewCell
-            
-            let coffee = coffees[indexPath.row]
-            cell.title.text = coffee.name?.value
-            cell.coffeeDescription.text = coffee.shortDescription?.value
-            if let price = coffee.price?.value {
-                cell.price.text = "$ \(price) / 1lb"
+        if !((coffee.processing?.value?.isEmpty)!) {
+            if let processingTechnique = coffee.processing?.value?[0].name {
+                cell.processing.text = processingTechnique
             }
-            
-            if !((coffee.processing?.value?.isEmpty)!) {
-                if let processingTechnique = coffee.processing?.value?[0].name {
-                    cell.processing.text = processingTechnique
-                }
-            }
-            
-            if let imageUrl = coffee.photo?.value?[0].url {
-                let url = URL(string: imageUrl)
-                cell.photo.af_setImage(withURL: url!)
-            }
-            
-            if (coffee.promotion?.containsCodename(codename: "featured"))! {
-                cell.featured.isHidden = false
-            } else {
-                cell.featured.isHidden = true
-            }
-            
-            return cell
         }
         
-        // Default should never happen
-        let cell = UITableViewCell.init()
+        if let imageUrl = coffee.photo?.value?[0].url {
+            let url = URL(string: imageUrl)
+            cell.photo.af_setImage(withURL: url!)
+        }
+        
+        if (coffee.promotion?.containsCodename(codename: "featured"))! {
+            cell.featured.isHidden = false
+        } else {
+            cell.featured.isHidden = true
+        }
+        
         return cell
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 class CoffeeTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var coffeeDescription: UITextView!
+    @IBOutlet weak var coffeeDescription: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var processing: UILabel!
     @IBOutlet weak var featured: UILabel!
@@ -18,6 +18,7 @@ class CoffeeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
     
