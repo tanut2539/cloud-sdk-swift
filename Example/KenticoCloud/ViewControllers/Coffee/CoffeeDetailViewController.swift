@@ -18,6 +18,7 @@ class CoffeeDetailViewController: UIViewController {
     @IBOutlet var altitude: UILabel!
     @IBOutlet var coffeeImage: UIImageView!
     @IBOutlet var callToActionButton: UIButton!
+    @IBOutlet var backButton: UIButton!
     
     var coffee: Coffee!
     private var callToAction: CallToAction?
@@ -31,11 +32,18 @@ class CoffeeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         callToActionButton.isHidden = true
+        callToActionButton.stylePinkButton()
+        backButton.stylePinkButton()
         if let callToActionNames = coffee.callToActions?.value {
             getCoffeeEnthusiastCta(callToActionNames: callToActionNames)
         }
         
         self.title = coffee.name?.value
+        
+        coffeeDescription.numberOfLines = 0
+        coffeeDescription.lineBreakMode = .byWordWrapping
+        coffeeDescription.frame.size.width = 300
+        coffeeDescription.sizeToFit()
         if let description = coffee.longDescription?.htmlContentString {
             do {
                 let attributedString = try NSAttributedString(data: description.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)

@@ -10,6 +10,7 @@ import  UIKit
 import  MapKit
 
 class CoffeeDetailCallToActionViewController: UIViewController {
+    @IBOutlet var backButton: UIButton!
     var callToAction: CallToAction?
     var cafes: [Cafe?] = []
     
@@ -17,6 +18,11 @@ class CoffeeDetailCallToActionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setMap(cafes: cafes)
+        backButton.stylePinkButton()
+    }
+    
+    @IBAction func navigateBack(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
     }
     
     private func setMap(cafes: [Cafe?]) {

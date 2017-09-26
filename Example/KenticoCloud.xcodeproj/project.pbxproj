@@ -29,6 +29,7 @@
 		8F7465E11F45D36300908DF5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7465E01F45D36300908DF5 /* UserNotifications.framework */; };
 		8FA7D8A71F768B000057C590 /* GetModularContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7D8A31F7687180057C590 /* GetModularContent.swift */; };
 		8FA925051F791AC0008FD6C8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA925041F791AC0008FD6C8 /* Launch Screen.storyboard */; };
+		8FA925081F7A2E84008FD6C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA925071F7A2E84008FD6C8 /* Extensions.swift */; };
 		8FB0AC771F73B26400102112 /* GetItemsLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC721F73B26400102112 /* GetItemsLive.swift */; };
 		8FB0AC791F73B26400102112 /* ArticleTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC751F73B26400102112 /* ArticleTestModel.swift */; };
 		8FB0AC7A1F73B26400102112 /* CafeTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC761F73B26400102112 /* CafeTestModel.swift */; };
@@ -86,6 +87,7 @@
 		8F7465E01F45D36300908DF5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8FA7D8A31F7687180057C590 /* GetModularContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetModularContent.swift; sourceTree = "<group>"; };
 		8FA925041F791AC0008FD6C8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		8FA925071F7A2E84008FD6C8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8FB0AC721F73B26400102112 /* GetItemsLive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetItemsLive.swift; sourceTree = "<group>"; };
 		8FB0AC751F73B26400102112 /* ArticleTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTestModel.swift; sourceTree = "<group>"; };
 		8FB0AC761F73B26400102112 /* CafeTestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeTestModel.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		607FACD21AFB9204008FA782 /* Example for KenticoCloud */ = {
 			isa = PBXGroup;
 			children = (
+				8FA925061F7A2E59008FD6C8 /* Utils */,
 				8F38071A1F6013C30008AFA1 /* CloudModels */,
 				8F38071E1F6013C30008AFA1 /* ViewControllers */,
 				8F38072B1F6013C30008AFA1 /* Views */,
@@ -288,6 +291,14 @@
 				8F38072F1F6013C30008AFA1 /* MenuTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8FA925061F7A2E59008FD6C8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8FA925071F7A2E84008FD6C8 /* Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		8FB0AC711F73B26400102112 /* DeliveryTests */ = {
@@ -581,6 +592,7 @@
 				8F3807301F6013C30008AFA1 /* Article.swift in Sources */,
 				8F3807321F6013C30008AFA1 /* Coffee.swift in Sources */,
 				8F38073B1F6013C30008AFA1 /* ArticleTableViewCell.swift in Sources */,
+				8FA925081F7A2E84008FD6C8 /* Extensions.swift in Sources */,
 				8F3807361F6013C30008AFA1 /* CafesViewController.swift in Sources */,
 				8FB0ACF91F752FE800102112 /* CallToAction.swift in Sources */,
 				8FB0ACFB1F753EDD00102112 /* CoffeeDetailCallToActionViewController.swift in Sources */,
