@@ -42,11 +42,16 @@ class CoffeeDetailViewController: UIViewController {
         
         coffeeDescription.numberOfLines = 0
         coffeeDescription.lineBreakMode = .byWordWrapping
-        coffeeDescription.frame.size.width = 300
         coffeeDescription.sizeToFit()
         if let description = coffee.longDescription?.htmlContentString {
             do {
-                let attributedString = try NSAttributedString(data: description.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+                let attributedString = try NSMutableAttributedString(data: description.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+                
+                let style = NSMutableParagraphStyle()
+                style.lineSpacing = 4
+                style.minimumLineHeight = 30 // change line spacing between each line like 30 or 40
+                //attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: attributedString.string.characters.count))
+                
                 coffeeDescription.attributedText = attributedString
             } catch {
                 print(error)
