@@ -1,5 +1,5 @@
 
-# Kentico Cloud swift SDK
+# Kentico Cloud Swift SDK
 
 [![CI Status](http://img.shields.io/travis/martinmakarsky@gmail.com/KenticoCloud.svg?style=flat)](https://travis-ci.org/martinmakarsky@gmail.com/KenticoCloud)
 [![Version](https://img.shields.io/cocoapods/v/KenticoCloud.svg?style=flat)](http://cocoapods.org/pods/KenticoCloud)
@@ -108,7 +108,7 @@ $ pod install
 
 The `DeliveryClient` class is the main class of the SDK for getting content. Using this class, you can retrieve content from your Kentico Cloud projects.
 
-To create an instance of the class, you need to provide a [project ID](https://developer.kenticocloud.com/docs/using-delivery-api#section-getting-project-id).
+To create an instance of the class, you need to provide a [project ID](https://developer.kenticocloud.com/docs/using-delivery-api#section-getting-project-id):
 
 ```swift
 // Initializes an instance of the DeliveryClient client
@@ -179,12 +179,12 @@ public class Cafe: Mappable {
  ```
 ### Basic items querying 
 Once you have a `DeliveryClient` instance, you can start querying your project repository by calling methods on the instance. You need to pass your item model and query. You can create a query for a listing in two ways:
-- creating a custom string query
+- creating a custom string query:
 ```swift
 let customQuery = "items?system.type=article&order=elements.post_date[desc]"
 client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, itemsResponse, error) in ...
  ```
- - using a query parameters array
+ - using a query parameters array:
  ```swift
  let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
 let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
@@ -307,4 +307,4 @@ Check out the [contributing](https://github.com/Kentico/cloud-sdk-swift/blob/mas
 
 ## License
 
-KenticoCloud Swift SDK is available under the MIT license. See the LICENSE file for more info.
+KenticoCloud Swift SDK is available under the MIT license. See the LICENSE file for more information.
