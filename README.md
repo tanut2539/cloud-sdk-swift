@@ -7,15 +7,15 @@
 [![Platform](https://img.shields.io/cocoapods/p/KenticoCloud.svg?style=flat)](http://cocoapods.org/pods/KenticoCloud)
 
 ## Summary
-The KenticoCloud iOS SDK is a library used for retrieving content and tracking activities. You can use the SDK in the form of a CocoaPod package or add it manually.
+The KenticoCloud iOS SDK is a library used for retrieving content and tracking activities. You can use the SDK as a CocoaPod package or add it manually.
 
 ## Prerequisites
 
-To retrieve content from a Kentico Cloud project via the Delivery API, you first need to activate the API for the project. See our documentation on how you can [activate the Delivery API](https://developer.kenticocloud.com/docs/using-delivery-api#section-enabling-the-delivery-api-for-your-projects).
+To retrieve content from a Kentico Cloud project via the Delivery API, you first need to activate the API for your project. See our documentation on [activating the Delivery API](https://developer.kenticocloud.com/docs/using-delivery-api#section-enabling-the-delivery-api-for-your-projects).
 
 
 ## Quick start
-**1. Add pod**  
+**1. Add a pod**  
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
@@ -29,7 +29,7 @@ end
 ```bash
 $ pod install
 ```
-**2. Create type object** - in this example it is `Article`. This is content type in Kentico Cloud which we want to get items for. This type has three elements with following codenames: `title` (is a text element),`easer_image` (is an asset element),`post_date` (is a DateTime element).
+**2. Create a type object** - in this example, the type object is `Article`. It represents a Content type in Kentico Cloud that the retrieved content items are based on. This content type has three elements with following codenames: `title` (a text element),`teaser_image` (an asset element) and `post_date` (a DateTime element).
 ```swift
 import ObjectMapper
 
@@ -49,19 +49,19 @@ class Article: Mappable {
 
     }
  ```
-**3. Prepare Delivery client**
+**3. Prepare the Delivery client**
 ```swift
 import KenticoCloud
 
 let client = DeliveryClient.init(projectId: "YOUR_PROJECT_ID")
  ```
-**4. Prepare query**
+**4. Prepare a query**
 ```swift
 let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: "article")
 let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
 let articlesQueryParameters = [typeQueryParameter, languageQueryParameter]
  ```
-**5. Get and use items**
+**5. Get and use content items**
 ```swift
 client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, itemsResponse, error) in
     if isSuccess {
@@ -115,7 +115,7 @@ To create an instance of the class, you need to provide a [project ID](https://d
 let cloudClient = DeliveryClient.init("975bf280-fd91-488c-994c-2f04416e5ee3")
 ```
 
-Once you create a `DeliveryClient`, you can start querying your project repository by calling methods on the client instance. See [Basic querying](#basic-querying) for details.
+Once you create a `DeliveryClient`, you can start querying your project repository by calling methods on the client instance. See [Basic querying](#basic-items-querying) for details.
 
 ### Previewing unpublished content
 
@@ -133,7 +133,7 @@ For more details, see [Previewing unpublished content using the Delivery API](ht
  
 ## Getting items
 
-### Using strongly typed model
+### Using strongly typed models
 
 In order to receive strongly typed items you need to implement your item model. It's necessary to conform to `Mappable` protocol and implement mapping functionality. You can use your own mapping or our strongly typed element types.
 
@@ -178,13 +178,13 @@ public class Cafe: Mappable {
     }
  ```
 ### Basic items querying 
-Once you have a `DeliveryClient` instance, you can start querying your project repository by calling methods on the instance. Yu need to pass your item model and query. You can create query for listing in two ways:
-- creating custom string query
+Once you have a `DeliveryClient` instance, you can start querying your project repository by calling methods on the instance. You need to pass your item model and query. You can create a query for a listing in two ways:
+- creating a custom string query
 ```swift
 let customQuery = "items?system.type=article&order=elements.post_date[desc]"
 client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, itemsResponse, error) in ...
  ```
- - using query parameters array
+ - using a query parameters array
  ```swift
  let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
 let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
@@ -192,7 +192,7 @@ let coffeesQueryParameters = [contentTypeQueryParameter, languageQueryParameter]
 client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, itemsResponse, error) in ...
  ```
  
- Then you can use your obtained items in completetion handler like:
+ Then you can use your obtained items in the completetion handler:
  
  ```swift
  // Retrieves a list of all content items of certain type
@@ -210,7 +210,7 @@ client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters)
         }
 ```
 
-You can also retrieve just a single item
+You can also retrieve just a single item:
 
 ```swift
 // Retrieves a single content item
@@ -227,8 +227,8 @@ client.getItem(modelType: Cafe.self, itemName: "boston") { (isSuccess, deliveryI
     }
 }
 ```
-### Get modular content
-You can get modular content from `itemResponse` or `itemsResponse` object like:
+### Getting modular content
+You can get modular content from `itemResponse` or `itemsResponse` object:
 ```swift
 let client = DeliveryClient.init(projectId: "YOUR_PROJECT_ID")
 client.getItem(modelType: Article.self, itemName: "on_roasts", completionHandler: { (isSuccess, itemResponse, error) in
@@ -275,24 +275,24 @@ client.getTaxonomies(completionHandler: { (isSuccess, deliveryItems, error) in
 ```
 
 ## Using the TrackingClient
-In order to log custom activities and add contacts you need to start session first.
+In order to log custom activities and add contacts you need to start a session first.
 
-### Create session
+### Create a session
 ```swift
 let client = TrackingClient.init(projectId: "YOUR_PROJECT_ID")
 client.startSession()
 ```
-### Log custom activity
+### Log a custom activity
 ```swift
 client.trackActivity(activityName: "madrid")
 ```
-### Add contact
+### Add a contact
 ```swift
 client.addContact(email: "martinkoklingacik@local.com")
 ```
 
 ## Debug
-If you want to view debug info from both clients set client's `enableDebugLogging` attribute
+If you want to view debug info from both clients set client's `enableDebugLogging` attribute:
 ```swift
 let deliveryClient = DeliveryClient.init(projectId: "YOUR_PROJECT_ID", enableDebugLogging = true)
 let trackingClient = TrackingClient.init(projectId: "YOUR_PROJECT_ID", enableDebugLogging = true)
@@ -307,4 +307,4 @@ Check out the [contributing](https://github.com/Kentico/cloud-sdk-swift/blob/mas
 
 ## License
 
-KenticoCloud is available under the MIT license. See the LICENSE file for more info.
+KenticoCloud Swift SDK is available under the MIT license. See the LICENSE file for more info.
