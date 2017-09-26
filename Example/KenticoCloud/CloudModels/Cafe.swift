@@ -9,6 +9,7 @@
 import ObjectMapper
 
 public class Cafe: Mappable {
+    public var name: String?
     public var city: String?
     public var street: String?
     public var country: String?
@@ -23,6 +24,7 @@ public class Cafe: Mappable {
     }
     
     public func mapping(map: Map) {
+        name <- map["elements.name.value"]
         city <- map["elements.city.value"]
         street <- map["elements.street.value"]
         country <- map["elements.country.value"]

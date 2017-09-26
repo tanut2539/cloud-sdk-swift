@@ -15,14 +15,14 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
     private var coffees: [Coffee] = []
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var refreshControl: UIRefreshControl!
+    // @IBOutlet var refreshControl: UIRefreshControl!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.tableView.insertSubview(refreshControl!, at: 0)
+        // self.tableView.insertSubview(refreshControl!, at: 0)
         tableView.dataSource = self
     }
     
@@ -51,8 +51,10 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeCell") as! CoffeeTableViewCell
         
         let coffee = coffees[indexPath.row]
+        
         cell.title.text = coffee.name?.value
         cell.coffeeDescription.text = coffee.shortDescription?.value
+        
         if let price = coffee.price?.value {
             cell.price.text = "$ \(price) / 1lb"
         }
@@ -112,9 +114,9 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
                 }
             }
             
-            if self.refreshControl.isRefreshing {
-                self.refreshControl.endRefreshing()
-            }
+//            if self.refreshControl.isRefreshing {
+//                self.refreshControl.endRefreshing()
+//            }
         }
     }
     

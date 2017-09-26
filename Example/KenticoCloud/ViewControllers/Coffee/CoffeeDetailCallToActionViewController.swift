@@ -42,7 +42,7 @@ class CoffeeDetailCallToActionViewController: UIViewController {
                 
                 let pinPoint = MKPointAnnotation()
                 pinPoint.coordinate = location.coordinate
-                pinPoint.title = cafe?.city
+                pinPoint.title = cafe?.name
                 self.map?.addAnnotation(pinPoint)
                 
                 counter = counter + 1

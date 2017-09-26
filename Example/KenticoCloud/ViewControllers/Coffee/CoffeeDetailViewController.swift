@@ -9,8 +9,7 @@
 import UIKit
 import  KenticoCloud
 
-class CoffeeDetailViewController: UIViewController {
-    @IBOutlet var coffeeDescription: UILabel!
+class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var price: UILabel!
     @IBOutlet var farm: UILabel!
     @IBOutlet var variety: UILabel!
@@ -19,49 +18,44 @@ class CoffeeDetailViewController: UIViewController {
     @IBOutlet var coffeeImage: UIImageView!
     @IBOutlet var callToActionButton: UIButton!
     @IBOutlet var backButton: UIButton!
+    @IBOutlet var tableView: UITableView!
     
     var coffee: Coffee!
     private var callToAction: CallToAction?
     private var selectedCafes: [Cafe?] = []
+    private var descriptionAttributedString: NSAttributedString?
     
     override func viewDidLoad() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         callToActionButton.isHidden = true
         callToActionButton.stylePinkButton()
         backButton.stylePinkButton()
+        
         if let callToActionNames = coffee.callToActions?.value {
             getCoffeeEnthusiastCta(callToActionNames: callToActionNames)
         }
         
-        self.title = coffee.name?.value
-        
-        coffeeDescription.numberOfLines = 0
-        coffeeDescription.lineBreakMode = .byWordWrapping
-        coffeeDescription.sizeToFit()
         if let description = coffee.longDescription?.htmlContentString {
             do {
-                let attributedString = try NSMutableAttributedString(data: description.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
-                
-                let style = NSMutableParagraphStyle()
-                style.lineSpacing = 4
-                style.minimumLineHeight = 30 // change line spacing between each line like 30 or 40
-                //attributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: attributedString.string.characters.count))
-                
-                coffeeDescription.attributedText = attributedString
+                self.descriptionAttributedString = try NSAttributedString(data: description.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
             } catch {
                 print(error)
             }
         }
+
+        
         if let price = coffee.price?.value {
             self.price.text = "$\(price) / 1lb"
         }
         self.farm.text = coffee.farm?.value
+        
         self.variety.text = coffee.variety?.value
+        
         if !((coffee.processing?.value?.isEmpty)!) {
             if let processingTechnique = coffee.processing?.value?[0].name {
                 self.processing.text = processingTechnique
@@ -78,9 +72,23 @@ class CoffeeDetailViewController: UIViewController {
         }
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeDescriptionCell") as! CoffeeDescriptionViewCell
+        cell.coffeeDescription.attributedText = descriptionAttributedString
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height = self.descriptionAttributedString?.height(withConstrainedWidth: tableView.frame.width)
+        return height! + 50
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -120,11 +128,12 @@ class CoffeeDetailViewController: UIViewController {
         let client = DeliveryClient.init(projectId: AppConstants.projectId)
         client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, itemResponse, error in
             if isSuccess {
-                if let selectedCafes = itemResponse?.item {
-                    var cafes : [Cafe?] = []
-                    for cafeCodename in (selectedCafes.handpickedCafes?.value)! {
-                        cafes.append(itemResponse?.getModularContent(codename: cafeCodename, type: Cafe.self))
-                    }
+                var cafes : [Cafe?] = []
+                
+                for cafeCodeName in (itemResponse?.item?.handpickedCafes?.value)! {
+                    let selectedCafe = itemResponse?.getModularContent(codename: cafeCodeName, type: Cafe.self)
+                    cafes.append(selectedCafe)
+                    self.selectedCafes = cafes
                     
                     self.selectedCafes = cafes as! [Cafe]
                     self.updateCallToActionButton()

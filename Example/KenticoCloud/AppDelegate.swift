@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Appearance customization
         UIApplication.shared.statusBarStyle = .default
         UINavigationBar.appearance().isHidden = true
+        UITableView.appearance().backgroundColor = AppConstants.globalBackgroundColor
         
         return true
     }
