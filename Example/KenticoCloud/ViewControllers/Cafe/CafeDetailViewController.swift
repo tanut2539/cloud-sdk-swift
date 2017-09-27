@@ -15,20 +15,23 @@ class CafeDetailViewController: UIViewController {
     var cafe: Cafe?
     var image: UIImage?
     
+    @IBOutlet var name: UILabel!
+    @IBOutlet var email: UILabel!
     @IBOutlet weak var city: UILabel!
-    @IBOutlet weak var firstRowAddress: UILabel!
-    @IBOutlet weak var secondRowAddress: UILabel!
+    @IBOutlet weak var address: UILabel!
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var map: MKMapView?
     
+    @IBOutlet var backButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        backButton.stylePinkButton()
         if let cafe = cafe {
-            setTitles(cafe: cafe)
+            setCafeInfo(cafe: cafe)
             setMap(cafe: cafe)
         }
         
@@ -46,12 +49,12 @@ class CafeDetailViewController: UIViewController {
         }
     }
     
-    private func setTitles(cafe: Cafe) {
-        title = cafe.city
+    private func setCafeInfo(cafe: Cafe) {
+        name.text = cafe.name
         city.text = cafe.city
-        firstRowAddress.text = cafe.street
-        secondRowAddress.text = cafe.state
+        address.text = "\(cafe.street ?? "") \(cafe.city ?? "")"
         phone.text = cafe.phone
+        email.text = cafe.email
     }
     
     private func setMap(cafe: Cafe) {
@@ -85,6 +88,10 @@ class CafeDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func navigateBack(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
     }
 
 }

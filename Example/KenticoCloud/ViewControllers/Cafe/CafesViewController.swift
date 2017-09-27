@@ -48,14 +48,14 @@ class CafesViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cafeCell") as! CafeTableViewCell
         
         let cafe = cafes[indexPath.row]
-        cell.city.text = cafe.city
-        cell.firstRowAddress.text = cafe.street
-        cell.secondRowAddress.text = cafe.state
-        cell.phone.text = cafe.phone
+        cell.cafeTitle.text = cafe.city
+        cell.cafeSubtitle.text = "\(cafe.street ?? "") \(cafe.phone ?? "")"
         
         if let imageUrl = cafe.imageUrl {
             let url = URL(string: imageUrl)
             cell.photo.af_setImage(withURL: url!)
+            cell.photo.layer.borderColor = AppConstants.imageBorderColor.cgColor
+            cell.photo.layer.borderWidth = 2
         }
         
         

@@ -24,9 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         // Appearance customization
-        UIApplication.shared.statusBarStyle = .default
+        //UIApplication.shared.statusBarStyle = .default
         UINavigationBar.appearance().isHidden = true
         UITableView.appearance().backgroundColor = AppConstants.globalBackgroundColor
+        UITableViewCell.appearance().backgroundColor = AppConstants.globalBackgroundColor
         
         return true
     }
