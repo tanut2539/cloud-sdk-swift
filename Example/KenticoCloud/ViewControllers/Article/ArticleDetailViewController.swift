@@ -17,18 +17,20 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet var content: UILabel!
+    @IBOutlet var backButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        backButton.stylePinkButton()
         
         if let body = article?.bodyCopy?.htmlContentString {
             do {
                 let str = try NSAttributedString(data: body.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
-                textView.attributedText = str
+                content.attributedText = str
             } catch {
                 print(error)
             }
@@ -47,16 +49,9 @@ class ArticleDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
+    @IBAction func navigateBack(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+    }
     
 }

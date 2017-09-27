@@ -37,6 +37,8 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell") as! ArticleTableViewCell
+        cell.photo.layer.borderColor = AppConstants.imageBorderColor.cgColor
+        cell.photo.layer.borderWidth = 2
         
         let article = articles[indexPath.row]
         cell.title.text = article.title?.value
