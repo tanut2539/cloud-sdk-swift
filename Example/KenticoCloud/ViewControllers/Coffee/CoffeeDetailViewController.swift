@@ -10,17 +10,24 @@ import UIKit
 import  KenticoCloud
 
 class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet var backButton: UIButton!
+    @IBOutlet var tableView: UITableView!
+    
     @IBOutlet var price: UILabel!
     @IBOutlet var farm: UILabel!
     @IBOutlet var variety: UILabel!
     @IBOutlet var processing: UILabel!
     @IBOutlet var altitude: UILabel!
     @IBOutlet var coffeeImage: UIImageView!
+    
+    @IBOutlet var ctaView: UIView!
     @IBOutlet var callToActionButton: UIButton!
-    @IBOutlet var backButton: UIButton!
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var ctaImage: UIImageView!
+    @IBOutlet var ctaSubtitle: UILabel!
     
     var coffee: Coffee!
+    
     private var callToAction: CallToAction?
     private var selectedCafes: [Cafe?] = []
     private var descriptionAttributedString: NSAttributedString?
@@ -32,7 +39,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        callToActionButton.isHidden = true
+        ctaView.removeFromSuperview()
         callToActionButton.stylePinkButton()
         backButton.stylePinkButton()
         
@@ -114,7 +121,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
                         if let cto = itemResponse?.item {
                             if (cto.persona?.containsName(name: "Coffee enthusiast"))! {
                                 self.callToAction = cto
-                                self.updateCallToActionButton()
+                                self.tryToupdateCallToActionView()
                             }
                         }
                     } else {
@@ -136,7 +143,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
                     self.selectedCafes = cafes
                     
                     self.selectedCafes = cafes as! [Cafe]
-                    self.updateCallToActionButton()
+                    self.tryToupdateCallToActionView()
                 }
             } else {
                 print("Error while getting CTOs. Error: \(String(describing: error))")
@@ -144,11 +151,18 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         })
     }
     
-    private func updateCallToActionButton() {
+    private func tryToupdateCallToActionView() {
         if let titleText = self.callToAction?.actionButtonText?.value {
             if selectedCafes.count > 0 {
                 callToActionButton.setTitle(titleText, for: .normal)
-                callToActionButton.isHidden = false
+                
+                if let imageUrl = callToAction?.image?.value?[0].url {
+                    let url = URL(string: imageUrl)
+                    ctaImage.af_setImage(withURL: url!)
+                }
+                
+                ctaSubtitle.text = callToAction?.text?.value
+                tableView.addSubview(ctaView)
             }
         }
     }
