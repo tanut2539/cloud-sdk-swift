@@ -72,6 +72,7 @@ class CafeDetailViewController: UIViewController {
             
             let pinPoint = MKPointAnnotation()
             pinPoint.coordinate = location.coordinate
+            pinPoint.title = cafe.name
             self.map?.addAnnotation(pinPoint)
 
             let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
