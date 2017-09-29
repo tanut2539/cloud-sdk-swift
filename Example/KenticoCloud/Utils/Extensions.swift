@@ -26,3 +26,25 @@ extension NSAttributedString {
         return ceil(boundingBox.height)
     }
 }
+
+extension UILabel {
+    func styleWithRichtextString(richtextString: String) {
+        do {
+            let attributedString = try NSMutableAttributedString(data: richtextString.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
+            
+            
+            let fontSizeAttribute = [NSFontAttributeName : UIFont.systemFont(ofSize: 16.0)]
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 1.5
+            let lineSpacingAttribute = [NSParagraphStyleAttributeName : paragraphStyle]
+            
+            attributedString.addAttributes(fontSizeAttribute, range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttributes(lineSpacingAttribute, range: NSMakeRange(0, attributedString.length))
+            
+            self.attributedText = attributedString
+        } catch {
+            print(error)
+        }
+    }
+}

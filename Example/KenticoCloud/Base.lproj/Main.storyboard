@@ -963,8 +963,14 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUH-ih-uZ7">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUH-ih-uZ7">
                                                 <rect key="frame" x="19" y="227" width="334" height="388"/>
+                                                <mutableString key="text">Before a ripe coffee plant transforms into a delicious cup lying on your table, it undergoes quite a journey. A journey full of possible pitfalls, which can, usually negatively, influence the coffee’s final taste. What goes wrong at the very beginning cannot be made up for at the very end.
+The character and taste of a coffee are largely influenced by its origin, climate, the quality and type of soil and the botanical varieties of the coffee plant.
+The last two links of the chain—the roastery and the barista—cannot, in any way, improve the taste of the coffee. They are left with the difficult task of making the most its potential.
+The farmers themselves, however, have at their disposal tools for enhancing the ‘ingrown’ taste of the coffee. These are mainly the methods of removing the multilayered skin of the coffee beans.
+Two, sometimes three basic methods are usually referred to. Wet-Processed (Fully-Washed), Dry-Processed (Natural) and Pulped-Natural (Semi-Washed).
+Dry processing, being the least economically demanding, used to be the most widely used of the methods. More exclusive beans are now usually processed using the wet and pulped-natural processing. This is due to the quality and cleanliness of the beans, as well as the speed of the whole process. If you are curious about the taste, go ahead and try the </mutableString>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -986,7 +992,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="SUH-ih-uZ7" firstAttribute="leading" secondItem="A2P-5T-hOO" secondAttribute="leading" constant="19" id="22R-Sk-65A"/>
                                             <constraint firstAttribute="trailing" secondItem="SUH-ih-uZ7" secondAttribute="trailing" constant="22" id="5oF-kg-mZe"/>
@@ -1009,7 +1015,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="A2P-5T-hOO" firstAttribute="leading" secondItem="Bip-gd-EhH" secondAttribute="leading" id="03L-7l-XiO"/>
                                     <constraint firstItem="A2P-5T-hOO" firstAttribute="top" secondItem="Bip-gd-EhH" secondAttribute="top" id="HxD-28-y7Q"/>
@@ -1019,7 +1025,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Bip-gd-EhH" firstAttribute="top" secondItem="Ko0-GS-1dS" secondAttribute="top" id="HCl-j3-nXM"/>
                             <constraint firstItem="Bip-gd-EhH" firstAttribute="leading" secondItem="Ko0-GS-1dS" secondAttribute="leading" id="UBu-2y-LAo"/>

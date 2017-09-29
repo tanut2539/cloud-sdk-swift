@@ -28,12 +28,7 @@ class ArticleDetailViewController: UIViewController {
         backButton.stylePinkButton()
         
         if let body = article?.bodyCopy?.htmlContentString {
-            do {
-                let str = try NSAttributedString(data: body.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
-                content.attributedText = str
-            } catch {
-                print(error)
-            }
+            content.styleWithRichtextString(richtextString: body)
         }
         
         if let image = image {
