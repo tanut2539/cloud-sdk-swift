@@ -30,7 +30,6 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     private var callToAction: CallToAction?
     private var selectedCafes: [Cafe?] = []
-    private var descriptionAttributedString: NSAttributedString?
     
     override func viewDidLoad() {
         self.tableView.dataSource = self
@@ -46,15 +45,6 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         if let callToActionNames = coffee.callToActions?.value {
             getCoffeeEnthusiastCta(callToActionNames: callToActionNames)
         }
-        
-        if let description = coffee.longDescription?.htmlContentString {
-            do {
-                self.descriptionAttributedString = try NSAttributedString(data: description.data(using: String.Encoding.unicode, allowLossyConversion: true)!, options: [NSDocumentTypeDocumentAttribute : NSHTMLTextDocumentType], documentAttributes: nil)
-            } catch {
-                print(error)
-            }
-        }
-
         
         if let price = coffee.price?.value {
             self.price.text = "$\(price) / 1lb"
@@ -85,13 +75,16 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "coffeeDescriptionCell") as! CoffeeDescriptionViewCell
-        cell.coffeeDescription.attributedText = descriptionAttributedString
+        cell.coffeeDescription.styleWithRichtextString(richtextString: (coffee.longDescription?.htmlContentString)!)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 1000
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let height = self.descriptionAttributedString?.height(withConstrainedWidth: tableView.frame.width)
-        return height! + 50
+        return UITableViewAutomaticDimension;
     }
     
     override func didReceiveMemoryWarning() {
