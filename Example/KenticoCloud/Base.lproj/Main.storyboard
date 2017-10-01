@@ -396,6 +396,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Articles" id="o85-ne-a9G"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="UlP-Ea-DKE">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
                             <fragment content="Refreshing...">
@@ -547,6 +548,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="sqd-5S-vlc"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="R4F-wN-1lX">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
                             <fragment content="Refreshing...">
@@ -582,12 +584,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DsH-7K-GZB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                                <rect key="frame" x="0.0" y="-91" width="375" height="223"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA0-mv-XyL">
-                                        <rect key="frame" x="8" y="30" width="137" height="38"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coffeeBeansHeader" translatesAutoresizingMaskIntoConstraints="NO" id="i6D-71-hFo">
+                                        <rect key="frame" x="0.0" y="-10" width="375" height="181"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA0-mv-XyL">
+                                        <rect key="frame" x="8" y="113" width="137" height="38"/>
                                         <color key="backgroundColor" red="0.95294117649999999" green="0.38823529410000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="Rj8-FI-0hH"/>
+                                            <constraint firstAttribute="width" constant="137" id="YXM-zV-8MK"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                         <state key="normal" title=" &lt; Our beans ">
@@ -599,9 +608,13 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="bA0-mv-XyL" firstAttribute="leading" secondItem="DsH-7K-GZB" secondAttribute="leadingMargin" id="jhF-Ly-Epy"/>
+                                    <constraint firstAttribute="bottom" secondItem="bA0-mv-XyL" secondAttribute="bottom" constant="72" id="o3T-Tz-HJ8"/>
+                                </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Pz-yQ-1y4">
-                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Pz-yQ-1y4">
+                                <rect key="frame" x="0.0" y="84" width="375" height="534"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.98039215690000003" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="TlC-S4-A6A">
@@ -768,7 +781,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bik-Vy-5LR">
-                                                    <rect key="frame" x="28" y="0.0" width="318" height="19.5"/>
+                                                    <rect key="frame" x="28" y="0.0" width="318" height="20"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Coffee description">
                                                             <attributes>
@@ -798,12 +811,12 @@
                         <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1uA-5p-EDR" firstAttribute="top" secondItem="3Pz-yQ-1y4" secondAttribute="bottom" id="29D-lT-RoL"/>
-                            <constraint firstItem="3Pz-yQ-1y4" firstAttribute="top" secondItem="6Fn-zb-dGH" secondAttribute="bottom" constant="52" id="9tr-If-7NA"/>
+                            <constraint firstItem="3Pz-yQ-1y4" firstAttribute="top" secondItem="6Fn-zb-dGH" secondAttribute="bottom" constant="64" id="9tr-If-7NA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DsH-7K-GZB" secondAttribute="trailing" constant="-16" id="Ozm-p6-tX5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3Pz-yQ-1y4" secondAttribute="trailing" constant="-16" id="PZq-vw-48k"/>
-                            <constraint firstItem="DsH-7K-GZB" firstAttribute="top" secondItem="x7P-ha-EuX" secondAttribute="top" id="fQO-St-aCv"/>
+                            <constraint firstItem="DsH-7K-GZB" firstAttribute="top" secondItem="x7P-ha-EuX" secondAttribute="top" constant="-91" id="fQO-St-aCv"/>
                             <constraint firstItem="3Pz-yQ-1y4" firstAttribute="leading" secondItem="x7P-ha-EuX" secondAttribute="leadingMargin" constant="-16" id="giC-2R-uZz"/>
-                            <constraint firstItem="3Pz-yQ-1y4" firstAttribute="top" secondItem="DsH-7K-GZB" secondAttribute="bottom" constant="-4" id="oRs-t8-Y30"/>
+                            <constraint firstItem="3Pz-yQ-1y4" firstAttribute="top" secondItem="DsH-7K-GZB" secondAttribute="bottom" constant="-48" id="oRs-t8-Y30"/>
                             <constraint firstItem="DsH-7K-GZB" firstAttribute="leading" secondItem="x7P-ha-EuX" secondAttribute="leadingMargin" constant="-16" id="pGa-jQ-M0E"/>
                         </constraints>
                     </view>
@@ -824,7 +837,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ppa-ib-vxf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="1156.3718140929536"/>
+            <point key="canvasLocation" x="1143" y="1157"/>
         </scene>
         <!--Coffee Detail Call To Action View Controller-->
         <scene sceneID="VOA-Dl-sul">
