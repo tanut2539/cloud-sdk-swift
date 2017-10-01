@@ -9,21 +9,20 @@
 import UIKit
 import KenticoCloud
 
-class CoffeesViewController: UIViewController, UITableViewDataSource {
+class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let contentType = "coffee"
     private var coffees: [Coffee] = []
     
     @IBOutlet var tableView: UITableView!
-    // @IBOutlet var refreshControl: UIRefreshControl!
+    @IBOutlet var refreshControl: UIRefreshControl!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        // self.tableView.insertSubview(refreshControl!, at: 0)
+
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +96,8 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getCoffees() {
+        self.showLoader(message: "Loading coffees...")
+        
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         
         let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
@@ -114,9 +115,11 @@ class CoffeesViewController: UIViewController, UITableViewDataSource {
                 }
             }
             
-//            if self.refreshControl.isRefreshing {
-//                self.refreshControl.endRefreshing()
-//            }
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            
+            self.hideLoader()
         }
     }
     

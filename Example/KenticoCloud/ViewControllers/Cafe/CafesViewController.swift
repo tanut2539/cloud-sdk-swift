@@ -10,15 +10,14 @@ import UIKit
 import KenticoCloud
 import AlamofireImage
 
-class CafesViewController: UIViewController, UITableViewDataSource {
+class CafesViewController: ListingBaseViewController, UITableViewDataSource {
     
     private let contentType = "cafe"
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var refreshControl: UIRefreshControl!
     
-    private var cafes: [Cafe] = []
-    private var loader: UIAlertController!
+    var cafes: [Cafe] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,13 +80,12 @@ class CafesViewController: UIViewController, UITableViewDataSource {
     }
     
     private func getCafes() {
-        showLoader()
+        self.showLoader(message: "Loading cafes...")
         
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         
         let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
-        let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: "es-ES")
-        let cafesQueryParameters = [typeQueryParameter, languageQueryParameter]
+        let cafesQueryParameters = [typeQueryParameter]
         
         cloudClient.getItems(modelType: Cafe.self, queryParameters: cafesQueryParameters) { (isSuccess, itemsResponse, error) in
             if isSuccess {
@@ -105,26 +103,13 @@ class CafesViewController: UIViewController, UITableViewDataSource {
                 self.refreshControl.endRefreshing()
             }
             
-            self.loader.dismiss(animated: false, completion: nil)
+            self.hideLoader()
         }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    private func showLoader() {
-        loader = UIAlertController(title: nil, message: "Loading cafes...", preferredStyle: .alert)
-        
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        loadingIndicator.startAnimating();
-        
-        loader.view.addSubview(loadingIndicator)
-        self.view.window?.rootViewController?.present(loader, animated: true, completion: nil)
-    }
-    
     
 }
 

@@ -10,12 +10,13 @@ import UIKit
 import KenticoCloud
 import AlamofireImage
 
-class ArticlesViewController: UIViewController, UITableViewDataSource {
+class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
     
     private let contentType = "article"
     private var articles: [Article] = []
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,9 +76,14 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
             articleDetailViewController.image = cell.photo.image!
         }
     }
-
+    
+    @IBAction func refreshTable(_ sender: Any) {
+        getArticles()
+    }
     
     private func getArticles() {
+        self.showLoader(message: "Loading articles...")
+        
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         let customQuery = "items?system.type=article&order=elements.post_date[desc]"
         
@@ -92,6 +98,12 @@ class ArticlesViewController: UIViewController, UITableViewDataSource {
                     print(error)
                 }
             }
+            
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            
+            self.hideLoader()
         }
     }
     
