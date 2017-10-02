@@ -12,6 +12,8 @@ import KenticoCloud
 
 class CafeDetailViewController: UIViewController {
 
+    // MARK: Properties
+    
     var cafe: Cafe?
     var image: UIImage?
     
@@ -22,14 +24,17 @@ class CafeDetailViewController: UIViewController {
     @IBOutlet weak var phone: UILabel!
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var map: MKMapView?
-    
     @IBOutlet var backButton: UIButton!
+    
+    // MARK: VC lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         backButton.stylePinkButton()
+        
         if let cafe = cafe {
             setCafeInfo(cafe: cafe)
             setMap(cafe: cafe)
@@ -48,6 +53,18 @@ class CafeDetailViewController: UIViewController {
             trackingClient.addContact(email: "dubacik@kentico.com")
         }
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Outlet actions
+    
+    @IBAction func navigateBack(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: Set content
     
     private func setCafeInfo(cafe: Cafe) {
         name.text = cafe.name
@@ -84,15 +101,6 @@ class CafeDetailViewController: UIViewController {
         if (photo) != nil {
             self.photo.image = image
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func navigateBack(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
     }
 
 }

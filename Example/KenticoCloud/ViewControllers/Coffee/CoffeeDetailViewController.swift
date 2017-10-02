@@ -11,6 +11,13 @@ import  KenticoCloud
 
 class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // MARK: Properties
+    
+    var coffee: Coffee!
+    
+    private var callToAction: CallToAction?
+    private var selectedCafes: [Cafe?] = []
+    
     @IBOutlet var backButton: UIButton!
     @IBOutlet var tableView: UITableView!
     
@@ -25,16 +32,15 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet var callToActionButton: UIButton!
     @IBOutlet var ctaImage: UIImageView!
     @IBOutlet var ctaSubtitle: UILabel!
+
     
-    var coffee: Coffee!
-    
-    private var callToAction: CallToAction?
-    private var selectedCafes: [Cafe?] = []
+    // MARK: VC lifecycle
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,32 +48,10 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         callToActionButton.stylePinkButton()
         backButton.stylePinkButton()
         
-        if let callToActionNames = coffee.callToActions?.value {
-            getCoffeeEnthusiastCta(callToActionNames: callToActionNames)
-        }
-        
-        if let price = coffee.price?.value {
-            self.price.text = "$\(price) / 1lb"
-        }
-        self.farm.text = coffee.farm?.value
-        
-        self.variety.text = coffee.variety?.value
-        
-        if !((coffee.processing?.value?.isEmpty)!) {
-            if let processingTechnique = coffee.processing?.value?[0].name {
-                self.processing.text = processingTechnique
-            }
-        }
-        
-        if let altitude = coffee.altitude?.value {
-            self.altitude.text = "\(altitude) ft"
-        }
-        
-        if let imageUrl = coffee.photo?.value?[0].url {
-            let url = URL(string: imageUrl)
-            coffeeImage.af_setImage(withURL: url!)
-        }
+        setLabels()
     }
+    
+    // MARK: Table delegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -102,6 +86,13 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    // MARK: Outlet actions
+    
+    @IBAction func navigateBack(_ sender: Any) {
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: Getting items
     
     // Get Call to Action for Coffee enthusiast persona only
     private func getCoffeeEnthusiastCta(callToActionNames: [String?]) {
@@ -114,7 +105,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
                         if let cto = itemResponse?.item {
                             if (cto.persona?.containsName(name: "Coffee enthusiast"))! {
                                 self.callToAction = cto
-                                self.tryToupdateCallToActionView()
+                                self.tryToUpdateCallToActionView()
                             }
                         }
                     } else {
@@ -136,7 +127,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
                     self.selectedCafes = cafes
                     
                     self.selectedCafes = cafes as! [Cafe]
-                    self.tryToupdateCallToActionView()
+                    self.tryToUpdateCallToActionView()
                 }
             } else {
                 print("Error while getting CTOs. Error: \(String(describing: error))")
@@ -144,7 +135,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         })
     }
     
-    private func tryToupdateCallToActionView() {
+    private func tryToUpdateCallToActionView() {
         if let titleText = self.callToAction?.actionButtonText?.value {
             if selectedCafes.count > 0 {
                 callToActionButton.setTitle(titleText, for: .normal)
@@ -160,7 +151,31 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    @IBAction func navigateBack(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
+    private func setLabels() {
+        if let callToActionNames = coffee.callToActions?.value {
+            getCoffeeEnthusiastCta(callToActionNames: callToActionNames)
+        }
+        
+        if let price = coffee.price?.value {
+            self.price.text = "$\(price) / 1lb"
+        }
+        self.farm.text = coffee.farm?.value
+        
+        self.variety.text = coffee.variety?.value
+        
+        if !((coffee.processing?.value?.isEmpty)!) {
+            if let processingTechnique = coffee.processing?.value?[0].name {
+                self.processing.text = processingTechnique
+            }
+        }
+        
+        if let altitude = coffee.altitude?.value {
+            self.altitude.text = "\(altitude) ft"
+        }
+        
+        if let imageUrl = coffee.photo?.value?[0].url {
+            let url = URL(string: imageUrl)
+            coffeeImage.af_setImage(withURL: url!)
+        }
     }
 }

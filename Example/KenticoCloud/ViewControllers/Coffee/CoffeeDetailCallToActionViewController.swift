@@ -10,16 +10,22 @@ import  UIKit
 import  MapKit
 
 class CoffeeDetailCallToActionViewController: UIViewController {
-    @IBOutlet var backButton: UIButton!
+    
+    // MARK: Properties
     var callToAction: CallToAction?
     var cafes: [Cafe?] = []
     
+    @IBOutlet var backButton: UIButton!
     @IBOutlet weak var map: MKMapView!
+    
+    // MARK: VC lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         setMap(cafes: cafes)
         backButton.stylePinkButton()
     }
+    
+    // MARK: Outlet actions
     
     @IBAction func navigateBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)

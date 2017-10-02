@@ -12,27 +12,34 @@ import AlamofireImage
 
 class CafesViewController: ListingBaseViewController, UITableViewDataSource {
     
+    // MARK: Properties
+    
     private let contentType = "cafe"
+    
+    var cafes: [Cafe] = []
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var refreshControl: UIRefreshControl!
     
-    var cafes: [Cafe] = []
+    // MARK: VC lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.insertSubview(refreshControl!, at: 0)
         tableView.dataSource = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if let index = self.tableView.indexPathForSelectedRow{
-            self.tableView.deselectRow(at: index, animated: true)
+    override func viewDidAppear(_ animated: Bool) {
+        if cafes.count == 0 {
+            getCafes()
         }
-        
-        getCafes()
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Table delegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -45,6 +52,7 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cafeCell") as! CafeTableViewCell
+        cell.photo.addBorder()
         
         let cafe = cafes[indexPath.row]
         cell.cafeTitle.text = cafe.city
@@ -53,10 +61,7 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
         if let imageUrl = cafe.imageUrl {
             let url = URL(string: imageUrl)
             cell.photo.af_setImage(withURL: url!)
-            cell.photo.layer.borderColor = AppConstants.imageBorderColor.cgColor
-            cell.photo.layer.borderWidth = 2
         }
-        
         
         return cell
     }
@@ -73,11 +78,19 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
             let cell = self.tableView.cellForRow(at: indexPath) as! CafeTableViewCell
             cafeDetailViewController.image = cell.photo.image
         }
+        
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated: true)
+        }
     }
+    
+    // MARK: Outlet actions
     
     @IBAction func refreshTable(_ sender: Any) {
         getCafes()
     }
+    
+    // MARK: Getting items
     
     private func getCafes() {
         self.showLoader(message: "Loading cafes...")
@@ -85,9 +98,8 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         
         let typeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
-        let cafesQueryParameters = [typeQueryParameter]
         
-        cloudClient.getItems(modelType: Cafe.self, queryParameters: cafesQueryParameters) { (isSuccess, itemsResponse, error) in
+        cloudClient.getItems(modelType: Cafe.self, queryParameters: [typeQueryParameter]) { (isSuccess, itemsResponse, error) in
             if isSuccess {
                 if let cafes = itemsResponse?.items {
                     self.cafes = cafes
@@ -105,10 +117,6 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
             
             self.hideLoader()
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
 }

@@ -12,20 +12,33 @@ import AlamofireImage
 
 class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
     
+    // MARK: Properties
+    
     private let contentType = "article"
     private var articles: [Article] = []
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var refreshControl: UIRefreshControl!
     
+    // MARK: VC lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        getArticles()
+
+    override func viewDidAppear(_ animated: Bool) {
+        if articles.count == 0 {
+            getArticles()
+        }
     }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Table delegates
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -38,27 +51,20 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "articleCell") as! ArticleTableViewCell
-        cell.photo.layer.borderColor = AppConstants.imageBorderColor.cgColor
-        cell.photo.layer.borderWidth = 2
+        cell.photo.addBorder()
         
         let article = articles[indexPath.row]
         cell.title.text = article.title?.value
         cell.summary.text = article.summary?.value
         
-        var dateString = ""
         if let date = article.postDate?.value {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            dateString = dateFormatter.string(from: date)
+            cell.date.text = date.getDateString()
         }
-        
-        cell.date.text = dateString
         
         if let imageUrl = article.asset?.value?[0].url {
             let url = URL(string: imageUrl)
             cell.photo.af_setImage(withURL: url!)
         }
-        
         
         return cell
     }
@@ -75,11 +81,19 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
             let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
             articleDetailViewController.image = cell.photo.image!
         }
+        
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated: true)
+        }
     }
+    
+    // MARK: Outlet actions
     
     @IBAction func refreshTable(_ sender: Any) {
         getArticles()
     }
+    
+    // MARK: Getting items
     
     private func getArticles() {
         self.showLoader(message: "Loading articles...")
@@ -106,11 +120,6 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
             self.hideLoader()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     
 }
 

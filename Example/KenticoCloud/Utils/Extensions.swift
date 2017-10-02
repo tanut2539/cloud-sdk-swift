@@ -39,3 +39,18 @@ extension UILabel {
         }
     }
 }
+
+extension UIImageView {
+    func addBorder() {
+        self.layer.borderColor = AppConstants.imageBorderColor.cgColor
+        self.layer.borderWidth = 2
+    }
+}
+
+extension Date {
+    func getDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: self)
+    }
+}

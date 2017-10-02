@@ -10,6 +10,8 @@ import UIKit
 
 class ArticleDetailViewController: UIViewController {
     
+    // MARK: Properties
+    
     var article: Article?
     var image: UIImage?
     
@@ -19,6 +21,8 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet var content: UILabel!
     @IBOutlet var backButton: UIButton!
+    
+    // MARK: VC lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +48,8 @@ class ArticleDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: Outlet actions
 
     @IBAction func navigateBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)

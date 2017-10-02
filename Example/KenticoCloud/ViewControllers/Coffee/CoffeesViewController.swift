@@ -1,5 +1,5 @@
 //
-//  CoffeeViewController.swift
+//  CoffeesViewController.swift
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 31/08/2017.
@@ -11,12 +11,15 @@ import KenticoCloud
 
 class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: Properties
+    
     private let contentType = "coffee"
     private var coffees: [Coffee] = []
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var refreshControl: UIRefreshControl!
     
+    // MARK: VC lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +28,17 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
         tableView.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if let index = self.tableView.indexPathForSelectedRow{
-            self.tableView.deselectRow(at: index, animated: true)
+    override func viewDidAppear(_ animated: Bool) {
+        if coffees.count == 0 {
+            getCoffees()
         }
-        
-        getCoffees()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: Table delegate
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -89,11 +91,19 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
             
             _ = self.tableView.cellForRow(at: indexPath) as! CoffeeTableViewCell
         }
+        
+        if let index = self.tableView.indexPathForSelectedRow{
+            self.tableView.deselectRow(at: index, animated: true)
+        }
     }
+    
+    // MARK: Outlet actions
     
     @IBAction func refreshTable(_ sender: Any) {
         getCoffees()
     }
+    
+    // MARK: Getting items
     
     private func getCoffees() {
         self.showLoader(message: "Loading coffees...")
@@ -101,11 +111,12 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
         let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
         
         let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
-        let coffeesQueryParameters = [contentTypeQueryParameter]
         
-        cloudClient.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, itemsResponse, error) in
+        cloudClient.getItems(modelType: Coffee.self, queryParameters: [contentTypeQueryParameter]) { (isSuccess, itemsResponse, error) in
             if isSuccess {
                 if let coffees = itemsResponse?.items {
+                    
+                    // Order coffees - with promotion (aka featured) first
                     self.coffees = coffees.sorted { ($0.promotion!.containsCodename(codename: "featured")) && (!$1.promotion!.containsCodename(codename: "featured")) }
                     self.tableView.reloadData()
                 }
