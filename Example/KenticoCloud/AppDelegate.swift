@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         // Appearance customization
-        //UIApplication.shared.statusBarStyle = .default
         UINavigationBar.appearance().isHidden = true
         UITableView.appearance().backgroundColor = AppConstants.globalBackgroundColor
         UITableViewCell.appearance().backgroundColor = AppConstants.globalBackgroundColor
@@ -60,11 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Convert token to string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        
-        // Print it to console
+
         print("APNs device token: \(deviceTokenString)")
         
         // Persist it in your backend in case it's new
+        let uid = TrackingSessionHelper.getUid()
+        let notificationService = NotificationService.init()
+        notificationService.registerForNotifications(deviceToken: deviceTokenString, uid: uid)
     }
     
     // Called when APNs failed to register the device for push notifications
@@ -78,11 +79,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let itemName = (data["itemName"] ?? "unknown") as! String
         let contentType = (data["contentType"] ?? "unknown") as! String
         
-        if (contentType == "cafe") && (itemName != "unknown") {
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let notificationCafeViewController = mainStoryboard.instantiateViewController(withIdentifier: "NotificationCafeViewController") as! NotificationCafeViewController
-            notificationCafeViewController.cafeName = itemName
-            self.window?.rootViewController?.present(notificationCafeViewController, animated: true, completion: nil)
+        if (contentType == "coffee") && (itemName != "unknown") {
+            let client = DeliveryClient.init(projectId: AppConstants.projectId)
+            client.getItem(modelType: Coffee.self, itemName: itemName) { (isSuccess, itemResponse, error) in
+                if isSuccess {
+                    if let coffee = itemResponse?.item {
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let coffeeNotificationViewController = mainStoryboard.instantiateViewController(withIdentifier: "CoffeeNotificationViewController") as! CoffeeNotificationViewController
+                        coffeeNotificationViewController.coffee = coffee
+                        self.window?.rootViewController?.present(coffeeNotificationViewController, animated: true, completion: nil)
+                    }
+                } else {
+                    if let error = error {
+                        print(error)
+                    }
+                }
+            }
         }
     }
 

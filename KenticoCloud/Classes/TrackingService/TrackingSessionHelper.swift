@@ -6,7 +6,7 @@
 //
 //
 
-struct TrackingSessionHelper {
+public struct TrackingSessionHelper {
     
     private static let uidKey = "KenticoCloudTrackingSessionUid"
     private static let sidKey = "KenticoCloudTrackingSessionSid"
@@ -25,7 +25,7 @@ struct TrackingSessionHelper {
         }
     }
     
-    static func getUid() -> String {
+    public static func getUid() -> String {
         
         // Try to get existing from local storage
         let uid = UserDefaults.standard.value(forKey: uidKey) as? String

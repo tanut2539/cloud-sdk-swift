@@ -19,7 +19,6 @@
 		8F3807341F6013C30008AFA1 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807211F6013C30008AFA1 /* ArticlesViewController.swift */; };
 		8F3807351F6013C30008AFA1 /* CafeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807231F6013C30008AFA1 /* CafeDetailViewController.swift */; };
 		8F3807361F6013C30008AFA1 /* CafesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807241F6013C30008AFA1 /* CafesViewController.swift */; };
-		8F3807371F6013C30008AFA1 /* NotificationCafeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807251F6013C30008AFA1 /* NotificationCafeViewController.swift */; };
 		8F3807381F6013C30008AFA1 /* CoffeeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807271F6013C30008AFA1 /* CoffeeDetailViewController.swift */; };
 		8F3807391F6013C30008AFA1 /* CoffeesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3807281F6013C30008AFA1 /* CoffeesViewController.swift */; };
 		8F38073B1F6013C30008AFA1 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F38072C1F6013C30008AFA1 /* ArticleTableViewCell.swift */; };
@@ -29,6 +28,8 @@
 		8F7465E11F45D36300908DF5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7465E01F45D36300908DF5 /* UserNotifications.framework */; };
 		8F796BB61F7A751E000B5A1E /* CoffeeDescriptionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F796BB51F7A751E000B5A1E /* CoffeeDescriptionViewCell.swift */; };
 		8F8E8CEF1F80D11C00ADEDCE /* ListingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8E8CEE1F80D11C00ADEDCE /* ListingBaseViewController.swift */; };
+		8F8E8CF11F83972000ADEDCE /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8E8CF01F83972000ADEDCE /* NotificationService.swift */; };
+		8F8E8CF31F83BE6C00ADEDCE /* CoffeeNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8E8CF21F83BE6C00ADEDCE /* CoffeeNotificationViewController.swift */; };
 		8FA7D8A71F768B000057C590 /* GetModularContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7D8A31F7687180057C590 /* GetModularContent.swift */; };
 		8FA925051F791AC0008FD6C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA925041F791AC0008FD6C8 /* LaunchScreen.storyboard */; };
 		8FA925081F7A2E84008FD6C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA925071F7A2E84008FD6C8 /* Extensions.swift */; };
@@ -78,7 +79,6 @@
 		8F3807211F6013C30008AFA1 /* ArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesViewController.swift; sourceTree = "<group>"; };
 		8F3807231F6013C30008AFA1 /* CafeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeDetailViewController.swift; sourceTree = "<group>"; };
 		8F3807241F6013C30008AFA1 /* CafesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafesViewController.swift; sourceTree = "<group>"; };
-		8F3807251F6013C30008AFA1 /* NotificationCafeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCafeViewController.swift; sourceTree = "<group>"; };
 		8F3807271F6013C30008AFA1 /* CoffeeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeDetailViewController.swift; sourceTree = "<group>"; };
 		8F3807281F6013C30008AFA1 /* CoffeesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeesViewController.swift; sourceTree = "<group>"; };
 		8F38072C1F6013C30008AFA1 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +89,8 @@
 		8F7465E01F45D36300908DF5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8F796BB51F7A751E000B5A1E /* CoffeeDescriptionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeDescriptionViewCell.swift; sourceTree = "<group>"; };
 		8F8E8CEE1F80D11C00ADEDCE /* ListingBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingBaseViewController.swift; sourceTree = "<group>"; };
+		8F8E8CF01F83972000ADEDCE /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8F8E8CF21F83BE6C00ADEDCE /* CoffeeNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeNotificationViewController.swift; sourceTree = "<group>"; };
 		8FA7D8A31F7687180057C590 /* GetModularContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetModularContent.swift; sourceTree = "<group>"; };
 		8FA925041F791AC0008FD6C8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FA925071F7A2E84008FD6C8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				8FA925041F791AC0008FD6C8 /* LaunchScreen.storyboard */,
+				8F8E8CF01F83972000ADEDCE /* NotificationService.swift */,
 			);
 			name = "Example for KenticoCloud";
 			path = KenticoCloud;
@@ -272,7 +275,6 @@
 			children = (
 				8F3807231F6013C30008AFA1 /* CafeDetailViewController.swift */,
 				8F3807241F6013C30008AFA1 /* CafesViewController.swift */,
-				8F3807251F6013C30008AFA1 /* NotificationCafeViewController.swift */,
 			);
 			path = Cafe;
 			sourceTree = "<group>";
@@ -283,6 +285,7 @@
 				8F3807281F6013C30008AFA1 /* CoffeesViewController.swift */,
 				8F3807271F6013C30008AFA1 /* CoffeeDetailViewController.swift */,
 				8FB0ACFA1F753EDD00102112 /* CoffeeDetailCallToActionViewController.swift */,
+				8F8E8CF21F83BE6C00ADEDCE /* CoffeeNotificationViewController.swift */,
 			);
 			path = Coffee;
 			sourceTree = "<group>";
@@ -589,7 +592,7 @@
 				8F3807311F6013C30008AFA1 /* Cafe.swift in Sources */,
 				8F3807381F6013C30008AFA1 /* CoffeeDetailViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				8F3807371F6013C30008AFA1 /* NotificationCafeViewController.swift in Sources */,
+				8F8E8CF31F83BE6C00ADEDCE /* CoffeeNotificationViewController.swift in Sources */,
 				8F38073E1F6013C30008AFA1 /* MenuTableViewCell.swift in Sources */,
 				8F8E8CEF1F80D11C00ADEDCE /* ListingBaseViewController.swift in Sources */,
 				8F3807351F6013C30008AFA1 /* CafeDetailViewController.swift in Sources */,
@@ -602,6 +605,7 @@
 				8F38073B1F6013C30008AFA1 /* ArticleTableViewCell.swift in Sources */,
 				8FA925081F7A2E84008FD6C8 /* Extensions.swift in Sources */,
 				8F3807361F6013C30008AFA1 /* CafesViewController.swift in Sources */,
+				8F8E8CF11F83972000ADEDCE /* NotificationService.swift in Sources */,
 				8FB0ACF91F752FE800102112 /* CallToAction.swift in Sources */,
 				8FB0ACFB1F753EDD00102112 /* CoffeeDetailCallToActionViewController.swift in Sources */,
 				8F38073D1F6013C30008AFA1 /* CoffeeTableViewCell.swift in Sources */,

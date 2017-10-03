@@ -12,7 +12,7 @@ public class TrackingClient {
     
     private var projectId: String
     private var sid: String
-    private var uid: String
+    public private(set) var uid: String
     private var isDebugLoggingEnabled: Bool
     
     public init(projectId: String, enableDebugLogging: Bool = false) {
@@ -60,7 +60,7 @@ public class TrackingClient {
                     completionHandler(true, nil)
                 case .failure(let error):
                     if self.isDebugLoggingEnabled {
-                        print("[Kentico Cloud] \(debugActionMessage) failed")
+                        print("[Kentico Cloud] \(debugActionMessage) failed with error: \(error)")
                     }
                     completionHandler(false, error)
                 }

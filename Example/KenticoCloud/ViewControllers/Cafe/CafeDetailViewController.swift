@@ -50,7 +50,7 @@ class CafeDetailViewController: UIViewController {
                     // custom retry policy
                 }
             })
-            trackingClient.addContact(email: "dubacik@kentico.com")
+            trackingClient.addContact(email: "panacik@kentico.com")
         }
     }
     
