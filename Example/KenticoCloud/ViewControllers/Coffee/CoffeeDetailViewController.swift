@@ -36,6 +36,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
     
     // MARK: VC lifecycle
     
+    @IBOutlet var ctaTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -145,7 +146,9 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
                     ctaImage.af_setImage(withURL: url!)
                 }
                 
-                ctaSubtitle.text = callToAction?.text?.value
+                ctaSubtitle.text = callToAction?.title?.value
+                ctaTitle.text = callToAction?.shortText?.value
+                
                 tableView.addSubview(ctaView)
             }
         }
