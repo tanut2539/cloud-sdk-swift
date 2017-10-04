@@ -146,8 +146,8 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
                     ctaImage.af_setImage(withURL: url!)
                 }
                 
-                ctaSubtitle.text = callToAction?.title?.value
-                ctaTitle.text = callToAction?.shortText?.value
+                ctaSubtitle.text = callToAction?.shortText?.value
+                ctaTitle.text = callToAction?.title?.value
                 
                 tableView.addSubview(ctaView)
             }
