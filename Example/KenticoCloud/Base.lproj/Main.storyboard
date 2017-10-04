@@ -32,7 +32,7 @@
         <scene sceneID="KAm-Et-Lst">
             <objects>
                 <tableViewController storyboardIdentifier="CafesViewController" id="wMJ-k7-9dR" customClass="CafesViewController" customModule="KenticoCloud_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="247" sectionHeaderHeight="28" sectionFooterHeight="28" id="m9X-3f-x8Z">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="287" sectionHeaderHeight="28" sectionFooterHeight="28" id="m9X-3f-x8Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,47 +75,42 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeCell" rowHeight="247" id="bHw-sY-fSu" customClass="CafeTableViewCell" customModule="KenticoCloud_Example">
-                                <rect key="frame" x="0.0" y="166" width="375" height="247"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeCell" rowHeight="287" id="bHw-sY-fSu" customClass="CafeTableViewCell" customModule="KenticoCloud_Example">
+                                <rect key="frame" x="0.0" y="166" width="375" height="287"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bHw-sY-fSu" id="YBL-0H-K2Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="287"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bJi-QD-evH">
-                                            <rect key="frame" x="39" y="8" width="297" height="183"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="bJi-QD-evH" secondAttribute="height" multiplier="99:61" id="SoC-wO-Fhe"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sydney - downtown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvN-2n-Dzv">
-                                            <rect key="frame" x="39" y="193" width="328" height="24"/>
+                                            <rect key="frame" x="16" y="221" width="334" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <color key="textColor" red="0.95294117649999999" green="0.38823529410000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="141 Sydney Rd  555 111 222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpT-6s-0Wr">
-                                            <rect key="frame" x="39" y="215" width="320" height="18"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="18" id="Olo-be-DvV"/>
-                                            </constraints>
+                                            <rect key="frame" x="16" y="247" width="334" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.14117647058823529" green="0.1803921568627451" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bJi-QD-evH">
+                                            <rect key="frame" x="16" y="8" width="342" height="211"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="bJi-QD-evH" secondAttribute="height" multiplier="99:61" id="pSQ-gJ-cS1"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="bJi-QD-evH" firstAttribute="leading" secondItem="YBL-0H-K2Y" secondAttribute="leadingMargin" constant="31" id="1fL-IJ-aTw"/>
-                                        <constraint firstItem="bJi-QD-evH" firstAttribute="centerX" secondItem="wvN-2n-Dzv" secondAttribute="centerX" constant="-15.5" id="37e-oK-T4f"/>
-                                        <constraint firstItem="wvN-2n-Dzv" firstAttribute="top" secondItem="bJi-QD-evH" secondAttribute="bottom" constant="2" id="4zy-71-P6r"/>
-                                        <constraint firstItem="wvN-2n-Dzv" firstAttribute="leading" secondItem="bpT-6s-0Wr" secondAttribute="leading" id="I7D-mT-C5m"/>
-                                        <constraint firstItem="bJi-QD-evH" firstAttribute="leading" secondItem="wvN-2n-Dzv" secondAttribute="leading" id="MeD-Te-uZT"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="bJi-QD-evH" secondAttribute="trailing" constant="31" id="aZM-iU-Vh5"/>
-                                        <constraint firstItem="bpT-6s-0Wr" firstAttribute="top" secondItem="wvN-2n-Dzv" secondAttribute="bottom" constant="-2" id="ezA-e2-zCZ"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="bpT-6s-0Wr" secondAttribute="bottom" constant="6" id="j4r-d5-LCe"/>
-                                        <constraint firstItem="wvN-2n-Dzv" firstAttribute="trailing" secondItem="YBL-0H-K2Y" secondAttribute="trailingMargin" id="kme-69-B3I"/>
-                                        <constraint firstItem="wvN-2n-Dzv" firstAttribute="trailing" secondItem="bpT-6s-0Wr" secondAttribute="trailing" constant="8" id="sNu-mZ-C9c"/>
-                                        <constraint firstItem="bJi-QD-evH" firstAttribute="top" secondItem="YBL-0H-K2Y" secondAttribute="topMargin" id="wrW-11-Col"/>
+                                        <constraint firstItem="bpT-6s-0Wr" firstAttribute="leading" secondItem="YBL-0H-K2Y" secondAttribute="leadingMargin" constant="8" id="2RR-7o-adu"/>
+                                        <constraint firstItem="bJi-QD-evH" firstAttribute="leading" secondItem="YBL-0H-K2Y" secondAttribute="leadingMargin" constant="8" id="7Yh-hk-C7B"/>
+                                        <constraint firstItem="wvN-2n-Dzv" firstAttribute="leading" secondItem="YBL-0H-K2Y" secondAttribute="leadingMargin" constant="8" id="Ayl-Qg-RZ0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bJi-QD-evH" secondAttribute="trailing" constant="9" id="GgC-CK-zyE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bpT-6s-0Wr" secondAttribute="trailing" constant="17" id="OEr-kr-lTB"/>
+                                        <constraint firstItem="wvN-2n-Dzv" firstAttribute="top" secondItem="bJi-QD-evH" secondAttribute="bottom" constant="2" id="XQT-an-Izh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="wvN-2n-Dzv" secondAttribute="trailing" constant="17" id="YVs-7s-ZfZ"/>
+                                        <constraint firstItem="bpT-6s-0Wr" firstAttribute="top" secondItem="wvN-2n-Dzv" secondAttribute="bottom" constant="2" id="cmA-PV-ubg"/>
+                                        <constraint firstItem="bJi-QD-evH" firstAttribute="top" secondItem="YBL-0H-K2Y" secondAttribute="topMargin" id="qTj-o4-lt5"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
