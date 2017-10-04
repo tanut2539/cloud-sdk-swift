@@ -1138,8 +1138,7 @@ Dry processing, being the least economically demanding, used to be the most wide
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="dismissView:" destination="tPd-ew-taE" eventType="touchUpInside" id="4dN-f0-tK1"/>
-                                            <action selector="navigateBack:" destination="tPd-ew-taE" eventType="touchUpInside" id="Cqb-5s-fRT"/>
+                                            <action selector="dismissView:" destination="tPd-ew-taE" eventType="touchUpInside" id="MBY-JI-bKu"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1314,9 +1313,8 @@ Dry processing, being the least economically demanding, used to be the most wide
                     </view>
                     <connections>
                         <outlet property="altitude" destination="2hO-NF-Rtl" id="h0O-eg-g8W"/>
-                        <outlet property="backButton" destination="16c-5k-RBF" id="1XA-Ie-iwP"/>
                         <outlet property="coffeeImage" destination="UTL-qT-5Ud" id="oY4-bl-qJU"/>
-                        <outlet property="dismissButton" destination="16c-5k-RBF" id="qhI-2n-O70"/>
+                        <outlet property="dismissButton" destination="16c-5k-RBF" id="lTa-pu-23c"/>
                         <outlet property="farm" destination="BQz-Ij-VTv" id="ts4-pB-dDJ"/>
                         <outlet property="price" destination="E0B-s0-YgH" id="5mG-p0-mBd"/>
                         <outlet property="processing" destination="UMI-fc-oXe" id="vHY-SB-4Y7"/>

@@ -50,6 +50,9 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         backButton.stylePinkButton()
         
         setLabels()
+        
+        let client = TrackingClient.init(projectId: AppConstants.projectId)
+        client.trackActivity(activityName: "activity_\(coffee.name?.value ?? "")")
     }
     
     // MARK: Table delegate

@@ -43,14 +43,13 @@ class CafeDetailViewController: UIViewController {
         setImages()
         
         if let city = cafe?.city {
-            let trackingClient = TrackingClient.init(projectId: AppConstants.trackingProjectId, enableDebugLogging: true)
+            let trackingClient = TrackingClient.init(projectId: AppConstants.projectId, enableDebugLogging: true)
             trackingClient.trackActivity(activityName: "Cafe detail view: \(city)", completionHandler: {
                 (isSuccess, error) in
                 if !isSuccess {
                     // custom retry policy
                 }
             })
-            trackingClient.addContact(email: "panacik@kentico.com")
         }
     }
     

@@ -755,7 +755,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "656aeed4-0191-45d4-9039-07713c5072ae";
+				PROVISIONING_PROFILE = "37a74a71-e1ab-4be2-a9c1-732d4a942a64";
 				PROVISIONING_PROFILE_SPECIFIER = "MartinM Provisioning profile";
 				SWIFT_VERSION = 3.0;
 			};
