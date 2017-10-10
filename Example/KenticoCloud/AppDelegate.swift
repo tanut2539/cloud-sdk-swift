@@ -63,7 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs device token: \(deviceTokenString)")
         
         // Persist it in your backend in case it's new
-        let uid = TrackingSessionHelper.getUid()
+        let trackingCLient = TrackingClient.init(projectId: AppConstants.projectId)
+        let uid = trackingCLient.uid
         let notificationService = NotificationService.init()
         notificationService.registerForNotifications(deviceToken: deviceTokenString, uid: uid)
     }
