@@ -6,8 +6,10 @@
 //
 //
 
+/// Represents ModularContentBlock in RichText element.
 public class ModularContentBlock: Block {
     
+    /// Name of the modular content item.
     public private(set) var contentItemName: String?
     
     init?(html: String?) {

@@ -6,9 +6,12 @@
 //
 //
 
+/// Represents InlineImageBlock in RichText element.
 public class InlineImageBlock: Block {
     
+    /// Description of the inline image.
     public private(set) var description: String?
+    /// Url of the inline image.
     public private(set) var url: String?
     
     init?(html: String?) {

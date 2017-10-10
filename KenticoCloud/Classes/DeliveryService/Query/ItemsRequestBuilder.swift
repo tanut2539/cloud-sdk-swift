@@ -30,7 +30,7 @@ class ItemsRequestBuilder {
             }
         }
         
-        // Remove last ampersand or question mark
+        // Remove last ampersand or question mark.
         queryParametersString = String(queryParametersString.characters.dropLast(1))
         
         return "\(endpointUrl)/\(projectId)/items\(queryParametersString)"

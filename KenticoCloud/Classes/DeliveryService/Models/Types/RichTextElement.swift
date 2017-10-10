@@ -9,6 +9,7 @@
 import Kanna
 import ObjectMapper
 
+/// Represents RichText element.
 public class RichTextElement: Mappable {
     
     private var elementName: String = ""
@@ -23,6 +24,7 @@ public class RichTextElement: Mappable {
     public private(set) var modularContent: [ModularContentBlock?] = []
     public private(set) var htmlContentString: String = ""
     
+    /// Maps response's json instance of the element into strongly typed object representation.
     public required init?(map: Map){
         if let context = map.context as? ElementContext {
             elementName = context.elementName
@@ -65,6 +67,7 @@ public class RichTextElement: Mappable {
         }
     }
     
+    /// Maps response's json instance of the element into strongly typed object representation.
     public func mapping(map: Map) {
         type <- map["elements.\(elementName).type"]
         name <- map["elements.\(elementName).name"]

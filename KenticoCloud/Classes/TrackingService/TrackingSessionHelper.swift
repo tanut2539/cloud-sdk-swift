@@ -6,14 +6,14 @@
 //
 //
 
-public struct TrackingSessionHelper {
+struct TrackingSessionHelper {
     
     private static let uidKey = "KenticoCloudTrackingSessionUid"
     private static let sidKey = "KenticoCloudTrackingSessionSid"
     
     static func getSid() -> String {
         
-        // Try to get existing from local storage
+        // Try to get existing from local storage.
         let sid = UserDefaults.standard.value(forKey: sidKey) as? String
         
         if sid != nil {
@@ -25,9 +25,9 @@ public struct TrackingSessionHelper {
         }
     }
     
-    public static func getUid() -> String {
+    static func getUid() -> String {
         
-        // Try to get existing from local storage
+        // Try to get existing from local storage.
         let uid = UserDefaults.standard.value(forKey: uidKey) as? String
         
         if uid != nil {
@@ -39,11 +39,11 @@ public struct TrackingSessionHelper {
         }
     }
     
-    private static func generateNewUid() -> String {
+    static func generateNewUid() -> String {
         return String.randomString(length: 16)
     }
     
-    private static func generateNewSid() -> String {
+    static func generateNewSid() -> String {
         return String.randomString(length: 16)
     }
 }

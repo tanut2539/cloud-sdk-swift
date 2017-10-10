@@ -8,14 +8,23 @@
 
 import Alamofire
 
+/// TrackingClient is repsonsible for tracking analytics data.
 public class TrackingClient {
+    
+    /// Uid is current user's id suitable for tracking via Kentico Cloud Analytics API.
+    public private(set) var uid: String
     
     private var projectId: String
     private var sid: String
     private var isDebugLoggingEnabled: Bool
     
-    public private(set) var uid: String
-    
+    /**
+     Inits tracking client instance.
+     
+     - Parameter projectId: Identifier of the project.
+     - Parameter enableDebugLogging: Flag for logging debug messages.
+     - Returns: Instance of the TrackingClient.
+     */
     public init(projectId: String, enableDebugLogging: Bool = false) {
         self.projectId = projectId
         self.sid = TrackingSessionHelper.getSid()
@@ -23,7 +32,14 @@ public class TrackingClient {
         self.isDebugLoggingEnabled = enableDebugLogging
     }
     
-    public func startSession(completionHandler: @escaping (Bool, Error?) -> () = { _ in }) {
+    /**
+     Starts analytics session. In order to upcoming activity tracking, the session must be started first.
+     
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter error: Potential error.
+     */
+    public func startSession(completionHandler: @escaping (_ isSuccess: Bool, _ error: Error?) -> () = { _ in }) {
         let sessionRequestUrl = getSessionUrl()
         let body = getSessionRequestBody()
         let headers = getHeaders()
@@ -31,7 +47,15 @@ public class TrackingClient {
         sendTrackingRequest(url: sessionRequestUrl, body: body, headers: headers, debugActionMessage: "Starting session", completionHandler: completionHandler)
     }
     
-    public func trackActivity(activityName: String, completionHandler: @escaping (Bool, Error?) -> () = { _ in }) {
+    /**
+     Tracks custom activity.
+     
+     - Parameter activityName: Name of custom activity.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter error: Potential error.
+     */
+    public func trackActivity(activityName: String, completionHandler: @escaping (_ isSuccess: Bool, _ error: Error?) -> () = { _ in }) {
         
         let activityRequestUrl = getTrackActivityUrl()
         let body = getActivityRequestBody(activityName: activityName)
@@ -40,7 +64,15 @@ public class TrackingClient {
         sendTrackingRequest(url: activityRequestUrl, body: body, headers: headers, debugActionMessage: "Tracking activity \"\(activityName)\"",completionHandler: completionHandler)
     }
     
-    public func addContact(email: String, completionHandler: @escaping (Bool, Error?) -> () = { _ in }) {
+    /**
+     Adds contact.
+     
+     - Parameter email: Contact's email.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter error: Potential error.
+     */
+    public func addContact(email: String, completionHandler: @escaping (_ isSuccess: Bool, _ error: Error?) -> () = { _ in }) {
         let addContactRequestUrl = getAddContactUrl()
         let body = getAddContactRequestBody(email: email)
         let headers = getHeaders()
@@ -67,7 +99,7 @@ public class TrackingClient {
                 }
         }
     }
-        
+    
     private func getSessionUrl() -> String {
         let endpoint = getTrackerEndpoint()
         return "\(endpoint)/track/\(projectId)/session"

@@ -8,16 +8,22 @@
 
 import ObjectMapper
 
+/// Represents Taxonomy element.
 public class TaxonomyElement: Mappable {
     
+    /// Type of the element.
     public private(set) var type: String?
+    /// Name of the element.
     public private(set) var name: String?
-    public private(set) var taxonomyGroup: String?
+    // Value of the element.
     public private(set) var value: [Taxonomy]?
+    /// Taxonomy Group of the element.
+    public private(set) var taxonomyGroup: String?
     
     public required init?(map: Map){
     }
     
+    /// Maps response's json instance of the element into strongly typed object representation.
     public func mapping(map: Map) {
         var elementName = ""
         if let context = map.context as? ElementContext {
@@ -30,6 +36,7 @@ public class TaxonomyElement: Mappable {
         value <- map["elements.\(elementName).value"]
     }
     
+    /// Maps response's json instance of the element into strongly typed object representation.
     public func containsCodename(codename: String) -> Bool {
         if let taxonomies = value {
             if taxonomies.contains(where: { taxonomy in taxonomy.codename == codename }) {
@@ -40,6 +47,7 @@ public class TaxonomyElement: Mappable {
         return false
     }
     
+    /// Maps response's json instance of the element into strongly typed object representation.
     public func containsName(name: String) -> Bool {
         if let taxonomies = value {
             if taxonomies.contains(where: { taxonomy in taxonomy.name == name }) {

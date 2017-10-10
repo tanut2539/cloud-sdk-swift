@@ -6,8 +6,10 @@
 //
 //
 
+/// Represents HtmlContentBlock in RichText element.
 public class HtmlContentBlock: Block {
     
+    /// Content of the HtmlContentBlock.
     public private(set) var content: String?
     
     init?(html: String?) {

@@ -6,6 +6,7 @@
 //
 //
 
+/// Parameter keys enum for DeliveryClient's queryParameters array.
 public enum QueryParameterKey: String {
     case id = "system.id"
     case name = "system.name"

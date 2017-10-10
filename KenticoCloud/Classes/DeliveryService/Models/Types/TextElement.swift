@@ -8,15 +8,21 @@
 
 import ObjectMapper
 
+/// Represents Text element.
 public class TextElement: Mappable {
     
+    /// Type of the element.
     public private(set) var type: String?
+    /// Name of the element.
     public private(set) var name: String?
+    /// Value of the element.
     public private(set) var value: String?
     
+    /// Maps response's json instance of the element into strongly typed object representation.
     public required init?(map: Map){
     }
     
+    /// Maps response's json instance of the element into strongly typed object representation.
     public func mapping(map: Map) {
         var elementName = ""
         if let context = map.context as? ElementContext {

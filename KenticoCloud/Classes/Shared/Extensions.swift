@@ -17,6 +17,7 @@ extension String {
         }
     }
     
+    /// Generates pseudo-random string of given length.
     static func randomString(length: Int) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

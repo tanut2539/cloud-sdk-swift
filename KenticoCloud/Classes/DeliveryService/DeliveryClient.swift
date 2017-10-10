@@ -10,6 +10,7 @@ import AlamofireObjectMapper
 import Alamofire
 import ObjectMapper
 
+/// DeliveryClient is the main class repsonsible for getting items from Delivery API.
 public class DeliveryClient {
     
     private var projectId: String
@@ -17,6 +18,15 @@ public class DeliveryClient {
     private var headers: HTTPHeaders?
     private var isDebugLoggingEnabled: Bool
     
+    /**
+     Inits delivery client instance.
+     Requests Preview API if apiKey is specified, otherwise requests Live API.
+     
+     - Parameter projectId: Identifier of the project.
+     - Parameter apiKey: Preview API key for the project
+     - Parameter enableDebugLogging: Flag for logging debug messages.
+     - Returns: Instance of the DeliveryClient.
+     */
     public init(projectId: String, apiKey: String? = nil, enableDebugLogging: Bool = false) {
         self.projectId = projectId
         self.apiKey = apiKey
@@ -24,37 +34,98 @@ public class DeliveryClient {
         self.headers = getHeaders()
     }
     
-    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter?], completionHandler: @escaping (Bool, ItemsResponse<T>?, Error?) -> ()) where T: Mappable {
+    /**
+     Gets multiple items from Delivery service.
+     Suitable for strongly typed query.
+     
+     - Parameter modelType: Type of the requested items. Type must conform to Mappable protocol.
+     - Parameter queryParameters: Array of the QueryParameters which specifies requested items.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter items: Received items.
+     - Parameter error: Potential error.
+     */
+    public func getItems<T>(modelType: T.Type, queryParameters: [QueryParameter?], completionHandler: @escaping (_ isSuccess: Bool, _ items: ItemsResponse<T>?,_ error: Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemsRequestUrl(queryParameters: queryParameters)
         sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItems<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, ItemsResponse<T>?, Error?) -> ()) where T: Mappable {
+    /**
+     Gets multiple items from Delivery service.
+     Suitable for custom string query.
+     
+     - Parameter modelType: Type of the requested items. Type must conform to Mappable protocol.
+     - Parameter customQuery: String query which specifies requested items.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter items: Received items.
+     - Parameter error: Potential error.
+     */
+    public func getItems<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (_ isSuccess: Bool, _ items: ItemsResponse<T>?, _ error: Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemsRequestUrl(customQuery: customQuery)
         sendGetItemsRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (Bool, ItemResponse<T>?, Error?) -> ()) where T: Mappable {
+    /**
+     Gets single item from Delivery service.
+     
+     - Parameter modelType: Type of the requested items. Type must conform to Mappable protocol.
+     - Parameter language: Language of the requested variant.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter item: Received item.
+     - Parameter error: Potential error.
+     */
+    public func getItem<T>(modelType: T.Type, itemName: String, language: String? = nil, completionHandler: @escaping (_ isSuccess: Bool, _ item: ItemResponse<T>?, _ error: Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemRequestUrl(itemName: itemName, language: language)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (Bool, ItemResponse<T>?, Error?) -> ()) where T: Mappable {
+    /**
+     Gets single item from Delivery service.
+     Suitable for custom string query.
+     
+     - Parameter modelType: Type of the requested items. Type must conform to Mappable protocol.
+     - Parameter customQuery: String query which specifies requested item.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter item: Received item.
+     - Parameter error: Potential error.
+     */
+    public func getItem<T>(modelType: T.Type, customQuery: String, completionHandler: @escaping (_ isSuccess: Bool, _ item: ItemResponse<T>?,_ error: Error?) -> ()) where T: Mappable {
         
         let requestUrl = getItemRequestUrl(customQuery: customQuery)
         sendGetItemRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getTaxonomies(customQuery: String? = nil, completionHandler: @escaping (Bool, [TaxonomyGroup]?, Error?) -> ()) {
+    /**
+     Gets taxonomies from Delivery service.
+
+     - Parameter customQuery: String query which specifies requested taxonomies. If ommited, all taxonomies for the given project are returned.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter taxonomyGroups: Received taxonomy groups.
+     - Parameter error: Potential error.
+     */
+    public func getTaxonomies(customQuery: String? = nil, completionHandler: @escaping (_ isSuccess: Bool, _ taxonomyGroups: [TaxonomyGroup]?, _ error: Error?) -> ()) {
         
         let requestUrl = getTaxonomiesRequestUrl(customQuery: customQuery)
         sendGetTaxonomiesRequest(url: requestUrl, completionHandler: completionHandler)
     }
     
-    public func getTaxonomyGroup(taxonomyGroupName: String, completionHandler: @escaping (Bool, TaxonomyGroup?, Error?) -> ()) {
+    /**
+     Gets TaxonomyGroup from Delivery service.
+     
+     - Parameter taxonomyGroupName: Name which specifies requested TaxonomyGroup
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter taxonomyGroup: Received taxonomy group.
+     - Parameter error: Potential error.
+     */
+    public func getTaxonomyGroup(taxonomyGroupName: String, completionHandler: @escaping (_ isSuccess: Bool, _ taxonomyGroup: TaxonomyGroup?, _ error: Error?) -> ()) {
         
         let requestUrl = getTaxonomyRequestUrl(taxonomyName: taxonomyGroupName)
         sendGetTaxonomyRequest(url: requestUrl, completionHandler: completionHandler)

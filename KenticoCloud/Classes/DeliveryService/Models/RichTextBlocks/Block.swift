@@ -6,4 +6,5 @@
 //
 //
 
+/// Protocol for RichText's blocks.
 public protocol Block {}
