@@ -1,5 +1,5 @@
 //
-//  RequestBuilder.swift
+//  ItemsRequestBuilder.swift
 //  Pods
 //
 //  Created by Martin Makarsky on 11/09/2017.
@@ -29,6 +29,8 @@ class ItemsRequestBuilder {
                 queryParametersString.append("&")
             }
         }
+        
+        // Remove last ampersand or question mark
         queryParametersString = String(queryParametersString.characters.dropLast(1))
         
         return "\(endpointUrl)/\(projectId)/items\(queryParametersString)"

@@ -9,11 +9,11 @@
 import ObjectMapper
 
 public class MultipleChoice: Mappable {
+    
     public private(set) var name: String?
     public private(set) var codename: String?
     
-    required public init?(map: Map){
-        
+    required public init?(map: Map) {
     }
     
     public func mapping(map: Map) {

@@ -31,7 +31,7 @@ class GetItemsLiveSpec: QuickSpec {
                             
                             if let items = deliveryItems?.items {
                                 let itemsCount = items.count
-                                let expectedCount = 10
+                                let expectedCount = 11
                                 expect(itemsCount) == expectedCount
                                 done()
                             }

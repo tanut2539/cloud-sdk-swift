@@ -1,5 +1,5 @@
 //
-//  DeliverConstants.swift
+//  CloudConstants.swift
 //  Pods
 //
 //  Created by Martin Makarsky on 08/09/2017.

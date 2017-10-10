@@ -1,5 +1,5 @@
 //
-//  ItemsResponse.swift
+//  ItemResponse.swift
 //  Pods
 //
 //  Created by Martin Makarsky on 9/23/17.
@@ -9,10 +9,10 @@
 import ObjectMapper
 
 public class ItemResponse<T>: Mappable where T: Mappable {
+    
     public private(set) var deliveryItem: DeliveryItem<T>?
     public private(set) var item: T?
     private var map: Map
-    
     
     public required init?(map: Map) {
         self.map = map

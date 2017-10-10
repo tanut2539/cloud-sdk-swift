@@ -12,8 +12,9 @@ public class TrackingClient {
     
     private var projectId: String
     private var sid: String
-    public private(set) var uid: String
     private var isDebugLoggingEnabled: Bool
+    
+    public private(set) var uid: String
     
     public init(projectId: String, enableDebugLogging: Bool = false) {
         self.projectId = projectId
@@ -55,12 +56,12 @@ public class TrackingClient {
                 switch response.result {
                 case .success:
                     if self.isDebugLoggingEnabled {
-                        print("[Kentico Cloud] \(debugActionMessage) is successful")
+                        print("[Kentico Cloud] \(debugActionMessage) action has succeeded")
                     }
                     completionHandler(true, nil)
                 case .failure(let error):
                     if self.isDebugLoggingEnabled {
-                        print("[Kentico Cloud] \(debugActionMessage) failed with error: \(error)")
+                        print("[Kentico Cloud] \(debugActionMessage) has failed with error: \(error)")
                     }
                     completionHandler(false, error)
                 }

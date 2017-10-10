@@ -7,6 +7,7 @@
 //
 
 public class ModularContentBlock: Block {
+    
     public private(set) var contentItemName: String?
     
     init?(html: String?) {

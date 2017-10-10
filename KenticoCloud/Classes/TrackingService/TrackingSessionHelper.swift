@@ -1,5 +1,5 @@
 //
-//  SessionHelper.swift
+//  TrackingSessionHelper.swift
 //  Pods
 //
 //  Created by Martin Makarsky on 12/09/2017.

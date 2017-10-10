@@ -9,8 +9,8 @@
 import Kanna
 import ObjectMapper
 
-
 public class RichTextElement: Mappable {
+    
     private var elementName: String = ""
     private var supportedBlocksXpath = "//p | //h1 | //h2 | //h3 | //h4 | //strong | //em | //ol | //ul | //a | //object[@type='application/kenticocloud'][@data-type='item'] | //figure"
 
@@ -29,7 +29,6 @@ public class RichTextElement: Mappable {
         }
         
         let value = map["elements.\(elementName).value"].currentValue as? String
-        
         
         if let value = value {
             let doc = HTML(html: value, encoding: .utf8)

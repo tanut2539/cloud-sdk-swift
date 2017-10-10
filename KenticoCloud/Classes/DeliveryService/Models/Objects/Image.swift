@@ -13,8 +13,7 @@ public class Image: Mappable {
     public private(set) var description: String?
     public private(set) var url: String?
     
-    required public init?(map: Map){
-        
+    required public init?(map: Map) {
     }
     
     public func mapping(map: Map) {

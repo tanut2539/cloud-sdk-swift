@@ -68,13 +68,13 @@ public class DeliveryClient {
                 if let value = response.result.value {
                     let deliveryItems = value
                     if self.isDebugLoggingEnabled {
-                        print("[Kentico Cloud] Getting items is successful. Obtained \(String(describing: deliveryItems.items?.count)) items.")
+                        print("[Kentico Cloud] Getting items action has succeeded. Received \(String(describing: deliveryItems.items?.count)) items.")
                     }
                     completionHandler(true, deliveryItems, nil)
                 }
             case .failure(let error):
                 if self.isDebugLoggingEnabled {
-                    print("[Kentico Cloud] Getting items failed. Check requested URL: \(url)")
+                    print("[Kentico Cloud] Getting items action has failed. Check requested URL: \(url)")
                 }
                 completionHandler(false, nil, error)
             }
@@ -88,13 +88,13 @@ public class DeliveryClient {
             case .success:
                 if let value = response.result.value {
                     if self.isDebugLoggingEnabled {
-                        print("[Kentico Cloud] Getting item is successful.")
+                        print("[Kentico Cloud] Getting item action has succeeded.")
                     }
                     completionHandler(true, value, nil)
                 }
             case .failure(let error):
                 if self.isDebugLoggingEnabled {
-                    print("[Kentico Cloud] Getting items failed. Check requested URL: \(url)")
+                    print("[Kentico Cloud] Getting items action has failed. Check requested URL: \(url)")
                 }
                 completionHandler(false, nil, error)
             }
@@ -108,13 +108,13 @@ public class DeliveryClient {
             case .success:
                 if let value = response.result.value {
                     if self.isDebugLoggingEnabled {
-                        print("[Kentico Cloud] Getting taxonomies successful.")
+                        print("[Kentico Cloud] Getting taxonomies action has succeeded.")
                     }
                     completionHandler(true, value, nil)
                 }
             case .failure(let error):
                 if self.isDebugLoggingEnabled {
-                    print("[Kentico Cloud] Getting taxonomies failed. Check requested URL: \(url)")
+                    print("[Kentico Cloud] Getting taxonomies action has failed. Check requested URL: \(url)")
                 }
                 
                 completionHandler(false, [], error)
@@ -129,13 +129,13 @@ public class DeliveryClient {
             case .success:
                 if let value = response.result.value {
                     if self.isDebugLoggingEnabled {
-                        print("[Kentico Cloud] Getting taxonomies successful.")
+                        print("[Kentico Cloud] Getting taxonomies action has succeeded.")
                     }
                     completionHandler(true, value, nil)
                 }
             case .failure(let error):
                 if self.isDebugLoggingEnabled {
-                    print("[Kentico Cloud] Getting taxonomies failed. Check requested URL: \(url)")
+                    print("[Kentico Cloud] Getting taxonomies action has failed. Check requested URL: \(url)")
                 }
                 
                 completionHandler(false, nil, error)
@@ -210,7 +210,7 @@ public class DeliveryClient {
             }
         }
         
-        // We want to request preview api in case there is an apiKey
+        // Request preview api in case there is an apiKey
         if apiKey == nil {
             return CloudConstants.liveDeliverEndpoint
         } else {
@@ -219,7 +219,6 @@ public class DeliveryClient {
         
     }
     
-    // TODO: Add new headers
     private func getHeaders() -> HTTPHeaders {
         var headers: HTTPHeaders = [
             "Accept": "application/json"

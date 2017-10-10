@@ -1,5 +1,5 @@
 //
-//  ParameterKeys.swift
+//  QueryParameterKey.swift
 //  Pods
 //
 //  Created by Martin Makarsky on 07/09/2017.

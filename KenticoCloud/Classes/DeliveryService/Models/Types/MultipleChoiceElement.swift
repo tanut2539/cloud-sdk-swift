@@ -9,6 +9,7 @@
 import ObjectMapper
 
 public class MultipleChoiceElement: Mappable {
+    
     public private(set) var type: String?
     public private(set) var name: String?
     public private(set) var value: [MultipleChoice]?
@@ -46,5 +47,4 @@ public class MultipleChoiceElement: Mappable {
         
         return false
     }
-    
 }

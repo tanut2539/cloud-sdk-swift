@@ -1,5 +1,5 @@
 //
-//  MappableElement.swift
+//  MapElement.swift
 //  Pods
 //
 //  Created by Martin Makarsky on 04/09/2017.

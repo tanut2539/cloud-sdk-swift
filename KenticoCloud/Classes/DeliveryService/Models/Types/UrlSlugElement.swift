@@ -9,6 +9,7 @@
 import ObjectMapper
 
 public class UrlSlugElement: Mappable {
+    
     public private(set) var type: String?
     public private(set) var name: String?
     public private(set) var value: String?

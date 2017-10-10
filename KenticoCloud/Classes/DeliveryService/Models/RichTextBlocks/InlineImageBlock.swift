@@ -7,6 +7,7 @@
 //
 
 public class InlineImageBlock: Block {
+    
     public private(set) var description: String?
     public private(set) var url: String?
     

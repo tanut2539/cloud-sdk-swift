@@ -7,6 +7,7 @@
 //
 
 public class HtmlContentBlock: Block {
+    
     public private(set) var content: String?
     
     init?(html: String?) {
