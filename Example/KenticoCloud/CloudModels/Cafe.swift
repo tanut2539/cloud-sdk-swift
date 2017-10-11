@@ -3,12 +3,15 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 15/08/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved
 //
 
 import ObjectMapper
 
 public class Cafe: Mappable {
+    
+    // MARK: Properties
+    
     public var name: String?
     public var city: String?
     public var street: String?
@@ -19,8 +22,9 @@ public class Cafe: Mappable {
     public var email: String?
     public var imageUrl: String?
     
+    // MARK: Mapping
+    
     public required init?(map: Map){
-        
     }
     
     public func mapping(map: Map) {

@@ -23,6 +23,7 @@ struct TrackingSessionHelper {
             UserDefaults.standard.setValue(sid, forKey: sidKey)
             return sid
         }
+        
     }
     
     static func getUid() -> String {

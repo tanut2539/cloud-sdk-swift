@@ -3,11 +3,11 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 31/08/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved.
 //
 
 import UIKit
-import  KenticoCloud
+import KenticoCloud
 
 class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -32,11 +32,10 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet var callToActionButton: UIButton!
     @IBOutlet var ctaImage: UIImageView!
     @IBOutlet var ctaSubtitle: UILabel!
-
-    
-    // MARK: VC lifecycle
-    
     @IBOutlet var ctaTitle: UILabel!
+    
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,13 +48,20 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         callToActionButton.stylePinkButton()
         backButton.stylePinkButton()
         
-        setLabels()
+        setContent()
         
-        let client = TrackingClient.init(projectId: AppConstants.projectId)
-        client.trackActivity(activityName: "activity_\(coffee.name?.value ?? "")")
+        let client = TrackingClient.init(projectId: AppConstants.projectId, enableDebugLogging: true)
+        
+        if let categoryCodename = coffee.category?.value?[0].codename {
+            client.trackActivity(activityName: categoryCodename)
+        }
     }
     
-    // MARK: Table delegate
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Delegates
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -75,10 +81,6 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         return UITableViewAutomaticDimension;
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "coffeeDetailCtaSegue" {
             
@@ -96,49 +98,9 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         _ = navigationController?.popViewController(animated: true)
     }
     
-    // MARK: Getting items
+    // MARK: Behaviour
     
-    // Get Call to Action for Coffee enthusiast persona only
-    private func getCoffeeEnthusiastCta(callToActionNames: [String?]) {
-        
-        for callToActionName in callToActionNames {
-            if let ctoName = callToActionName {
-                let client = DeliveryClient.init(projectId: AppConstants.projectId)
-                client.getItem(modelType: CallToAction.self, itemName: ctoName, completionHandler: {isSuccess, itemResponse, error in
-                    if isSuccess {
-                        if let cto = itemResponse?.item {
-                            if (cto.persona?.containsName(name: "Coffee enthusiast"))! {
-                                self.callToAction = cto
-                                self.tryToUpdateCallToActionView()
-                            }
-                        }
-                    } else {
-                        print("Error while getting CTOs. Error: \(String(describing: error))")
-                    }
-                })
-            }
-        }
-        
-        // Get SelectedCafes
-        let client = DeliveryClient.init(projectId: AppConstants.projectId)
-        client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, itemResponse, error in
-            if isSuccess {
-                var cafes : [Cafe?] = []
-                
-                for cafeCodeName in (itemResponse?.item?.handpickedCafes?.value)! {
-                    let selectedCafe = itemResponse?.getModularContent(codename: cafeCodeName, type: Cafe.self)
-                    cafes.append(selectedCafe)
-                    self.selectedCafes = cafes
-                    
-                    self.selectedCafes = cafes as! [Cafe]
-                    self.tryToUpdateCallToActionView()
-                }
-            } else {
-                print("Error while getting CTOs. Error: \(String(describing: error))")
-            }
-        })
-    }
-    
+    /// Updates Call to Action view if there is cto AND selected cafes
     private func tryToUpdateCallToActionView() {
         if let titleText = self.callToAction?.actionButtonText?.value {
             if selectedCafes.count > 0 {
@@ -157,7 +119,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    private func setLabels() {
+    private func setContent() {
         if let callToActionNames = coffee.callToActions?.value {
             getCoffeeEnthusiastCta(callToActionNames: callToActionNames)
         }
@@ -183,5 +145,48 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
             let url = URL(string: imageUrl)
             coffeeImage.af_setImage(withURL: url!)
         }
+    }
+    
+    // MARK: Getting items
+    
+    /// Get Call to Action for Coffee enthusiast persona only
+    private func getCoffeeEnthusiastCta(callToActionNames: [String?]) {
+        
+        for callToActionName in callToActionNames {
+            if let ctoName = callToActionName {
+                let client = DeliveryClient.init(projectId: AppConstants.projectId)
+                client.getItem(modelType: CallToAction.self, itemName: ctoName, completionHandler: {isSuccess, itemResponse, error in
+                    if isSuccess {
+                        if let cto = itemResponse?.item {
+                            if (cto.persona?.containsName(name: "Coffee enthusiast"))! {
+                                self.callToAction = cto
+                                self.tryToUpdateCallToActionView()
+                            }
+                        }
+                    } else {
+                        print("Error while getting CTOs. Error: \(String(describing: error))")
+                    }
+                })
+            }
+        }
+        
+        /// Get SelectedCafes
+        let client = DeliveryClient.init(projectId: AppConstants.projectId)
+        client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, itemResponse, error in
+            if isSuccess {
+                var cafes : [Cafe?] = []
+                
+                for cafeCodeName in (itemResponse?.item?.handpickedCafes?.value)! {
+                    let selectedCafe = itemResponse?.getModularContent(codename: cafeCodeName, type: Cafe.self)
+                    cafes.append(selectedCafe)
+                    self.selectedCafes = cafes
+                    
+                    self.selectedCafes = cafes as! [Cafe]
+                    self.tryToUpdateCallToActionView()
+                }
+            } else {
+                print("Error while getting CTOs. Error: \(String(describing: error))")
+            }
+        })
     }
 }

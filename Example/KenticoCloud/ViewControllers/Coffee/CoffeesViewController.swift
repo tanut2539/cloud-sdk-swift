@@ -3,7 +3,7 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 31/08/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved.
 //
 
 import UIKit
@@ -19,11 +19,11 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
     @IBOutlet var tableView: UITableView!
     @IBOutlet var refreshControl: UIRefreshControl!
     
-    // MARK: VC lifecycle
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -38,7 +38,7 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: Table delegate
+    // MARK: Delegates
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -133,5 +133,4 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
             self.hideLoader()
         }
     }
-    
 }

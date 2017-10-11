@@ -35,5 +35,4 @@ class ItemsRequestBuilder {
         
         return "\(endpointUrl)/\(projectId)/items\(queryParametersString)"
     }
-    
 }

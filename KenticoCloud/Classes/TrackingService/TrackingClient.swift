@@ -156,5 +156,4 @@ public class TrackingClient {
         
         return headers
     }
-    
 }

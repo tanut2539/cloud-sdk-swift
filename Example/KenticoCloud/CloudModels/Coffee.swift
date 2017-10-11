@@ -3,7 +3,7 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 31/08/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved
 //
 
 import Foundation
@@ -11,6 +11,9 @@ import ObjectMapper
 import KenticoCloud
 
 public class Coffee: Mappable {
+    
+    // MARK: Properties 
+    
     var name: TextElement?
     var photo: AssetElement?
     var category: TaxonomyElement?
@@ -25,6 +28,8 @@ public class Coffee: Mappable {
     var altitude: TextElement?
     var price: NumberElement?
 
+    // MARK: Mapping
+    
     public required init?(map: Map){
         let mapper = MapElement.init(map: map)
         
@@ -44,6 +49,5 @@ public class Coffee: Mappable {
     }
     
     public func mapping(map: Map) {
-
     }
 }

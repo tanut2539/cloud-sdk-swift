@@ -3,22 +3,23 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 22/09/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved.
 //
 
-import  UIKit
-import  MapKit
+import UIKit
+import MapKit
 
 class CoffeeDetailCallToActionViewController: UIViewController {
     
     // MARK: Properties
+    
     var callToAction: CallToAction?
     var cafes: [Cafe?] = []
     
     @IBOutlet var backButton: UIButton!
     @IBOutlet weak var map: MKMapView!
     
-    // MARK: VC lifecycle
+    // MARK: Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         setMap(cafes: cafes)
@@ -31,8 +32,11 @@ class CoffeeDetailCallToActionViewController: UIViewController {
         _ = navigationController?.popViewController(animated: true)
     }
     
+    // MARK: Behaviour
+    
     private func setMap(cafes: [Cafe?]) {
         var counter = 0
+        
         for cafe in cafes {
             let address = "\(cafe?.street ?? "")  \(cafe?.state ?? "") \(cafe?.country ?? "")  \(cafe?.zip ?? "")"
             
@@ -43,6 +47,7 @@ class CoffeeDetailCallToActionViewController: UIViewController {
                     let location = placemarks.first?.location
                     else {
                         print("Geocoder error")
+                        counter = counter + 1
                         return
                 }
                 
@@ -53,7 +58,7 @@ class CoffeeDetailCallToActionViewController: UIViewController {
                 
                 counter = counter + 1
                 
-                // set region while processing last cafe only
+                // Set region if processing last cafe only.
                 if counter == cafes.count {
                     let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 20, longitudeDelta:20))
                     self.map?.setRegion(region, animated: true)
@@ -61,5 +66,4 @@ class CoffeeDetailCallToActionViewController: UIViewController {
             }
         }
     }
-    
 }

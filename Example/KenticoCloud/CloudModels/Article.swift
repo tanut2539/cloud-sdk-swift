@@ -3,19 +3,24 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 15/08/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved
 //
 
 import ObjectMapper
 import KenticoCloud
 
 class Article: Mappable {
+    
+    // MARK: Properties
+    
     var title: TextElement?
     var asset: AssetElement?
     var postDate: DateTimeElement?
     var summary: TextElement?
     var bodyCopy: RichTextElement?
     var relatedContent: ModularContentElement?
+    
+    // MARK: Mapping
     
     required init?(map: Map){
         let mapper = MapElement.init(map: map)
@@ -28,6 +33,5 @@ class Article: Mappable {
     }
     
     func mapping(map: Map) {
-
     }
 }

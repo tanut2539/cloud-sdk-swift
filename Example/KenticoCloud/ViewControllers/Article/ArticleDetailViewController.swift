@@ -3,7 +3,7 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 21/08/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved.
 //
 
 import UIKit
@@ -22,7 +22,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet var content: UILabel!
     @IBOutlet var backButton: UIButton!
     
-    // MARK: VC lifecycle
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,6 @@ class ArticleDetailViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: Outlet actions
@@ -54,5 +53,4 @@ class ArticleDetailViewController: UIViewController {
     @IBAction func navigateBack(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
-    
 }

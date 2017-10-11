@@ -3,7 +3,7 @@
 //  KenticoCloud
 //
 //  Created by martinmakarsky@gmail.com on 08/16/2017.
-//  Copyright (c) 2017 martinmakarsky@gmail.com. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved.
 //
 
 import UIKit
@@ -21,7 +21,7 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var refreshControl: UIRefreshControl!
     
-    // MARK: VC lifecycle
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: Table delegate
+    // MARK: Delegates
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -117,7 +117,6 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
             
             self.hideLoader()
         }
-    }
-    
+    }    
 }
 

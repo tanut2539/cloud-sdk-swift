@@ -3,13 +3,16 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 22/09/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved
 //
 
 import ObjectMapper
 import KenticoCloud
 
 class CallToAction: Mappable {
+    
+    // MARK: Properties
+    
     var image: AssetElement?
     var title: TextElement?
     var text: TextElement?
@@ -18,6 +21,8 @@ class CallToAction: Mappable {
     var persona: TaxonomyElement?
     var externalLink: TextElement?
     var customActivityName: TextElement?
+    
+    // MARK: Mapping
     
     public required init?(map: Map){
         let mapper = MapElement.init(map: map)
@@ -34,6 +39,5 @@ class CallToAction: Mappable {
     }
     
     public func mapping(map: Map) {
-        
     }
 }

@@ -3,7 +3,7 @@
 //  KenticoCloud
 //
 //  Created by Martin Makarsky on 17/08/2017.
-//  Copyright © 2017 CocoaPods. All rights reserved.
+//  Copyright © 2017 Kentico Software. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import MapKit
 import KenticoCloud
 
 class CafeDetailViewController: UIViewController {
-
+    
     // MARK: Properties
     
     var cafe: Cafe?
@@ -34,20 +34,14 @@ class CafeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         backButton.stylePinkButton()
-        
-        if let cafe = cafe {
-            setCafeInfo(cafe: cafe)
-            setMap(cafe: cafe)
-        }
-        
-        setImages()
+        SetContent()
         
         if let city = cafe?.city {
             let trackingClient = TrackingClient.init(projectId: AppConstants.projectId, enableDebugLogging: true)
-            trackingClient.trackActivity(activityName: "Cafe detail view: \(city)", completionHandler: {
+            trackingClient.trackActivity(activityName: "ca_\(city)", completionHandler: {
                 (isSuccess, error) in
                 if !isSuccess {
-                    // custom retry policy
+                    // Custom retry policy
                 }
             })
         }
@@ -63,14 +57,18 @@ class CafeDetailViewController: UIViewController {
         _ = navigationController?.popViewController(animated: true)
     }
     
-    // MARK: Set content
+    // MARK: Behaviour
     
-    private func setCafeInfo(cafe: Cafe) {
-        name.text = cafe.name
-        city.text = cafe.city
-        address.text = "\(cafe.street ?? "") \(cafe.city ?? "")"
-        phone.text = cafe.phone
-        email.text = cafe.email
+    private func SetContent() {
+        if let cafe = cafe {
+            name.text = cafe.name
+            city.text = cafe.city
+            address.text = "\(cafe.street ?? "") \(cafe.city ?? "")"
+            phone.text = cafe.phone
+            email.text = cafe.email
+            setImages()
+            setMap(cafe: cafe)
+        }
     }
     
     private func setMap(cafe: Cafe) {
@@ -90,7 +88,7 @@ class CafeDetailViewController: UIViewController {
             pinPoint.coordinate = location.coordinate
             pinPoint.title = cafe.name
             self.map?.addAnnotation(pinPoint)
-
+            
             let region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
             self.map?.setRegion(region, animated: true)
         }
@@ -101,5 +99,4 @@ class CafeDetailViewController: UIViewController {
             self.photo.image = image
         }
     }
-
 }
