@@ -30,8 +30,8 @@ class GetTaxonomiesSpec: QuickSpec {
                             if let taxonomies = items {
                                 let fstLvl = taxonomies[0].terms?[1].codename
                                 let sndLvl = taxonomies[1].terms?[1].codename
-                                expect(fstLvl) == "coffee_enthusiast"
-                                expect(sndLvl) == "bestseller"
+                                expect(fstLvl) == "chemex"
+                                expect(sndLvl) == "coffee_enthusiast"
                                 done()
                             }
                         })
@@ -55,7 +55,7 @@ class GetTaxonomiesSpec: QuickSpec {
                                 let count = taxonomies.count
                                 let sndLvl = taxonomies[0].terms?[1].codename
                                 expect(count) == 1
-                                expect(sndLvl) == "bestseller"
+                                expect(sndLvl) == "coffee_enthusiast"
                                 done()
                             }
                         })

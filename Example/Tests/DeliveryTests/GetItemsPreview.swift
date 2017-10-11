@@ -31,7 +31,7 @@ class GetItemsPreviewSpec: QuickSpec {
                             
                             if let items = deliveryItems?.items {
                                 let itemsCount = items.count
-                                let expectedCount = 11
+                                let expectedCount = 10
                                 expect(itemsCount) == expectedCount
                                 done()
                             }
@@ -82,7 +82,7 @@ class GetItemsPreviewSpec: QuickSpec {
                             
                             if let items = deliveryItems?.items {
                                 let itemsCount = items.count
-                                let expectedCount = 11
+                                let expectedCount = 10
                                 expect(itemsCount) == expectedCount
                                 done()
                             }
