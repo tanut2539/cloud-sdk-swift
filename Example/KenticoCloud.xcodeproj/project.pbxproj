@@ -46,6 +46,10 @@
 		8F7465E11F45D36300908DF5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F7465E01F45D36300908DF5 /* UserNotifications.framework */; };
 		8F796BB61F7A751E000B5A1E /* CoffeeDescriptionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F796BB51F7A751E000B5A1E /* CoffeeDescriptionViewCell.swift */; };
 		8F8E8CEF1F80D11C00ADEDCE /* ListingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8E8CEE1F80D11C00ADEDCE /* ListingBaseViewController.swift */; };
+		8FA7D8A91F8E64D80057C590 /* RichtextElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7D8A81F8E64D80057C590 /* RichtextElement.swift */; };
+		8FA7D8AB1F8E6C500057C590 /* TaxonomyElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7D8AA1F8E6C500057C590 /* TaxonomyElement.swift */; };
+		8FA7D8AD1F8E6F1C0057C590 /* TextElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7D8AC1F8E6F1C0057C590 /* TextElement.swift */; };
+		8FA7D8AF1F8E6FE20057C590 /* UrlSlugElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA7D8AE1F8E6FE20057C590 /* UrlSlugElement.swift */; };
 		8FA925051F791AC0008FD6C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FA925041F791AC0008FD6C8 /* LaunchScreen.storyboard */; };
 		8FA925081F7A2E84008FD6C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA925071F7A2E84008FD6C8 /* Extensions.swift */; };
 		8FB0AC7C1F73BA4700102112 /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB0AC7B1F73BA4700102112 /* TestConstants.swift */; };
@@ -112,6 +116,10 @@
 		8F7465E01F45D36300908DF5 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		8F796BB51F7A751E000B5A1E /* CoffeeDescriptionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeDescriptionViewCell.swift; sourceTree = "<group>"; };
 		8F8E8CEE1F80D11C00ADEDCE /* ListingBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingBaseViewController.swift; sourceTree = "<group>"; };
+		8FA7D8A81F8E64D80057C590 /* RichtextElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichtextElement.swift; sourceTree = "<group>"; };
+		8FA7D8AA1F8E6C500057C590 /* TaxonomyElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxonomyElement.swift; sourceTree = "<group>"; };
+		8FA7D8AC1F8E6F1C0057C590 /* TextElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextElement.swift; sourceTree = "<group>"; };
+		8FA7D8AE1F8E6FE20057C590 /* UrlSlugElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSlugElement.swift; sourceTree = "<group>"; };
 		8FA925041F791AC0008FD6C8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8FA925071F7A2E84008FD6C8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8FB0AC7B1F73BA4700102112 /* TestConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
@@ -298,6 +306,10 @@
 				8F1C855D1F8E4D860043807B /* ModularContentElement.swift */,
 				8F1C855F1F8E4F140043807B /* MultipleChoiceElement.swift */,
 				8F1C85611F8E52600043807B /* NumberElement.swift */,
+				8FA7D8A81F8E64D80057C590 /* RichtextElement.swift */,
+				8FA7D8AA1F8E6C500057C590 /* TaxonomyElement.swift */,
+				8FA7D8AC1F8E6F1C0057C590 /* TextElement.swift */,
+				8FA7D8AE1F8E6FE20057C590 /* UrlSlugElement.swift */,
 			);
 			name = ElementTypes;
 			path = Types;
@@ -668,8 +680,10 @@
 				8F1C854C1F8E48090043807B /* GetItemPreview.swift in Sources */,
 				8F1C85621F8E52600043807B /* NumberElement.swift in Sources */,
 				8F1C854F1F8E48090043807B /* GetModularContent.swift in Sources */,
+				8FA7D8AF1F8E6FE20057C590 /* UrlSlugElement.swift in Sources */,
 				8F1C85531F8E48090043807B /* InlineImageBlock.swift in Sources */,
 				8F1C85571F8E48090043807B /* StartSession.swift in Sources */,
+				8FA7D8A91F8E64D80057C590 /* RichtextElement.swift in Sources */,
 				8F1C855E1F8E4D860043807B /* ModularContentElement.swift in Sources */,
 				8F1C855A1F8E48620043807B /* AssetElement.swift in Sources */,
 				8F1C854E1F8E48090043807B /* GetItemsPreview.swift in Sources */,
@@ -677,6 +691,8 @@
 				8F1C85541F8E48090043807B /* ModularContentBlock.swift in Sources */,
 				8F1C855C1F8E4BF90043807B /* DateTimeElement.swift in Sources */,
 				8F1C85511F8E48090043807B /* GetTaxonomyGroup.swift in Sources */,
+				8FA7D8AB1F8E6C500057C590 /* TaxonomyElement.swift in Sources */,
+				8FA7D8AD1F8E6F1C0057C590 /* TextElement.swift in Sources */,
 				8F1C854D1F8E48090043807B /* GetItemsLive.swift in Sources */,
 				8F1C85561F8E48090043807B /* CafeTestModel.swift in Sources */,
 				8F1C85551F8E48090043807B /* ArticleTestModel.swift in Sources */,

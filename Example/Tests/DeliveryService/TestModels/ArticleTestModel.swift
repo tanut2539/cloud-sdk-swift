@@ -18,6 +18,8 @@ public class ArticleTestModel: Mappable {
     var relatedContent: ModularContentElement?
     var targetAudience: MultipleChoiceElement?
     var issue: NumberElement?
+    var personas: TaxonomyElement?
+    var urlSlug: UrlSlugElement?
     
     public required init?(map: Map){
         let mapper = MapElement.init(map: map)
@@ -29,6 +31,9 @@ public class ArticleTestModel: Mappable {
         relatedContent = mapper.map(elementName: "related_articles", elementType: ModularContentElement.self)
         targetAudience = mapper.map(elementName: "target_audience", elementType: MultipleChoiceElement.self)
         issue = mapper.map(elementName: "issue", elementType: NumberElement.self)
+        personas = mapper.map(elementName: "personas", elementType: TaxonomyElement.self)
+        urlSlug = mapper.map(elementName: "url_pattern", elementType: UrlSlugElement.self)
+        
     }
     
     public func mapping(map: Map) {
