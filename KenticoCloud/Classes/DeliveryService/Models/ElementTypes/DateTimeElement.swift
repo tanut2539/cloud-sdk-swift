@@ -10,6 +10,7 @@ import ObjectMapper
 
 /// Represents Taxonomy element.
 public class DateTimeElement: Mappable {
+    
     /// Type of the element.
     public private(set) var type: String?
     /// Name of the element.

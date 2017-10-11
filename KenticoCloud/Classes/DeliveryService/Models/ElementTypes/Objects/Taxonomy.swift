@@ -10,6 +10,7 @@ import ObjectMapper
 
 /// Represents Taxonomy.
 public class Taxonomy: Mappable {
+    
     /// Name of taxonomy.
     public private(set) var name: String?
     /// Codename of taxonomy.

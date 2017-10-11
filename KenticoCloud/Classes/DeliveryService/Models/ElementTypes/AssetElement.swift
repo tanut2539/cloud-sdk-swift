@@ -10,6 +10,7 @@ import ObjectMapper
 
 /// Represents Asset element.
 public class AssetElement: Mappable {
+    
     /// Type of the element.
     public private(set) var type: String?
     /// Name of the element.
