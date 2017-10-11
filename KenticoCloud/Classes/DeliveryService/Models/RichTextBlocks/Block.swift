@@ -6,5 +6,26 @@
 //
 //
 
+import Kanna
+
 /// Protocol for RichText's blocks.
-public protocol Block {}
+public protocol Block {
+}
+
+extension Block {
+    
+    func isKenticoCloudApplicationType(tag: String) -> Bool {
+        let typeXpath = "//@type"
+        let tagDoc = HTML(html: tag, encoding: .utf8)
+        let type = tagDoc?.xpath(typeXpath).first?.content
+        
+        if type == "application/kenticocloud" {
+            return true
+        }
+        
+        return false
+    }
+}
+
+
+

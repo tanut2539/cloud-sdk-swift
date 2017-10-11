@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isHidden = true
         UITableView.appearance().backgroundColor = AppConstants.globalBackgroundColor
         UITableViewCell.appearance().backgroundColor = AppConstants.globalBackgroundColor
-        
         return true
     }
 

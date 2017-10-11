@@ -6,6 +6,8 @@
 //
 //
 
+import Kanna
+
 /// Represents InlineImageBlock in RichText element.
 public class InlineImageBlock: Block {
     
@@ -32,9 +34,12 @@ public class InlineImageBlock: Block {
     }
     
     private func isInlineImageBlock(figureTag: String?) -> Bool {
-        let figurePattern = "<figure data-image-id=\""
-        if let tag = figureTag {
-            if tag.hasPrefix(figurePattern) {
+        if let figureTag = figureTag {
+            let assetXpath = "//figure/@data-asset-id"
+            let figureTagDoc = HTML(html: figureTag, encoding: .utf8)
+            let assetId = figureTagDoc?.xpath(assetXpath).first?.content
+            
+            if assetId != nil {
                 return true
             }
         }
@@ -43,26 +48,22 @@ public class InlineImageBlock: Block {
     }
     
     private func getUrl(figureTag: String?) -> String? {
-        if let figuretTag = figureTag {
-            let startSeq = "<img src=\""
-            let endSeq = "\""
-            if let url = figuretTag.slice(from: startSeq, to: endSeq) {
-                return url
-            }
+        if let figureTag = figureTag {
+            let srcXpath = "//figure/img/@src"
+            let figureTagDoc = HTML(html: figureTag, encoding: .utf8)
+            return figureTagDoc?.xpath(srcXpath).first?.content
         }
         
         return nil
     }
     
     private func getDescription(figureTag: String?) -> String? {
-        if let figuretTag = figureTag {
-            let startSeq = "alt=\""
-            let endSeq = "\""
-            if let description = figuretTag.slice(from: startSeq, to: endSeq) {
-                return description
-            }
+        if let figureTag = figureTag {
+            let descriptionXpath = "//figure/img/@alt"
+            let figureTagDoc = HTML(html: figureTag, encoding: .utf8)
+            return figureTagDoc?.xpath(descriptionXpath).first?.content
         }
-        
+
         return nil
     }
 }

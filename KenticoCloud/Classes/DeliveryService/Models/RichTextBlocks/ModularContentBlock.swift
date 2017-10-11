@@ -6,6 +6,8 @@
 //
 //
 
+import Kanna
+
 /// Represents ModularContentBlock in RichText element.
 public class ModularContentBlock: Block {
     
@@ -27,8 +29,11 @@ public class ModularContentBlock: Block {
     }
     
     private func isModularContent(objectTag: String) -> Bool {
-        let objectPattern = "<object type=\"application/kenticocloud\" data-type=\"item\""
-        if objectTag.hasPrefix(objectPattern) {
+        let dataTypeXpath = "//@data-type"
+        let figureTagDoc = HTML(html: objectTag, encoding: .utf8)
+        let dataType = figureTagDoc?.xpath(dataTypeXpath).first?.content
+        
+        if isKenticoCloudApplicationType(tag: objectTag) && dataType == "item" {
             return true
         }
         
@@ -37,11 +42,10 @@ public class ModularContentBlock: Block {
     
     private func getModularContentName(objectTag: String?) -> String? {
         if let objectTag = objectTag {
-            let startSeq = "data-codename=\""
-            let endSeq = "\">"
-            if let name = objectTag.slice(from: startSeq, to: endSeq) {
-                return name
-            }
+            let codeNameXpath = "//@data-codename"
+            let objTagDoc = HTML(html: objectTag, encoding: .utf8)
+            let name = objTagDoc?.xpath(codeNameXpath).first?.content
+            return name
         }
         
         return nil
