@@ -22,9 +22,8 @@ Swift SDK for Kentico Cloud.
                        DESC
 
   s.homepage         = 'https://github.com/kentico/cloud-sdk-swift'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'martinmakarsky@gmail.com' => 'martinm@kentico.com' }
+  s.author           = { 'Martin Makarsky' => 'martinm@kentico.com' }
   s.source           = { :git => 'https://github.com/kentico/cloud-sdk-swift.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/kenticocloud'
 
