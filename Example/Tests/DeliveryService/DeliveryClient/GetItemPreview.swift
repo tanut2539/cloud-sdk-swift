@@ -17,6 +17,7 @@ class GetItemPreviewSpec: QuickSpec {
             let client = DeliveryClient.init(projectId: TestConstants.projectId, apiKey: TestConstants.apiKey)
             
             //MARK: Custom Model mapping
+            
             context("using item name and custom model mapping", {
                 
                 it("returns proper item") {

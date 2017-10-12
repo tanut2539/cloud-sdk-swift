@@ -16,9 +16,11 @@ class GetModularContentItemSpec: QuickSpec {
             
             let client = DeliveryClient.init(projectId: TestConstants.projectId)
             
+            //MARK: From item response
+            
             context("from ItemResponse using specific codename", {
                 
-                it("returns modualr content item") {
+                it("returns modular content item") {
                     waitUntil(timeout: 5) { done in
                         client.getItem(modelType: ArticleTestModel.self, itemName: "on_roasts", completionHandler: { (isSuccess, itemResponse, error) in
                             if !isSuccess {
@@ -37,9 +39,11 @@ class GetModularContentItemSpec: QuickSpec {
                 }
             })
             
+            //MARK: From items response
+            
             context("from ItemsResponse using specific codename", {
                 
-                it("returns modualr content item") {
+                it("returns modular content item") {
                     waitUntil(timeout: 5) { done in
                         let contentTypeParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: "article")
                         client.getItems(modelType: ArticleTestModel.self, queryParameters: [contentTypeParameter], completionHandler:  { (isSuccess, itemsResponse, error) in

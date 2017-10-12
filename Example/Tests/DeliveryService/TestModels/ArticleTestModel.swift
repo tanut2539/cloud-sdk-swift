@@ -10,6 +10,9 @@ import ObjectMapper
 import KenticoCloud
 
 public class ArticleTestModel: Mappable {
+    
+    // MARK: Properties
+    
     var title: TextElement?
     var asset: AssetElement?
     var postDate: DateTimeElement?
@@ -20,6 +23,8 @@ public class ArticleTestModel: Mappable {
     var issue: NumberElement?
     var personas: TaxonomyElement?
     var urlSlug: UrlSlugElement?
+    
+    // MARK: Mapping
     
     public required init?(map: Map){
         let mapper = MapElement.init(map: map)
@@ -37,6 +42,5 @@ public class ArticleTestModel: Mappable {
     }
     
     public func mapping(map: Map) {
-        
     }
 }

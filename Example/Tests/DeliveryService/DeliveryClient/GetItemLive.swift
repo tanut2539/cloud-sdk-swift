@@ -17,6 +17,7 @@ class GetItemLiveSpec: QuickSpec {
             let client = DeliveryClient.init(projectId: TestConstants.projectId)
             
             //MARK: Custom Model mapping
+            
             context("using item name and custom model mapping", {
                 
                 it("returns proper item") {
@@ -62,6 +63,7 @@ class GetItemLiveSpec: QuickSpec {
             })
             
             //MARK: Auto mapping using Delivery element types
+            
             context("using item name and Delivery element types", {
                 
                 it("returns proper item") {

@@ -8,7 +8,7 @@
 
 /**
  Test project owner: user: kenticocloudswiftsdk@gmail.com.
- For pwd ask Kentico Organizatio on GitHub
+ For pwd ask Kentico Organization on GitHub
  */
 struct TestConstants {
     static let projectId = "b48c8305-a4f7-4889-a79f-49920e673a1e"

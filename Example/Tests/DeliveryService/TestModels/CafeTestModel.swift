@@ -9,6 +9,9 @@
 import ObjectMapper
 
 public class CafeTestModel: Mappable {
+    
+    // MARK: Properties
+    
     public var city: String?
     public var street: String?
     public var country: String?
@@ -18,8 +21,9 @@ public class CafeTestModel: Mappable {
     public var email: String?
     public var imageUrl: String?
     
+    // MARK: Mapping
+    
     public required init?(map: Map){
-        
     }
     
     public func mapping(map: Map) {

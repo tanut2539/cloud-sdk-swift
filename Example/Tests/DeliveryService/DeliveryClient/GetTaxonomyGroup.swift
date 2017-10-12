@@ -17,6 +17,7 @@ class GetTaxonomyGroupSpec: QuickSpec {
             let client = DeliveryClient.init(projectId: TestConstants.projectId)
             
             //MARK: Get one taxonomy group
+            
             context("using taxonomy codename", {
                 
                 it("returns taxonomy") {

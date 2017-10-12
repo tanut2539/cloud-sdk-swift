@@ -104,7 +104,7 @@ public class DeliveryClient {
     /**
      Gets taxonomies from Delivery service.
 
-     - Parameter customQuery: String query which specifies requested taxonomies. If ommited, all taxonomies for the given project are returned.
+     - Parameter customQuery: String query which specifies requested taxonomies. If ommited, all taxonomies for the given project are returned. Custom query example: "taxonomies?skip=1&limit=1"
      - Parameter completionHandler: A handler which is called after completetion.
      - Parameter isSuccess: Result of the action.
      - Parameter taxonomyGroups: Received taxonomy groups.
@@ -252,13 +252,8 @@ public class DeliveryClient {
     
     private func getTaxonomiesRequestUrl(customQuery: String?) -> String {
         let endpoint = getEndpoint()
-        var queryString = ""
-        if let customQuery = customQuery {
-            queryString = "?\(customQuery)"
-        }
-        
-        
-        return "\(endpoint)/\(projectId)/taxonomies\(queryString)"
+
+        return "\(endpoint)/\(projectId)/\(customQuery ?? "taxonomies")"
     }
     
     private func getTaxonomyRequestUrl(taxonomyName: String) -> String {

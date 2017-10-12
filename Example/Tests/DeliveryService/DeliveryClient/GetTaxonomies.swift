@@ -17,6 +17,7 @@ class GetTaxonomiesSpec: QuickSpec {
             let client = DeliveryClient.init(projectId: TestConstants.projectId)
             
             //MARK: Get all taxonomies
+            
             context("getting all taxonomies", {
                 
                 it("returns list of all taxonomies") {
@@ -40,12 +41,13 @@ class GetTaxonomiesSpec: QuickSpec {
             })
             
             //MARK: Get taxonomies with custom query
+            
             context("getting taxonomies with custom query", {
                 
                 it("returns list of required taxonomies") {
                     
                     waitUntil(timeout: 5) { done in
-                        let customQuery = "skip=1&limit=1"
+                        let customQuery = "taxonomies?skip=1&limit=1"
                         client.getTaxonomies(customQuery: customQuery, completionHandler: { (isSuccess, items, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
