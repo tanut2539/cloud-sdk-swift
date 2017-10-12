@@ -3,6 +3,7 @@
 
 [![Travis](https://img.shields.io/travis/Kentico/cloud-sdk-swift.svg)]()
 [![CocoaPods](https://img.shields.io/cocoapods/v/KenticoCloud.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/p/KenticoCloud.svg)]()
 
 ## Summary
 The KenticoCloud iOS SDK is a library used for retrieving content and tracking activities. You can use the SDK as a CocoaPod package or add it manually.
