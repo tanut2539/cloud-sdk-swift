@@ -2,6 +2,8 @@
 # Kentico Cloud Swift SDK
 
 [![Travis](https://img.shields.io/travis/Kentico/cloud-sdk-swift.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/v/KenticoCloud.svg)]()
+[![CocoaPods](https://img.shields.io/cocoapods/p/KenticoCloud.svg)]()
 
 ## Summary
 The KenticoCloud iOS SDK is a library used for retrieving content and tracking activities. You can use the SDK as a CocoaPod package or add it manually.
@@ -29,6 +31,7 @@ $ pod install
 **2. Create a type object** - in this example, the type object is `Article`. It represents a Content type in Kentico Cloud that the retrieved content items are based on. This content type has three elements with following codenames: `title` (a text element),`teaser_image` (an asset element) and `post_date` (a DateTime element).
 ```swift
 import ObjectMapper
+import KenticoCloud
 
 class Article: Mappable {
     var title: TextElement?
@@ -43,8 +46,8 @@ class Article: Mappable {
     }
     
     func mapping(map: Map) {
-
     }
+}
  ```
 **3. Prepare the Delivery client**
 ```swift
@@ -60,7 +63,7 @@ let articlesQueryParameters = [typeQueryParameter, languageQueryParameter]
  ```
 **5. Get and use content items**
 ```swift
-client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, itemsResponse, error) in
+client.getItems(modelType: Article.self, queryParameters: articleQueryParameters) { (isSuccess, itemsResponse, error) in
     if isSuccess {
         if let articles = itemsResponse?.items {
             // use your articles here
