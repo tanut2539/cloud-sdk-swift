@@ -40,6 +40,10 @@ class TaxonomyElementSpec: QuickSpec {
                                     expect(personas.taxonomyGroup) == expectedTaxonomyGroup
                                     expect(personas.value?[0].name) == expectedFstValueName
                                     expect(personas.value?[1].codename) == expectedSndValueCodename
+                                    expect(personas.containsCodename(codename: "coffee_blogger")) == true
+                                    expect(personas.containsCodename(codename: "coffee_blogger1")) == false
+                                    expect(personas.containsName(name: "Barista")) == true
+                                    expect(personas.containsName(name: "Barista1")) == false
                                     done()
                                 }
                         })

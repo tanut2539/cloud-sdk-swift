@@ -38,6 +38,10 @@ class MultipleChoiceElementSpec: QuickSpec {
                                     expect(targetAudience.name) == expectedName
                                     expect(targetAudience.value?[0].name) == expectedFstChoiceName
                                     expect(targetAudience.value?[1].codename) == expectedSndChoiceCodename
+                                    expect(targetAudience.containsName(name: "mobile")) == true
+                                    expect(targetAudience.containsName(name: "mobile1")) == false
+                                    expect(targetAudience.containsCodename(codename: "iot")) == true
+                                    expect(targetAudience.containsCodename(codename: "iot1")) == false
                                     done()
                                 }
                         })
