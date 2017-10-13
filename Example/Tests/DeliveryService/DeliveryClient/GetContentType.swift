@@ -23,16 +23,16 @@ class GetContentTypeSpec: QuickSpec {
                 it("returns content type with correct name and codename") {
                     
                     waitUntil(timeout: 5) { done in
-                        client.getContentType(name: "coffee", completionHandler: { (isSuccess, contentTypeResponse, error) in
+                        client.getContentType(name: "coffee", completionHandler: { (isSuccess, contentType, error) in
                             if !isSuccess {
                                 fail("Response is not successful. Error: \(String(describing: error))")
                             }
                             
-                            if let response = contentTypeResponse {
+                            if let type = contentType {
                                 let expectedName = "Coffee"
                                 let expecedCodename = "coffee"
-                                expect(response.contentType?.name) == expectedName
-                                expect(response.contentType?.codename) == expecedCodename
+                                expect(type.name) == expectedName
+                                expect(type.codename) == expecedCodename
                                 done()
                             }
                         })
