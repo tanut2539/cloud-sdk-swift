@@ -16,11 +16,11 @@ class GetContentTypesSpec: QuickSpec {
             
             let client = DeliveryClient.init(projectId: TestConstants.projectId)
             
-            //MARK: Get all content types
+            //MARK: Get some content types
             
             context("getting some content types", {
                 
-                it("returns list of some content types") {
+                it("returns list of some content types with correct names and codenames") {
                     
                     waitUntil(timeout: 5) { done in
                         client.getContentTypes(skip: 2, limit: 4, completionHandler: { (isSuccess, contentTypesResponse, error) in
@@ -29,8 +29,12 @@ class GetContentTypesSpec: QuickSpec {
                             }
                             
                             if let response = contentTypesResponse {
-                                expectedCount = 4
-                                expect(response.contentTypes.count) == expectedCount
+                                let expectedCount = 4
+                                let expectedName = "Brewer"
+                                let expecedCodename = "coffee"
+                                expect(response.contentTypes?.count) == expectedCount
+                                expect(response.contentTypes?[1].name) == expectedName
+                                expect(response.contentTypes?[3].codename) == expecedCodename
                                 done()
                             }
                         })
