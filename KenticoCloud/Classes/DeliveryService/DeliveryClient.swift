@@ -102,6 +102,37 @@ public class DeliveryClient {
     }
     
     /**
+     Gets content types from Delivery service.
+     
+     - Parameter skip: Number of content types to skip.
+     - Parameter limit: Number of content types to retrieve in a single request.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter contentTypes: Received content types response.
+     - Parameter error: Potential error.
+     */
+    public func getContentTypes(skip: Int?, limit: Int?, completionHandler: @escaping (_ isSuccess: Bool, _ contentTypes: ContentTypesResponse?,_ error: Error?) -> ()) {
+        
+        let requestUrl = getContentTypesUrl(skip: skip, limit: limit)
+        sendGetContentTypesRequest(url: requestUrl, completionHandler: completionHandler)
+    }
+    
+    /**
+     Gets single content type from Delivery service.
+     
+     - Parameter name: The codename of a specific content type.
+     - Parameter completionHandler: A handler which is called after completetion.
+     - Parameter isSuccess: Result of the action.
+     - Parameter contentTypes: Received content type response.
+     - Parameter error: Potential error.
+     */
+    public func getContentType(name: String, completionHandler: @escaping (_ isSuccess: Bool, _ contentType: ContentType?,_ error: Error?) -> ()) {
+        
+        let requestUrl = getContentTypeUrl(name: name)
+        sendGetContentTypeRequest(url: requestUrl, completionHandler: completionHandler)
+    }
+    
+    /**
      Gets taxonomies from Delivery service.
 
      - Parameter customQuery: String query which specifies requested taxonomies. If ommited, all taxonomies for the given project are returned. Custom query example: "taxonomies?skip=1&limit=1"
@@ -166,6 +197,46 @@ public class DeliveryClient {
             case .failure(let error):
                 if self.isDebugLoggingEnabled {
                     print("[Kentico Cloud] Getting items action has failed. Check requested URL: \(url)")
+                }
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    private func sendGetContentTypesRequest(url: String, completionHandler: @escaping (Bool, ContentTypesResponse?, Error?) -> ()) {
+        Alamofire.request(url, headers: self.headers).responseObject() { (response: DataResponse<ContentTypesResponse>) in
+            
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    if self.isDebugLoggingEnabled {
+                        print("[Kentico Cloud] Getting content types action has succeeded.")
+                    }
+                    completionHandler(true, value, nil)
+                }
+            case .failure(let error):
+                if self.isDebugLoggingEnabled {
+                    print("[Kentico Cloud] Getting content types action has failed. Check requested URL: \(url)")
+                }
+                completionHandler(false, nil, error)
+            }
+        }
+    }
+    
+    private func sendGetContentTypeRequest(url: String, completionHandler: @escaping (Bool, ContentType?, Error?) -> ()) {
+        Alamofire.request(url, headers: self.headers).responseObject() { (response: DataResponse<ContentType>) in
+            
+            switch response.result {
+            case .success:
+                if let value = response.result.value {
+                    if self.isDebugLoggingEnabled {
+                        print("[Kentico Cloud] Getting content type action has succeeded.")
+                    }
+                    completionHandler(true, value, nil)
+                }
+            case .failure(let error):
+                if self.isDebugLoggingEnabled {
+                    print("[Kentico Cloud] Getting content types action has failed. Check requested URL: \(url)")
                 }
                 completionHandler(false, nil, error)
             }
@@ -241,13 +312,35 @@ public class DeliveryClient {
     private func getItemRequestUrl(itemName: String, language: String? = nil) -> String {
         let endpoint = getEndpoint()
         
-        
         var languageQueryParameter = ""
         if let language = language {
             languageQueryParameter = "?language=\(language)"
         }
         
         return "\(endpoint)/\(projectId)/items/\(itemName)\(languageQueryParameter)"
+    }
+    
+    private func getContentTypesUrl(skip: Int?, limit: Int?) -> String {
+        let endpoint = getEndpoint()
+        var requestUrl = "\(endpoint)/\(projectId)/types?"
+        
+        if let skip = skip {
+            requestUrl.append("skip=\(skip)&")
+        }
+        
+        if let limit = limit {
+            requestUrl.append("limit=\(limit)&")
+        }
+        
+        // Remove last ampersand or question mark.
+        requestUrl = String(requestUrl.characters.dropLast(1))
+        
+        return requestUrl
+    }
+    
+    private func getContentTypeUrl(name: String) -> String {
+        let endpoint = getEndpoint()
+        return "\(endpoint)/\(projectId)/types/\(name)"
     }
     
     private func getTaxonomiesRequestUrl(customQuery: String?) -> String {
