@@ -28,6 +28,7 @@ Swift SDK for Kentico Cloud.
   s.social_media_url = 'https://twitter.com/kenticocloud'
 
   s.ios.deployment_target = '8.0'
+  s.osx.deployment_target = '10.11'
 
   s.source_files = 'KenticoCloud/Classes/**/*'
   
