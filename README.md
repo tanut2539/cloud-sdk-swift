@@ -239,7 +239,32 @@ client.getItem(modelType: Article.self, itemName: "on_roasts", completionHandler
                             
                          
 ```
+## Getting content types
+### Get one content type
+```swift
+client.getContentType(name: "coffee", completionHandler: { (isSuccess, contentType, error) in
+    if !isSuccess {
+        fail("Response is not successful. Error: \(String(describing: error))")
+    }
+    
+    if let type = contentType {
+	// use content type here
+    }
+})
+```
 
+### Get multiple content types
+```swift
+client.getContentTypes(skip: 2, limit: 4, completionHandler: { (isSuccess, contentTypesResponse, error) in
+    if !isSuccess {
+        fail("Response is not successful. Error: \(String(describing: error))")
+    }
+    
+    if let response = contentTypesResponse {
+	// use content types here
+    }
+})
+```
 ## Getting taxonomies
 
 ### Get taxonomy group
