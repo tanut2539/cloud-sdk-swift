@@ -8,7 +8,7 @@
 
 import ObjectMapper
 
-ç
+/// Represents Content Type.
 public class ContentType: Mappable {
     
     /// Name of the content type.
