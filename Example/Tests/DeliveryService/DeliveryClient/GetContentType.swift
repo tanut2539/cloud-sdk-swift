@@ -20,7 +20,7 @@ class GetContentTypeSpec: QuickSpec {
             
             context("getting content type using content type name", {
                 
-                it("returns content type with correct name and codename") {
+                it("returns content type with correct name codename and elements") {
                     
                     waitUntil(timeout: 5) { done in
                         client.getContentType(name: "coffee", completionHandler: { (isSuccess, contentType, error) in
@@ -31,8 +31,14 @@ class GetContentTypeSpec: QuickSpec {
                             if let type = contentType {
                                 let expectedName = "Coffee"
                                 let expecedCodename = "coffee"
+                                let expectedElementName = "Farm"
+                                let expectedElementType = "text"
+                                let expectedElementsCount = 13
                                 expect(type.name) == expectedName
                                 expect(type.codename) == expecedCodename
+                                expect(type.elements?.count) == expectedElementsCount
+                                expect(type.elements?["farm"]?.type) == expectedElementType
+                                expect(type.elements?["farm"]?.name) == expectedElementName
                                 done()
                             }
                         })
