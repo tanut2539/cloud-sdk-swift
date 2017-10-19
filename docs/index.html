@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>KenticoCloud  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="KenticoCloud  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">KenticoCloud Docs</a> (87% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">KenticoCloud Reference</a>
+        <img id="carat" src="img/carat.png" />
+        KenticoCloud  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/Asset.html">Asset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/AssetElement.html">AssetElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ContentType.html">ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ContentTypesResponse.html">ContentTypesResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/DateTimeElement.html">DateTimeElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/DeliveryClient.html">DeliveryClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Element.html">Element</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/HtmlContentBlock.html">HtmlContentBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/InlineImageBlock.html">InlineImageBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ItemResponse.html">ItemResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ItemsResponse.html">ItemsResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MapElement.html">MapElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ModularContentBlock.html">ModularContentBlock</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ModularContentElement.html">ModularContentElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MultipleChoice.html">MultipleChoice</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/MultipleChoiceElement.html">MultipleChoiceElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NumberElement.html">NumberElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/QueryParameter.html">QueryParameter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RichTextElement.html">RichTextElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Taxonomy.html">Taxonomy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TaxonomyElement.html">TaxonomyElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TaxonomyGroup.html">TaxonomyGroup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TaxonomyTerm.html">TaxonomyTerm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TextElement.html">TextElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrackingClient.html">TrackingClient</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/UrlSlugElement.html">UrlSlugElement</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/QueryParameterKey.html">QueryParameterKey</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:P12KenticoCloud5Block">Block</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='kentico-cloud-swift-sdk' class='heading'>Kentico Cloud Swift SDK</h1>
+
+<p><a href=""><img src="https://img.shields.io/travis/Kentico/cloud-sdk-swift.svg" alt="Travis"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/v/KenticoCloud.svg" alt="CocoaPods"></a>
+<a href=""><img src="https://img.shields.io/cocoapods/p/KenticoCloud.svg" alt="CocoaPods"></a></p>
+<h2 id='summary' class='heading'>Summary</h2>
+
+<p>The KenticoCloud iOS SDK is a library used for retrieving content and tracking activities. You can use the SDK as a CocoaPod package or add it manually.</p>
+<h2 id='prerequisites' class='heading'>Prerequisites</h2>
+
+<p>To retrieve content from a Kentico Cloud project via the Delivery API, you first need to activate the API for your project. See our documentation on <a href="https://developer.kenticocloud.com/docs/using-delivery-api#section-enabling-the-delivery-api-for-your-projects">activating the Delivery API</a>.</p>
+<h2 id='quick-start' class='heading'>Quick start</h2>
+
+<p><strong>1. Add a pod</strong>  </p>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'10.0'</span>
+<span class="n">use_frameworks!</span>
+
+<span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
+    <span class="n">pod</span> <span class="s1">'KenticoCloud'</span>
+<span class="k">end</span>
+</code></pre>
+<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+</code></pre>
+
+<p><strong>2. Create a type object</strong> - in this example, the type object is <code>Article</code>. It represents a Content type in Kentico Cloud that the retrieved content items are based on. This content type has three elements with following codenames: <code>title</code> (a text element),<code>teaser_image</code> (an asset element) and <code>post_date</code> (a DateTime element).</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">ObjectMapper</span>
+<span class="kd">import</span> <span class="kt">KenticoCloud</span>
+
+<span class="kd">class</span> <span class="kt">Article</span><span class="p">:</span> <span class="kt">Mappable</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">TextElement</span><span class="p">?</span>
+    <span class="k">var</span> <span class="nv">asset</span><span class="p">:</span> <span class="kt">AssetElement</span><span class="p">?</span>
+    <span class="k">var</span> <span class="nv">postDate</span><span class="p">:</span> <span class="kt">DateTimeElement</span><span class="p">?</span>
+
+    <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">map</span><span class="p">:</span> <span class="kt">Map</span><span class="p">){</span>
+        <span class="k">let</span> <span class="nv">mapper</span> <span class="o">=</span> <span class="kt">MapElement</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">map</span><span class="p">:</span> <span class="n">map</span><span class="p">)</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="nf">map</span><span class="p">(</span><span class="nv">elementName</span><span class="p">:</span> <span class="s">"title"</span><span class="p">,</span> <span class="nv">elementType</span><span class="p">:</span> <span class="kt">TextElement</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+        <span class="n">asset</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="nf">map</span><span class="p">(</span><span class="nv">elementName</span><span class="p">:</span> <span class="s">"teaser_image"</span><span class="p">,</span> <span class="nv">elementType</span><span class="p">:</span> <span class="kt">AssetElement</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+        <span class="n">postDate</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="nf">map</span><span class="p">(</span><span class="nv">elementName</span><span class="p">:</span> <span class="s">"post_date"</span><span class="p">,</span> <span class="nv">elementType</span><span class="p">:</span> <span class="kt">DateTimeElement</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">mapping</span><span class="p">(</span><span class="nv">map</span><span class="p">:</span> <span class="kt">Map</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p><strong>3. Prepare the Delivery client</strong></p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">KenticoCloud</span>
+
+<span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">DeliveryClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">)</span>
+</code></pre>
+
+<p><strong>4. Prepare a query</strong></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">typeQueryParameter</span> <span class="o">=</span> <span class="kt">QueryParameter</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">parameterKey</span><span class="p">:</span> <span class="kt">QueryParameterKey</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nv">parameterValue</span><span class="p">:</span> <span class="s">"article"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">languageQueryParameter</span> <span class="o">=</span> <span class="kt">QueryParameter</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">parameterKey</span><span class="p">:</span> <span class="kt">QueryParameterKey</span><span class="o">.</span><span class="n">language</span><span class="p">,</span> <span class="nv">parameterValue</span><span class="p">:</span> <span class="s">"es-ES"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">articlesQueryParameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">typeQueryParameter</span><span class="p">,</span> <span class="n">languageQueryParameter</span><span class="p">]</span>
+</code></pre>
+
+<p><strong>5. Get and use content items</strong></p>
+<pre class="highlight swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">getItems</span><span class="p">(</span><span class="nv">modelType</span><span class="p">:</span> <span class="kt">Article</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">queryParameters</span><span class="p">:</span> <span class="n">articleQueryParameters</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">isSuccess</span><span class="p">,</span> <span class="n">itemsResponse</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">isSuccess</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">articles</span> <span class="o">=</span> <span class="n">itemsResponse</span><span class="p">?</span><span class="o">.</span><span class="n">items</span> <span class="p">{</span>
+            <span class="c1">// use your articles here</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
+</code></pre>
+
+<p>To integrate KenticoCloud into your Xcode project using CocoaPods, specify it in your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'10.0'</span>
+<span class="n">use_frameworks!</span>
+
+<span class="n">target</span> <span class="s1">'&lt;Your Target Name&gt;'</span> <span class="k">do</span>
+    <span class="n">pod</span> <span class="s1">'KenticoCloud'</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Then, run the following command:</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>pod install
+</code></pre>
+<h2 id='using-the-deliveryclient' class='heading'>Using the DeliveryClient</h2>
+
+<p>The <code><a href="Classes/DeliveryClient.html">DeliveryClient</a></code> class is the main class of the SDK for getting content. Using this class, you can retrieve content from your Kentico Cloud projects.</p>
+
+<p>To create an instance of the class, you need to provide a <a href="https://developer.kenticocloud.com/docs/using-delivery-api#section-getting-project-id">project ID</a>:</p>
+<pre class="highlight swift"><code><span class="c1">// Initializes an instance of the DeliveryClient client</span>
+<span class="k">let</span> <span class="nv">cloudClient</span> <span class="o">=</span> <span class="kt">DeliveryClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="s">"975bf280-fd91-488c-994c-2f04416e5ee3"</span><span class="p">)</span>
+</code></pre>
+
+<p>Once you create a <code><a href="Classes/DeliveryClient.html">DeliveryClient</a></code>, you can start querying your project repository by calling methods on the client instance. See <a href="#basic-items-querying">Basic querying</a> for details.</p>
+<h3 id='previewing-unpublished-content' class='heading'>Previewing unpublished content</h3>
+
+<p>To retrieve unpublished content, you need to create a <code><a href="Classes/DeliveryClient.html">DeliveryClient</a></code> with both Project ID and Preview API key. Each Kentico Cloud project has its own Preview API key. </p>
+<pre class="highlight swift"><code><span class="c1">// Note: Within a single project, we recommend that you work with only</span>
+<span class="c1">// either the production or preview Delivery API, not both.</span>
+<span class="kd">import</span> <span class="kt">KenticoCloud</span>
+
+<span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">DeliveryClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">)</span>
+</code></pre>
+
+<p>For more details, see <a href="https://developer.kenticocloud.com/docs/preview-content-via-api">Previewing unpublished content using the Delivery API</a>.</p>
+<h2 id='getting-items' class='heading'>Getting items</h2>
+<h3 id='using-strongly-typed-models' class='heading'>Using strongly typed models</h3>
+
+<p>In order to receive strongly typed items you need to implement your item model. It&rsquo;s necessary to conform to <code>Mappable</code> protocol and implement mapping functionality. You can use your own mapping or our strongly typed element types.</p>
+
+<ul>
+<li>Element types mapping:
+&ldquo;`swift
+import ObjectMapper</li>
+</ul>
+
+<p>class Article: Mappable {
+    var title: TextElement?
+    var asset: AssetElement?
+    var postDate: DateTimeElement?</p>
+<pre class="highlight plaintext"><code>required init?(map: Map){
+    let mapper = MapElement.init(map: map)
+    title = mapper.map(elementName: "title", elementType: TextElement.self)
+    asset = mapper.map(elementName: "teaser_image", elementType: AssetElement.self)
+    postDate = mapper.map(elementName: "post_date", elementType: DateTimeElement.self)
+}
+
+func mapping(map: Map) {
+
+}
+</code></pre>
+<pre class="highlight plaintext"><code>
+ - Custom mapping:
+```swift
+import ObjectMapper
+
+public class Cafe: Mappable {
+    public var city: String?
+    public var street: String?
+    public var country: String?
+
+    public required init?(map: Map){
+
+    }
+
+    public func mapping(map: Map) {
+        city &lt;- map["elements.city.value"]
+        street &lt;- map["elements.street.value"]
+        country &lt;- map["elements.country.value"]
+    }
+</code></pre>
+<h3 id='basic-items-querying' class='heading'>Basic items querying</h3>
+
+<p>Once you have a <code><a href="Classes/DeliveryClient.html">DeliveryClient</a></code> instance, you can start querying your project repository by calling methods on the instance. You need to pass your item model and query. You can create a query for a listing in two ways:</p>
+
+<ul>
+<li>creating a custom string query:
+<code>swift
+let customQuery = &quot;items?system.type=article&amp;order=elements.post_date[desc]&quot;
+client.getItems(modelType: Article.self, customQuery: customQuery) { (isSuccess, itemsResponse, error) in ...
+</code>
+
+<ul>
+<li>using a query parameters array:
+<code>swift
+let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
+let languageQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.language, parameterValue: &quot;es-ES&quot;)
+let coffeesQueryParameters = [contentTypeQueryParameter, languageQueryParameter]
+client.getItems(modelType: Coffee.self, queryParameters: coffeesQueryParameters) { (isSuccess, itemsResponse, error) in ...
+</code></li>
+</ul></li>
+</ul>
+
+<p>Then you can use your obtained items in the completetion handler:</p>
+<pre class="highlight swift"><code> <span class="c1">// Retrieves a list of all content items of certain type</span>
+<span class="k">let</span> <span class="nv">contentTypeQueryParameter</span> <span class="o">=</span> <span class="kt">QueryParameter</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">parameterKey</span><span class="p">:</span> <span class="kt">QueryParameterKey</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="nv">parameterValue</span><span class="p">:</span> <span class="s">"coffee"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">coffeesQueryParameters</span> <span class="o">=</span> <span class="p">[</span><span class="n">contentTypeQueryParameter</span><span class="p">]</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getItems</span><span class="p">(</span><span class="nv">modelType</span><span class="p">:</span> <span class="kt">Coffee</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">queryParameters</span><span class="p">:</span> <span class="n">coffeesQueryParameters</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">isSuccess</span><span class="p">,</span> <span class="n">itemsResponse</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="n">isSuccess</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">coffees</span> <span class="o">=</span> <span class="n">itemsResponse</span><span class="p">?</span><span class="o">.</span><span class="n">items</span> <span class="p">{</span>
+                <span class="c1">// Use your items here</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre>
+
+<p>You can also retrieve just a single item:</p>
+<pre class="highlight swift"><code><span class="c1">// Retrieves a single content item</span>
+<span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">DeliveryClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getItem</span><span class="p">(</span><span class="nv">modelType</span><span class="p">:</span> <span class="kt">Cafe</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"boston"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">isSuccess</span><span class="p">,</span> <span class="n">deliveryItem</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">isSuccess</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">cafe</span> <span class="o">=</span> <span class="n">deliveryItem</span><span class="o">.</span><span class="n">item</span> <span class="p">{</span>
+            <span class="c1">// Use your item here</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='getting-modular-content' class='heading'>Getting modular content</h3>
+
+<p>You can get modular content from <code>itemResponse</code> or <code>itemsResponse</code> object:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">DeliveryClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getItem</span><span class="p">(</span><span class="nv">modelType</span><span class="p">:</span> <span class="kt">Article</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">itemName</span><span class="p">:</span> <span class="s">"on_roasts"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">isSuccess</span><span class="p">,</span> <span class="n">itemResponse</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">isSuccess</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">relatedArticle</span> <span class="o">=</span> <span class="n">itemResponse</span><span class="p">?</span><span class="o">.</span><span class="nf">getModularContent</span><span class="p">(</span><span class="nv">codename</span><span class="p">:</span> <span class="s">"on_roasts"</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">Article</span><span class="o">.</span><span class="k">self</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+</code></pre>
+<h2 id='getting-content-types' class='heading'>Getting content types</h2>
+<h3 id='get-one-content-type' class='heading'>Get one content type</h3>
+<pre class="highlight swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">getContentType</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"coffee"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">isSuccess</span><span class="p">,</span> <span class="n">contentType</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="o">!</span><span class="n">isSuccess</span> <span class="p">{</span>
+        <span class="nf">fail</span><span class="p">(</span><span class="s">"Response is not successful. Error: </span><span class="se">\(</span><span class="kt">String</span><span class="p">(</span><span class="nv">describing</span><span class="p">:</span> <span class="n">error</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">type</span> <span class="o">=</span> <span class="n">contentType</span> <span class="p">{</span>
+    <span class="c1">// use content type here</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<h3 id='get-multiple-content-types' class='heading'>Get multiple content types</h3>
+<pre class="highlight swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">getContentTypes</span><span class="p">(</span><span class="nv">skip</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">limit</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">isSuccess</span><span class="p">,</span> <span class="n">contentTypesResponse</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="o">!</span><span class="n">isSuccess</span> <span class="p">{</span>
+        <span class="nf">fail</span><span class="p">(</span><span class="s">"Response is not successful. Error: </span><span class="se">\(</span><span class="kt">String</span><span class="p">(</span><span class="nv">describing</span><span class="p">:</span> <span class="n">error</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">response</span> <span class="o">=</span> <span class="n">contentTypesResponse</span> <span class="p">{</span>
+    <span class="c1">// use content types here</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<h2 id='getting-taxonomies' class='heading'>Getting taxonomies</h2>
+<h3 id='get-taxonomy-group' class='heading'>Get taxonomy group</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">DeliveryClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getTaxonomyGroup</span><span class="p">(</span><span class="nv">taxonomyGroupName</span><span class="p">:</span> <span class="s">"personas"</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">isSuccess</span><span class="p">,</span> <span class="n">deliveryItem</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">if</span> <span class="n">isSuccess</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="k">let</span> <span class="nv">taxonomyGroup</span> <span class="o">=</span> <span class="n">deliveryItems</span><span class="o">.</span><span class="n">item</span> <span class="p">{</span>
+        <span class="c1">// use your taxonomy group here</span>
+       <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+             <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+         <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<h3 id='get-all-taxonomies' class='heading'>Get all taxonomies</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">DeliveryClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">getTaxonomies</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">isSuccess</span><span class="p">,</span> <span class="n">deliveryItems</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">if</span> <span class="n">isSuccess</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="k">let</span> <span class="nv">taxonomies</span> <span class="o">=</span> <span class="n">deliveryItems</span><span class="p">?</span><span class="o">.</span><span class="n">items</span> <span class="p">{</span>
+        <span class="c1">// use your taxonomies here</span>
+       <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+             <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+         <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<h2 id='using-the-trackingclient' class='heading'>Using the TrackingClient</h2>
+
+<p>In order to log custom activities and add contacts you need to start a session first.</p>
+<h3 id='create-a-session' class='heading'>Create a session</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">client</span> <span class="o">=</span> <span class="kt">TrackingClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">startSession</span><span class="p">()</span>
+</code></pre>
+<h3 id='log-a-custom-activity' class='heading'>Log a custom activity</h3>
+<pre class="highlight swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">trackActivity</span><span class="p">(</span><span class="nv">activityName</span><span class="p">:</span> <span class="s">"madrid"</span><span class="p">)</span>
+</code></pre>
+<h3 id='add-a-contact' class='heading'>Add a contact</h3>
+<pre class="highlight swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">addContact</span><span class="p">(</span><span class="nv">email</span><span class="p">:</span> <span class="s">"martinkoklingacik@local.com"</span><span class="p">)</span>
+</code></pre>
+<h2 id='debug' class='heading'>Debug</h2>
+
+<p>If you want to view debug info from both clients set client&rsquo;s <code>enableDebugLogging</code> attribute:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">deliveryClient</span> <span class="o">=</span> <span class="kt">DeliveryClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">,</span> <span class="n">enableDebugLogging</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">trackingClient</span> <span class="o">=</span> <span class="kt">TrackingClient</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">projectId</span><span class="p">:</span> <span class="s">"YOUR_PROJECT_ID"</span><span class="p">,</span> <span class="n">enableDebugLogging</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
+</code></pre>
+<h2 id='further-information' class='heading'>Further information</h2>
+
+<p>For more developer resources, visit the Kentico Cloud Developer Hub at <a href="https://developer.kenticocloud.com">https://developer.kenticocloud.com</a>.</p>
+<h2 id='feedback-amp-contributing' class='heading'>Feedback &amp; Contributing</h2>
+
+<p>Check out the <a href="https://github.com/Kentico/cloud-sdk-swift/blob/master/CONTRIBUTING.md">contributing</a> page to see the best places to file issues, start discussions, and begin contributing.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>KenticoCloud Swift SDK is available under the MIT license. See the LICENSE file for more information.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/kentico/cloud-sdk-swift" target="_blank" rel="external">Martin Makarsky</a>. All rights reserved. (Last updated: 2017-10-19)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
