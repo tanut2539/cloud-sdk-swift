@@ -55,7 +55,7 @@ class GetContentTypesSpec: QuickSpec {
                             }
                             
                             if let response = contentTypesResponse {
-                                let expectedCount = 13
+                                let expectedCount = 12
                                 let expectedName = "Accessory"
                                 let expecedCodename = "brewer"
                                 expect(response.contentTypes?.count) == expectedCount
