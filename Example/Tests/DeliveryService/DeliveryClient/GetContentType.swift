@@ -33,7 +33,7 @@ class GetContentTypeSpec: QuickSpec {
                                 let expecedCodename = "coffee"
                                 let expectedElementName = "Farm"
                                 let expectedElementType = "text"
-                                let expectedElementsCount = 13
+                                let expectedElementsCount = 12
                                 expect(type.name) == expectedName
                                 expect(type.codename) == expecedCodename
                                 expect(type.elements?.count) == expectedElementsCount
