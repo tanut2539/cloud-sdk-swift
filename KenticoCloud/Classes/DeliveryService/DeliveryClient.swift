@@ -387,6 +387,8 @@ public class DeliveryClient {
             headers["authorization"] = "Bearer " + apiKey
         }
         
+        headers["X-KC-SDKID"] = "cocoapods.org;KenticoCloud;0.2.1"
+        
         return headers
     }
 }
