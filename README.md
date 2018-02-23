@@ -13,11 +13,6 @@ The repository contains sample app which demonstrates basic usage of the SDK.
 
 <img src="https://github.com/Kentico/cloud-sdk-swift/blob/master/SampleAppScreens/splashScreens.png" width="212"> <img src="https://github.com/Kentico/cloud-sdk-swift/blob/master/SampleAppScreens/ourBeans.png" width="212"> <img src="https://github.com/Kentico/cloud-sdk-swift/blob/master/SampleAppScreens/ourBeans.png" width="212"> <img src="https://github.com/Kentico/cloud-sdk-swift/blob/master/SampleAppScreens/locations.png" width="212">
 
-## Prerequisites
-
-To retrieve content from a Kentico Cloud project via the Delivery API, you first need to activate the API for your project. See our documentation on [activating the Delivery API](https://developer.kenticocloud.com/docs/using-delivery-api#section-enabling-the-delivery-api-for-your-projects).
-
-
 ## Quick start
 **1. Add a pod**  
 ```ruby
@@ -113,7 +108,7 @@ $ pod install
 
 The `DeliveryClient` class is the main class of the SDK for getting content. Using this class, you can retrieve content from your Kentico Cloud projects.
 
-To create an instance of the class, you need to provide a [project ID](https://developer.kenticocloud.com/docs/using-delivery-api#section-getting-project-id):
+To create an instance of the class, you need to provide a [project ID](https://developer.kenticocloud.com/v1/docs/getting-content#section-getting-content-items):
 
 ```swift
 // Initializes an instance of the DeliveryClient client
