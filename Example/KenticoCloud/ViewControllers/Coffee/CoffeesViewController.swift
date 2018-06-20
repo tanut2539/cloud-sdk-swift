@@ -54,7 +54,9 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
         let coffee = coffees[indexPath.row]
         
         cell.title.text = coffee.name?.value
-        cell.coffeeDescription.text = coffee.shortDescription?.value
+        if let description = coffee.shortDescription?.htmlContentString {
+            cell.coffeeDescription.styleWithRichtextString(richtextString: description)
+        }
         
         if let price = coffee.price?.value {
             cell.price.text = "$ \(price) / 1lb"
@@ -66,7 +68,7 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
             }
         }
         
-        if let imageUrl = coffee.photo?.value?[0].url {
+        if let imageUrl = coffee.image?.value?[0].url {
             let url = URL(string: imageUrl)
             cell.photo.af_setImage(withURL: url!)
         }
@@ -108,7 +110,7 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
     private func getCoffees() {
         self.showLoader(message: "Loading coffees...")
         
-        let cloudClient = DeliveryClient.init(projectId: AppConstants.projectId)
+        let cloudClient = DeliveryClient.init(projectId: AppConstants.getProjectId())
         
         let contentTypeQueryParameter = QueryParameter.init(parameterKey: QueryParameterKey.type, parameterValue: contentType)
         

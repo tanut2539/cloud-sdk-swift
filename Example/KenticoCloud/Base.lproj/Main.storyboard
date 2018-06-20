@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uAh-AO-x8f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uAh-AO-x8f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,7 +17,6 @@
                 <navigationController storyboardIdentifier="CafesNavigationController" navigationBarHidden="YES" id="SNA-e0-rIb" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Locations" image="cafesIcon" id="tDl-Dq-s1u"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jsj-K3-YGy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -83,19 +82,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sydney - downtown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvN-2n-Dzv">
-                                            <rect key="frame" x="16" y="221" width="334" height="24"/>
+                                            <rect key="frame" x="24" y="214" width="318" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <color key="textColor" red="0.95294117649999999" green="0.38823529410000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="141 Sydney Rd  555 111 222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpT-6s-0Wr">
-                                            <rect key="frame" x="16" y="247" width="334" height="18"/>
+                                            <rect key="frame" x="24" y="240" width="318" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.14117647058823529" green="0.1803921568627451" blue="0.23921568627450979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bJi-QD-evH">
-                                            <rect key="frame" x="16" y="8" width="342" height="211"/>
+                                            <rect key="frame" x="24" y="11" width="326" height="201"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="bJi-QD-evH" secondAttribute="height" multiplier="99:61" id="pSQ-gJ-cS1"/>
                                             </constraints>
@@ -333,19 +332,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The darkest coffee yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4q-gD-hXf">
-                                            <rect key="frame" x="39" y="191" width="297" height="22"/>
+                                            <rect key="frame" x="47" y="184" width="281" height="26"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <color key="textColor" red="0.95294117649999999" green="0.38823529410000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kcQ-Pt-Bs9">
-                                            <rect key="frame" x="39" y="8" width="297" height="183"/>
+                                            <rect key="frame" x="47" y="11" width="281" height="173"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="kcQ-Pt-Bs9" secondAttribute="height" multiplier="99:61" id="Vaw-tR-anp"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find the blackest roastes we sell!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7g-tk-gEK">
-                                            <rect key="frame" x="39" y="209" width="297" height="45"/>
+                                            <rect key="frame" x="47" y="206" width="281" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="ddD-8f-2WE"/>
                                             </constraints>
@@ -354,7 +353,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nov 19, 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm0-Jx-Xs6">
-                                            <rect key="frame" x="39" y="262" width="297" height="21"/>
+                                            <rect key="frame" x="47" y="259" width="281" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="14"/>
                                             <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -432,7 +431,7 @@
                                     <rect key="frame" x="0.0" y="-69" width="375" height="207"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our beans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tu-sb-Yhd">
-                                    <rect key="frame" x="27" y="73" width="186" height="46"/>
+                                    <rect key="frame" x="27" y="73" width="181.5" height="46"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -458,26 +457,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KFt-3E-7WN">
-                                            <rect key="frame" x="25" y="45" width="130" height="130"/>
+                                            <rect key="frame" x="33" y="48" width="130" height="130"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="130" id="RYp-NS-zGv"/>
                                                 <constraint firstAttribute="width" secondItem="KFt-3E-7WN" secondAttribute="height" multiplier="1:1" id="T3k-Xh-LVV"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Columbia Carlos Imbatchi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwj-3u-gNv">
-                                            <rect key="frame" x="25" y="18" width="325" height="24"/>
+                                            <rect key="frame" x="33" y="21" width="309" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                             <color key="textColor" red="0.95294117649999999" green="0.38823529410000002" blue="0.51372549020000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wet (Washed)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdb-kW-xbq">
-                                            <rect key="frame" x="163" y="200" width="105" height="20"/>
+                                            <rect key="frame" x="171" y="197" width="105" height="20"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                             <color key="textColor" red="0.14117647059999999" green="0.18039215689999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-ar-qx3">
-                                            <rect key="frame" x="163" y="45" width="187" height="123"/>
+                                            <rect key="frame" x="171" y="48" width="171" height="123"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="123" id="ScM-Id-m5e"/>
                                             </constraints>
@@ -493,7 +492,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our special" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGA-JH-A5I">
-                                            <rect key="frame" x="25" y="179" width="130" height="41"/>
+                                            <rect key="frame" x="33" y="176" width="130" height="41"/>
                                             <color key="backgroundColor" red="0.36862745099999999" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="41" id="jwp-Q9-0tA"/>
@@ -503,7 +502,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$8.5 / 1lb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hS-2L-q16">
-                                            <rect key="frame" x="163" y="172" width="107" height="29"/>
+                                            <rect key="frame" x="171" y="169" width="107" height="29"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                             <color key="textColor" red="0.14117647059999999" green="0.18039215689999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -792,7 +791,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bik-Vy-5LR">
-                                                    <rect key="frame" x="28" y="8" width="318" height="12"/>
+                                                    <rect key="frame" x="35" y="11" width="304" height="6"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Coffee description">
                                                             <attributes>
@@ -936,8 +935,8 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="8C9-Wc-q77" kind="relationship" relationship="viewControllers" id="g2j-88-4Qi"/>
                         <segue destination="SNA-e0-rIb" kind="relationship" relationship="viewControllers" id="Dte-Xv-ppz"/>
+                        <segue destination="8C9-Wc-q77" kind="relationship" relationship="viewControllers" id="g2j-88-4Qi"/>
                         <segue destination="plt-Dx-hUM" kind="relationship" relationship="viewControllers" id="7cL-G0-66m"/>
                     </connections>
                 </tabBarController>
@@ -951,7 +950,6 @@
                 <navigationController storyboardIdentifier="CoffeesNavigationController" navigationBarHidden="YES" id="8C9-Wc-q77" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Our beans" image="coffeesIcon" id="WQq-UV-bTl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0jr-Q2-DOe">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
@@ -1089,7 +1087,6 @@ Dry processing, being the least economically demanding, used to be the most wide
                 <navigationController storyboardIdentifier="ArticlesNavigationController" navigationBarHidden="YES" id="plt-Dx-hUM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Coffee blog" image="articlesIcon" id="Apd-eR-dTJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NIK-do-dlg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

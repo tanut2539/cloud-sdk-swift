@@ -33,8 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        let trackingClient = TrackingClient.init(projectId: AppConstants.projectId, enableDebugLogging: true)
-        trackingClient.startSession()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

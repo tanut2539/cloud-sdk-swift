@@ -49,12 +49,6 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         backButton.stylePinkButton()
         
         setContent()
-        
-        let client = TrackingClient.init(projectId: AppConstants.projectId, enableDebugLogging: true)
-        
-        if let categoryCodename = coffee.category?.value?[0].codename {
-            client.trackActivity(activityName: categoryCodename)
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -141,7 +135,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
             self.altitude.text = "\(altitude) ft"
         }
         
-        if let imageUrl = coffee.photo?.value?[0].url {
+        if let imageUrl = coffee.image?.value?[0].url {
             let url = URL(string: imageUrl)
             coffeeImage.af_setImage(withURL: url!)
         }
@@ -154,7 +148,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         
         for callToActionName in callToActionNames {
             if let ctoName = callToActionName {
-                let client = DeliveryClient.init(projectId: AppConstants.projectId)
+                let client = DeliveryClient.init(projectId: AppConstants.getProjectId())
                 client.getItem(modelType: CallToAction.self, itemName: ctoName, completionHandler: {isSuccess, itemResponse, error in
                     if isSuccess {
                         if let cto = itemResponse?.item {
@@ -171,7 +165,7 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         }
         
         /// Get SelectedCafes
-        let client = DeliveryClient.init(projectId: AppConstants.projectId)
+        let client = DeliveryClient.init(projectId: AppConstants.getProjectId())
         client.getItem(modelType: SelectedCafes.self, itemName: "cafes_in_your_area", completionHandler: {isSuccess, itemResponse, error in
             if isSuccess {
                 var cafes : [Cafe?] = []
