@@ -15,8 +15,8 @@ struct AppConstants {
     static let imageBorderColor = UIColor.init(red: 215.0/256, green: 215.0/256, blue: 215.0/256, alpha: 1.0)
     
     static func getProjectId() -> String {
-        if (UserDefaults.standard.object(forKey: "isAppetize") as? String == "true") {
-            return UserDefaults.standard.object(forKey: "projectId") as! String
+        if (UserDefaults.standard.bool(forKey: "isAppetize")) {
+            return UserDefaults.standard.string(forKey: "projectId") ?? fallbackProjectId
         } else {
             return fallbackProjectId;
         }

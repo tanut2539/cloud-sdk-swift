@@ -31,6 +31,7 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
         if articles.count == 0 {
             getArticles()
         }
+    
     }
     
     override func didReceiveMemoryWarning() {
