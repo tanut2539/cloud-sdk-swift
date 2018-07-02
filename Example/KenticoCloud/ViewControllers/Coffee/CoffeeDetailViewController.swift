@@ -134,10 +134,12 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         if let altitude = coffee.altitude?.value {
             self.altitude.text = "\(altitude) ft"
         }
-        
-        if let imageUrl = coffee.image?.value?[0].url {
-            let url = URL(string: imageUrl)
-            coffeeImage.af_setImage(withURL: url!)
+
+        if let assets = coffee.image?.value {
+            if assets.count > 0 {
+                let url = URL(string: assets[0].url!)
+                coffeeImage.af_setImage(withURL: url!)
+            }
         }
     }
     

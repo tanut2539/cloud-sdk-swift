@@ -68,9 +68,11 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
             }
         }
         
-        if let imageUrl = coffee.image?.value?[0].url {
-            let url = URL(string: imageUrl)
-            cell.photo.af_setImage(withURL: url!)
+        if let assets = coffee.image?.value {
+            if assets.count > 0 {
+                let url = URL(string: assets[0].url!)
+                cell.photo.af_setImage(withURL: url!)
+            }
         }
         
         if (coffee.promotion?.containsCodename(codename: "featured"))! {

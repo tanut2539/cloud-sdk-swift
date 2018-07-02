@@ -59,9 +59,11 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
             cell.date.text = date.getDateString()
         }
         
-        if let imageUrl = article.asset?.value?[0].url {
-            let url = URL(string: imageUrl)
-            cell.photo.af_setImage(withURL: url!)
+        if let assets = article.asset?.value {
+            if assets.count > 0 {
+                let url = URL(string: assets[0].url!)
+                cell.photo.af_setImage(withURL: url!)
+            }
         }
         
         return cell
