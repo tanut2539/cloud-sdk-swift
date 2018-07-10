@@ -75,17 +75,6 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
         return UITableViewAutomaticDimension;
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "coffeeDetailCtaSegue" {
-            
-            let coffeeDetailCtaViewController = segue.destination
-                as! CoffeeDetailCallToActionViewController
-            
-            coffeeDetailCtaViewController.callToAction = callToAction
-            coffeeDetailCtaViewController.cafes = selectedCafes
-        }
-    }
-    
     // MARK: Outlet actions
     
     @IBAction func navigateBack(_ sender: Any) {
