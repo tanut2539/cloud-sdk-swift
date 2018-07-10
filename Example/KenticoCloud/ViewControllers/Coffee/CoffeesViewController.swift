@@ -72,7 +72,11 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
             if assets.count > 0 {
                 let url = URL(string: assets[0].url!)
                 cell.photo.af_setImage(withURL: url!)
+            } else {
+                cell.photo.image = UIImage(named: "noContent")
             }
+        } else {
+            cell.photo.image = UIImage(named: "noContent")
         }
         
         if (coffee.promotion?.containsCodename(codename: "featured"))! {

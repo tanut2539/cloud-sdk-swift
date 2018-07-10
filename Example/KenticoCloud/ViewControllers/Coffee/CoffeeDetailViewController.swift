@@ -128,7 +128,11 @@ class CoffeeDetailViewController: UIViewController, UITableViewDataSource, UITab
             if assets.count > 0 {
                 let url = URL(string: assets[0].url!)
                 coffeeImage.af_setImage(withURL: url!)
+            } else {
+                coffeeImage.image = UIImage(named: "noContent")
             }
+        } else {
+            coffeeImage.image = UIImage(named: "noContent")
         }
     }
     

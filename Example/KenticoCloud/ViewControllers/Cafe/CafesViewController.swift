@@ -61,6 +61,8 @@ class CafesViewController: ListingBaseViewController, UITableViewDataSource {
         if let imageUrl = cafe.imageUrl {
             let url = URL(string: imageUrl)
             cell.photo.af_setImage(withURL: url!)
+        } else {
+            cell.photo.image = UIImage(named: "noContent")
         }
         
         return cell

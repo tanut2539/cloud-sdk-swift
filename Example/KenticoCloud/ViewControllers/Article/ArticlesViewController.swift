@@ -64,7 +64,11 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
             if assets.count > 0 {
                 let url = URL(string: assets[0].url!)
                 cell.photo.af_setImage(withURL: url!)
+            } else {
+                cell.photo.image = UIImage(named: "noContent")
             }
+        } else {
+            cell.photo.image = UIImage(named: "noContent")
         }
         
         return cell
@@ -80,7 +84,12 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
             articleDetailViewController.article = articles[indexPath.row]
             
             let cell = self.tableView.cellForRow(at: indexPath) as! ArticleTableViewCell
-            articleDetailViewController.image = cell.photo.image!
+            
+            if let image = cell.photo.image {
+                articleDetailViewController.image = image
+            } else {
+                articleDetailViewController.image = UIImage(named: "noContent")
+            }
         }
         
         if let index = self.tableView.indexPathForSelectedRow{
