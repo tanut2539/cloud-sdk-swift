@@ -142,7 +142,6 @@
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="refreshControl" destination="Da8-go-rYe" id="MUx-0h-76E"/>
                         <outlet property="tableView" destination="m9X-3f-x8Z" id="MxZ-zZ-wYJ"/>
                     </connections>
                 </tableViewController>
@@ -407,7 +406,6 @@
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="refreshControl" destination="UlP-Ea-DKE" id="pnY-eK-vyv"/>
                         <outlet property="tableView" destination="0bp-7g-7ol" id="1xo-rB-Ej9"/>
                     </connections>
                 </tableViewController>
@@ -559,7 +557,6 @@
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="refreshControl" destination="R4F-wN-1lX" id="N6Q-vN-3lP"/>
                         <outlet property="tableView" destination="E0V-dD-EP3" id="PAk-ae-CLH"/>
                     </connections>
                 </tableViewController>

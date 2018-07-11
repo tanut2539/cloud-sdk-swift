@@ -17,7 +17,6 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
     private var coffees: [Coffee] = []
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var refreshControl: UIRefreshControl!
     
     // MARK: Lifecycle
     
@@ -132,11 +131,17 @@ class CoffeesViewController: ListingBaseViewController, UITableViewDelegate, UIT
                 }
             }
             
-            if self.refreshControl.isRefreshing {
-                self.refreshControl.endRefreshing()
+            DispatchQueue.main.async {
+                self.finishLoadingItems()
             }
-            
-            self.hideLoader()
         }
+    }
+    
+    func finishLoadingItems() {
+        self.hideLoader()
+        self.tableView.refreshControl?.endRefreshing()
+        UIView.animate(withDuration: 0.3, animations: {
+            self.tableView.contentOffset = CGPoint.zero
+        })
     }
 }

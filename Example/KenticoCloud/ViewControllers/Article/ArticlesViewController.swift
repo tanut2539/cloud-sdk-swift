@@ -18,7 +18,6 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
     private var articles: [Article] = []
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var refreshControl: UIRefreshControl!
     
     // MARK: Lifecycle
     
@@ -122,12 +121,18 @@ class ArticlesViewController: ListingBaseViewController, UITableViewDataSource {
                 }
             }
             
-            if self.refreshControl.isRefreshing {
-                self.refreshControl.endRefreshing()
+            DispatchQueue.main.async {
+                self.finishLoadingItems()
             }
-            
-            self.hideLoader()
         }
+    }
+    
+    func finishLoadingItems() {
+        self.hideLoader()
+        self.tableView.refreshControl?.endRefreshing()
+        UIView.animate(withDuration: 0.3, animations: {
+            self.tableView.contentOffset = CGPoint.zero
+        })
     }
 }
 
