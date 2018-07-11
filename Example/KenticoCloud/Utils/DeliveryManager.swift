@@ -22,7 +22,14 @@ class DeliveryManager {
     // Initialization
     
     private init() {
-        self.deliveryClient = DeliveryClient.init(projectId: AppConstants.getProjectId())
+        let projectId = AppConstants.getProjectId()
+        let apiKey = AppConstants.tryGetApiKey()
+        
+        if apiKey == nil || apiKey == "" {
+            self.deliveryClient = DeliveryClient.init(projectId: projectId)
+        } else {
+            self.deliveryClient = DeliveryClient.init(projectId: projectId, apiKey: apiKey)
+        }
     }
     
 }

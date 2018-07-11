@@ -21,4 +21,12 @@ struct AppConstants {
             return fallbackProjectId;
         }
     }
+    
+    static func tryGetApiKey() -> String? {
+        if (UserDefaults.standard.bool(forKey: "isAppetize")) {
+            return (UserDefaults.standard.string(forKey: "apiKey") ?? nil)!
+        } else {
+            return nil;
+        }
+    }
 }
