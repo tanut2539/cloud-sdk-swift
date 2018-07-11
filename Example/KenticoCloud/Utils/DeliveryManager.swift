@@ -25,7 +25,7 @@ class DeliveryManager {
         let projectId = AppConstants.getProjectId()
         let apiKey = AppConstants.tryGetApiKey()
         
-        if apiKey == nil || apiKey == "" {
+        if apiKey == "" {
             self.deliveryClient = DeliveryClient.init(projectId: projectId)
         } else {
             self.deliveryClient = DeliveryClient.init(projectId: projectId, apiKey: apiKey)

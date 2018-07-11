@@ -22,11 +22,11 @@ struct AppConstants {
         }
     }
     
-    static func tryGetApiKey() -> String? {
+    static func tryGetApiKey() -> String {
         if (UserDefaults.standard.bool(forKey: "isAppetize")) {
-            return (UserDefaults.standard.string(forKey: "apiKey") ?? nil)!
+            return UserDefaults.standard.string(forKey: "apiKey") ?? ""
         } else {
-            return nil;
+            return "";
         }
     }
 }
