@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import KenticoCloud
 
 @UIApplicationMain
@@ -23,21 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(_ application: UIApplication) {
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-    }
-
     func applicationDidBecomeActive(_ application: UIApplication) {
         let trackingClient = TrackingClient.init(projectId: AppConstants.projectId, enableDebugLogging: true)
         trackingClient.startSession()
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-    }
 }
 
